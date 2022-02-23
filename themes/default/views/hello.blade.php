@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="home-promo-img">
-                    <img src="/themes/default/img/home/promo.png" alt="OXO Capital">
+                    <img data-aos="fade-left" src="/themes/default/img/home/promo.png" alt="OXO Capital">
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
     <section class="home-ventures">
         <div class="home-ventures-wrapper">
             <div class="container">
-                <div class="home-ventures-wrap">
+                <div class="home-ventures-wrap" data-aos="fade-right">
                     <h2 class="underscore">Ventures</h2>
                     <p>
                         OXO Capital - company oriented on investments in the crypto world and the main goal of our
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="home-ventures-img">
-                    <img src="/themes/default/img/home/ventures.png" alt="OXO ventures">
+                    <img data-aos="fade-left" src="/themes/default/img/home/ventures.png" alt="OXO ventures">
                 </div>
             </div>
         </div>
@@ -48,15 +48,15 @@
     <section class="home-mission">
         <div class="home-mission-wrapper">
             <div class="home-mission-container">
-                <h2 class="underscore">Our Mission</h2>
-                <p>A professional team from different parts of the globe combining deep market insights with amazing
+                <h2 class="underscore" data-aos="fade-up">Our Mission</h2>
+                <p data-aos="fade-up">A professional team from different parts of the globe combining deep market insights with amazing
                     skill of fundamental analysis.</p>
-                <div class="home-mission-item">
+                <div class="home-mission-item" data-aos="fade-right">
                     <h3>Early Stage - bigger benefit</h3>
                     <h4>Distributed team and large OXO Capital community. Provides an opportunity to negotiate with
                         promising projects at an early stage.</h4>
                 </div>
-                <div class="home-mission-item">
+                <div class="home-mission-item" data-aos="fade-left">
                     <h3>Early Stage - bigger benefit</h3>
                     <h4>As The result - Access to a world-class investment platform and early stage investments help to
                         realize investment goals with cryptocurrency & blockchain.</h4>
@@ -66,7 +66,7 @@
     </section>
     <section class="home-about">
         <div class="home-about-wrapper">
-            <div class="home-about-container">
+            <div class="home-about-container" data-aos="zoom-in-up">
                 <h2>The Mission of OXO</h2>
                 <p> - create community and allow everyone to invest in AMAZING projects, no matter their investment amount.</p>
                 <a href="/" class="btn-gradient">

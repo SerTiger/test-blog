@@ -6,6 +6,7 @@ $(window).on("load", () => {
 });
 
 $(document).ready(() => {
+    AOS.init()
     window.addEventListener('scroll',()=>{
         window.scrollY > 130 ? $('.header').addClass('fixed') : $('.header').removeClass('fixed')
     })
