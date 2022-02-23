@@ -29,6 +29,11 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
+mix.scripts([
+    'resources/vendor/js/jquery.min.js',
+    'resources/vendor/js/jquery.validate.min.js'
+], 'public/themes/default/js/vendor.min.js')
+
 // mix for default theme
 mix.copyDirectory('themes/default/assets/img', 'public/themes/default/img');
 mix.copyDirectory('themes/default/assets/fonts', 'public/themes/default/fonts');

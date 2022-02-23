@@ -1,7 +1,13 @@
-class Foo {
-    constructor() {
-        console.log('Foo constructor');
-    }
-}
+$(window).on("load", () => {
+    setTimeout(function () {
+        $('.loader').fadeOut('fast');
+        $('.cubeWrap ').fadeOut('slow');
+    }, 1000);
+});
 
-new Foo();
+$(document).ready(() => {
+    window.addEventListener('scroll',()=>{
+        window.scrollY > 130 ? $('.header').addClass('fixed') : $('.header').removeClass('fixed')
+    })
+
+})
