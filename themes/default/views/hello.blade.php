@@ -1,6 +1,13 @@
 @extends('layouts.master')
-
 @section('content')
-    @lang('default::labels.intro')
+    <section class="home-promo">
+        <div class="home-promo-wrapper">
+            <div class="container">
+                <div class="home-promo-wrap">
+
+                </div>
+            </div>
+        </div>
+    </section>
 @stop
 

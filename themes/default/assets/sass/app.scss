@@ -1,6 +1,10 @@
 @import 'variables';
-
+@import 'fonts';
+@import 'header';
+@import 'home';
+@import 'footer';
 body {
 	background-color: $bgcolor;
 	color: $color;
+    font-family: "Proxima Nova", sans-serif;
 }
