@@ -66,7 +66,7 @@
     </section>
     <section class="home-about">
         <div class="home-about-wrapper">
-            <div class="home-about-container" data-aos="zoom-in-up">
+            <div class="home-about-container">
                 <h2>The Mission of OXO</h2>
                 <p> - create community and allow everyone to invest in AMAZING projects, no matter their investment amount.</p>
                 <a href="/" class="btn-gradient">

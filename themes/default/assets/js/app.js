@@ -1,3 +1,4 @@
+require('./contact')
 $(window).on("load", () => {
     setTimeout(function () {
         $('.loader').fadeOut('fast');
