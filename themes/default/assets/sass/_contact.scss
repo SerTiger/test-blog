@@ -11,6 +11,8 @@
         display: flex;
         align-items: flex-start;
         justify-content: center;
+        background: url("/themes/default/img/contact/contact-bg.png") center center no-repeat;
+        //background-size: cover;
     }
     &-container{
         max-width: 622px;

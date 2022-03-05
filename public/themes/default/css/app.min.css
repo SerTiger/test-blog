@@ -329,6 +329,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   width: 100%;
   padding-top: 200px;
   padding-bottom: 265px;
+  background: url("/themes/default/img/home/mission-bg.png") center center no-repeat;
+  background-size: cover;
 }
 .home-mission-container {
   margin: 0 auto;
@@ -768,6 +770,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  background: url("/themes/default/img/contact/contact-bg.png") center center no-repeat;
 }
 .contact-container {
   max-width: 622px;
