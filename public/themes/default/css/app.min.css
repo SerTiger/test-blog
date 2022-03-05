@@ -657,6 +657,46 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-top: 24px;
 }
 
+.policy {
+  width: 100%;
+  min-height: 100vh;
+  background: #161628;
+}
+.policy-wrapper {
+  padding-top: 200px;
+  width: 100%;
+}
+.policy-wrap {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.policy-wrap h1 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 58px;
+  color: #FFFFFF;
+  margin-bottom: 48px;
+}
+.policy-content {
+  max-width: 890px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #8899B8;
+}
+.policy-content p, .policy-content span, .policy-content ul li, .policy-content ol li {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #8899B8;
+}
+
 body {
   background-color: #1F1E20;
   color: #D2D1D3;

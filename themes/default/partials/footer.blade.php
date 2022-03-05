@@ -11,7 +11,7 @@
                 <a href="/">
                     About
                 </a>
-                <a href="/">
+                <a href="/privacy-policy">
                     Policy Page
                 </a>
                 <a href="/">
