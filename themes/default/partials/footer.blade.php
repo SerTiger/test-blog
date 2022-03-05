@@ -8,7 +8,7 @@
             </div>
             <div class="footer-link-col">
                 <h3>Company</h3>
-                <a href="/">
+                <a href="/about">
                     About
                 </a>
                 <a href="/privacy-policy">

@@ -11,5 +11,11 @@ $(document).ready(() => {
     window.addEventListener('scroll',()=>{
         window.scrollY > 130 ? $('.header').addClass('fixed') : $('.header').removeClass('fixed')
     })
-
+    window.scrollY > 130 ? $('.header').addClass('fixed') : ''
+    $('.scroll-down').on('click', function (){
+        window.scrollTo({
+            top: 700,
+            behavior: "smooth"
+        });
+    })
 })

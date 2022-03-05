@@ -22,3 +22,6 @@ Route::get('/contact', function () {
 Route::get('/privacy-policy', function () {
     return view('policy');
 });
+Route::get('/about', function () {
+    return view('about');
+});

@@ -47,7 +47,8 @@
         display: flex;
         align-items: flex-end;
         justify-content: center;
-        background: url("/themes/default/img/thanks/thanks.png");
+        background: url("/themes/default/img/thanks/thanks.png") center center no-repeat;
+        background-size: cover;
         border-radius: 12px;
         h1{
             font-style: normal;
