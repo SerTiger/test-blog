@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@include('partials.thanks')
 @section('content')
 
     <section class="contact">

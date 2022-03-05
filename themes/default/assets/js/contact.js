@@ -26,15 +26,16 @@ $(document).ready(() => {
         },
         submitHandler: function submitHandler(form, event) {
             event.preventDefault();
-            $('.btn-blue').addClass('load');
+            $('.btn.btn-blue').addClass('load');
             $.ajax({
                 type: 'POST',
                 url: '/api/contact',
                 data: $(form).serialize()
             }).done(function (response) {
                 $('.btn.btn-blue').removeClass('load')
-                // $('.thanks').fadeIn('fast')
-                // $('body').addClass('fixed-body')
+                $('.thanks').fadeIn('fast')
+                $('body').addClass('fixed-body')
+
             }).fail(function (error) {
                 $('.btn.btn-blue').removeClass('load')
             });
