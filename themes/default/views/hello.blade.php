@@ -7,7 +7,7 @@
                     <h1>We Invest & Help Build WEB3 Future</h1>
                     <p>Our Specialization: Protocols, Cross chain, Defi, Metaverse, Gaming projects, NFTs</p>
                     <div class="home-promo-btn-wrap">
-                        <a class="btn-blue" href="/">
+                        <a class="btn-blue" href="/choose">
                             <span>Invest & Inquiry</span>
                         </a>
                         <a class="btn-gradient" href="/portfolio">

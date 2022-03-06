@@ -28,3 +28,6 @@ Route::get('/about', function () {
 Route::get('/portfolio', function () {
     return view('portfolio');
 });
+Route::get('/choose', function () {
+    return view('choose');
+});
