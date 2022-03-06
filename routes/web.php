@@ -37,6 +37,10 @@ Route::get('/invest-first', function () {
 Route::get('/invest-second', function () {
     return view('invest-second');
 });
+Route::get('/inquire-first', function () {
+    return view('inquire-first');
+});
+
 Route::get('/thanks', function () {
     return view('thanks');
 });

@@ -6,9 +6,9 @@
         <div class="container">
             <div class="invest-wrap">
                 <div class="invest-head">
-                    <h1>Invest with OXO</h1>
+                    <a href="/invest-first">Invest with OXO</a>
                     <span>/</span>
-                    <a href="/inquire-first">Inquire investments in OXO</a>
+                    <h1>Inquire investments in OXO</h1>
                 </div>
                 <div class="invest-status">
                     <div class="invest-status-line">
@@ -20,13 +20,13 @@
                     </div>
                     <div class="invest-status-text">
                         <span class="active">Contact Details</span>
-                        <span>Investman Details</span>
+                        <span>Project Details</span>
                         <span>Congrats</span>
                     </div>
                 </div>
                 <div class="invest-container">
                     <div class="contact-form-wrap">
-                        <form class="contact-form" id="invest_1" autocomplete="off" action="">
+                        <form class="contact-form" id="inquire_1" autocomplete="off" action="">
                             <div class="contact-form-container">
                                 <div class="input-row">
                                     <label>
@@ -53,6 +53,18 @@
                                             <input type="text" name="telegram">
                                         </label>
                                     </div>
+                                </div>
+                                <div class="input-row">
+                                    <label>
+                                        <span>Company Name</span>
+                                        <input type="text" name="company">
+                                    </label>
+                                </div>
+                                <div class="input-row">
+                                    <label>
+                                        <span>Your Position</span>
+                                        <input type="text" name="position">
+                                    </label>
                                 </div>
                                 <div class="btn-wrap">
                                     <button class="btn btn-blue" type="submit">

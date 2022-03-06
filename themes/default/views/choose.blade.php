@@ -13,7 +13,7 @@
                         </div>
                         <div class="choose-item">
                             <h2>Inquire investments in OXO</h2>
-                            <a href="/" class="btn-blue">
+                            <a href="/inquire-first" class="btn-blue">
                                 <span>Inquiry</span>
                             </a>
                         </div>

@@ -8,7 +8,7 @@
                     <div class="invest-head">
                         <h1>Invest with OXO</h1>
                         <span>/</span>
-                        <a href="/">Inquire investments in OXO</a>
+                        <a href="/inquire-first">Inquire investments in OXO</a>
                     </div>
                     <div class="invest-status">
                         <div class="invest-status-line">
@@ -26,7 +26,7 @@
                     </div>
                     <div class="invest-container">
                         <div class="contact-form-wrap">
-                            <form class="contact-form" id="invest_1" autocomplete="off" action="">
+                            <form class="contact-form" id="invest_2" autocomplete="off" action="">
                                 <div class="contact-form-container">
                                     <div class="input-row">
                                         <label>
