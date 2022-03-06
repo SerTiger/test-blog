@@ -31,3 +31,9 @@ Route::get('/portfolio', function () {
 Route::get('/choose', function () {
     return view('choose');
 });
+Route::get('/invest-first', function () {
+    return view('invest-first');
+});
+Route::get('/thanks', function () {
+    return view('thanks');
+});

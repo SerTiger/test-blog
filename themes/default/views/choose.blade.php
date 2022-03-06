@@ -7,7 +7,7 @@
                     <div class="choose-item-wrap">
                         <div class="choose-item">
                             <h2>Invest with OXO</h2>
-                            <a href="/" class="btn-blue">
+                            <a href="/invest-first" class="btn-blue">
                                 <span>Invest</span>
                             </a>
                         </div>

@@ -10,6 +10,7 @@
 @import 'policy';
 @import 'choose';
 @import 'portfolio';
+@import 'invest';
 
 
 body {
@@ -335,4 +336,18 @@ $color6: darken($color, 4%);
 
 .input-row + .input-row {
     margin-top: 16px;
+}
+.connector{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    .input-row{
+        width: calc(50% - 15px);
+    }
+    .input-row + .input-row {
+        margin-top: 0;
+    }
 }

@@ -839,19 +839,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 .thanks {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
   width: 100%;
-  height: 100%;
-  z-index: 11;
-  display: none;
-}
-.thanks.active {
-  opacity: 1;
-  visibility: visible;
 }
 .thanks-wrap {
   background: #161628;
@@ -1331,6 +1319,124 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #58667E;
 }
 
+.invest {
+  width: 100%;
+  background: #161628;
+}
+.invest-wrapper {
+  width: 100%;
+}
+.invest-wrap {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 180px;
+  padding-bottom: 100px;
+  background: url("/themes/default/img/invest/invest-bg.png") center center no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.invest-head {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+}
+.invest-head h1 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  color: #FFFFFF;
+}
+.invest-head span, .invest-head a {
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: #58667E;
+}
+.invest-head span {
+  margin-right: 24px;
+  margin-left: 24px;
+}
+.invest-status {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+.invest-status-line {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.invest-status-line .dot {
+  width: 12px;
+  height: 12px;
+  background: #313C50;
+  border: 2px solid #161628;
+  border-radius: 50%;
+}
+.invest-status-line .dot.active {
+  background: linear-gradient(97.76deg, #008DFF -33.02%, #0085FF 11.39%, #00FFFF 123.89%);
+}
+.invest-status-line .line {
+  height: 2px;
+  width: calc(50% - 24px);
+  background: #313C50;
+  position: relative;
+}
+.invest-status-line .line.full:before {
+  content: "";
+  background: linear-gradient(97.04deg, #008DFF -16.54%, #4089C4 18.49%, #AA477C 44.76%, #8BFFEA 69.16%, #4089C4 99.18%);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+.invest-status-line .line.half:before {
+  content: "";
+  background: linear-gradient(97.04deg, #008DFF -16.54%, #4089C4 18.49%, #AA477C 44.76%, #8BFFEA 69.16%, #4089C4 99.18%);
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+.invest-status-text {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.invest-status-text span {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #313C50;
+}
+.invest-status-text span.active {
+  color: #8899B8;
+}
+.invest-container {
+  max-width: 622px;
+  width: 100%;
+}
+
 body {
   background-color: #1F1E20;
   color: #D2D1D3;
@@ -1717,4 +1823,19 @@ button.btn-blue {
 
 .input-row + .input-row {
   margin-top: 16px;
+}
+
+.connector {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.connector .input-row {
+  width: calc(50% - 15px);
+}
+.connector .input-row + .input-row {
+  margin-top: 0;
 }

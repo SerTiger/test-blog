@@ -1,5 +1,4 @@
 @extends('layouts.master')
-@include('partials.thanks')
 @section('content')
 
     <section class="contact">
@@ -11,7 +10,7 @@
                     or leave your request here below:
                 </h1>
                 <div class="contact-form-wrap">
-                    <form class="contact-form" id="contact" autocomplete="off">
+                    <form class="contact-form" id="contact" autocomplete="off" action="">
                         <div class="contact-form-container">
                             <div class="input-row">
                                 <label>
@@ -32,7 +31,7 @@
                                 </label>
                             </div>
                             <div class="btn-wrap">
-                                <button class="btn btn-blue">
+                                <button class="btn btn-blue" type="submit">
                                     <span>Send</span>
                                 </button>
                             </div>

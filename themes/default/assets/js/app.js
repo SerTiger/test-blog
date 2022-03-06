@@ -1,4 +1,5 @@
 require('./contact')
+require('./invest_first')
 $(window).on("load", () => {
     setTimeout(function () {
         $('.loader').fadeOut('fast');

@@ -3,7 +3,7 @@ $(window).on("load", () => {
 });
 
 $(document).ready(() => {
-    $('#contact').validate({
+    $('#invest_1').validate({
         ignore: [],
         errorElement: 'div',
         rules: {
@@ -18,11 +18,17 @@ $(document).ready(() => {
                 minlength: 5,
                 maxlength: 35
             },
-            message: {
+            phone: {
                 required: true,
-                minlength: 5,
-                maxlength: 200
+                minlength: 10,
+                maxlength: 14,
+            },
+            telegram: {
+                required: true,
+                minlength: 2,
+                maxlength: 25,
             }
+
         },
     });
 

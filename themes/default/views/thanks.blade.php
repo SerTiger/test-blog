@@ -1,3 +1,5 @@
+@extends('layouts.master')
+@section('content')
 <div class="thanks">
     <div class="thanks-wrap">
         <div class="thanks-container">
@@ -13,3 +15,4 @@
         </div>
     </div>
 </div>
+@stop
