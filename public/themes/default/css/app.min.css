@@ -1993,3 +1993,24 @@ span.select2 span {
   padding: 8px;
   display: inline-block;
 }
+
+.btn-wrap.spaced {
+  justify-content: space-between;
+  align-items: center;
+}
+.btn-wrap.spaced a {
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  border: 2px solid #2A3149;
+  border-radius: 40px;
+}
+.btn-wrap.spaced a span {
+  display: block;
+  padding: 16px 64px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  color: #58667E;
+}

@@ -44,7 +44,7 @@
                                     <div class="input-row">
                                         <label>
                                             <span>Your Capital</span>
-                                            <select name="type" class="select">
+                                            <select name="capital" class="select">
                                                 <option value="1">Choose the right option</option>
                                                 <option value="2">Choose the right option</option>
                                                 <option value="3">Choose the right option</option>
@@ -90,7 +90,10 @@
                                         </label>
                                     </div>
 
-                                    <div class="btn-wrap">
+                                    <div class="btn-wrap spaced">
+                                        <a href="/invest-first">
+                                            <span>Back</span>
+                                        </a>
                                         <button class="btn btn-blue" type="submit">
                                             <span>Send Form</span>
                                         </button>
