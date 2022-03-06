@@ -16,10 +16,10 @@
                 </svg>
             </a>
             <div class="header-link-container">
-                <a href="/" class="header-link">Portfolio</a>
+                <a href="/portfolio" class="header-link">Portfolio</a>
                 <a href="/" class="header-link">Areas</a>
                 <a href="/about" class="header-link">About</a>
-                <a href="contact" class="header-link">Contact</a>
+                <a href="/contact" class="header-link">Contact</a>
                 <a href="/" class="header-link-btn">
                     <span>Invest & Inquiry</span>
                 </a>

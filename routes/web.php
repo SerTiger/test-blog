@@ -25,3 +25,6 @@ Route::get('/privacy-policy', function () {
 Route::get('/about', function () {
     return view('about');
 });
+Route::get('/portfolio', function () {
+    return view('portfolio');
+});

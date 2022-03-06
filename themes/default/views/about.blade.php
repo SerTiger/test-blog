@@ -8,7 +8,7 @@
                     <h1>OXO Capital Main Focus - Investments <br><span
                             class="underscore">In WEB3 Products & Projects</span></h1>
                     <p>Our Main Specializations: CrossChain, MetaVerse, Gaming, NFT’s and Blockchain Protocols</p>
-                    <a href="/" class="btn-gradient">
+                    <a href="/portfolio" class="btn-gradient">
                         <span>Portfolio</span>
                     </a>
                     <a class="scroll-down">

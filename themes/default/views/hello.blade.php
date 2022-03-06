@@ -10,7 +10,7 @@
                         <a class="btn-blue" href="/">
                             <span>Invest & Inquiry</span>
                         </a>
-                        <a class="btn-gradient" href="/">
+                        <a class="btn-gradient" href="/portfolio">
                             <span>Portfolio</span>
                         </a>
                     </div>
@@ -69,7 +69,7 @@
             <div class="home-about-container">
                 <h2>The Mission of OXO</h2>
                 <p> - create community and allow everyone to invest in AMAZING projects, no matter their investment amount.</p>
-                <a href="/" class="btn-gradient">
+                <a href="/about" class="btn-gradient">
                     <span>About OXO</span>
                 </a>
             </div>
