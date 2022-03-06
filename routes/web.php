@@ -34,6 +34,9 @@ Route::get('/choose', function () {
 Route::get('/invest-first', function () {
     return view('invest-first');
 });
+Route::get('/invest-second', function () {
+    return view('invest-second');
+});
 Route::get('/thanks', function () {
     return view('thanks');
 });

@@ -19,4 +19,7 @@ $(document).ready(() => {
             behavior: "smooth"
         });
     })
+    $('.select').select2({
+        minimumResultsForSearch: -1
+    })
 })

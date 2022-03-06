@@ -331,11 +331,86 @@ $color6: darken($color, 4%);
             height: 110px;
             resize: none;
         }
+        select{
+            width: 100%;
+            padding: 16px 24px;
+            border: 1px solid #313C50;
+            border-radius: 12px;
+            background: transparent;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 24px;
+            color: #313C50;
+            option{
+                background: transparent;
+            }
+        }
     }
 }
 
 .input-row + .input-row {
     margin-top: 16px;
+}
+.radio-row{
+    margin-top: 16px;
+    margin-bottom: 16px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h3{
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        color: #58667E;
+        margin-bottom: 4px;
+    }
+    &-group{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: center;
+        width: 90%;
+        label{
+            margin: 12px;
+            cursor: pointer;
+            span{
+                display: block;
+                background: #2A3149;
+                border-radius: 25px;
+                padding: 8px 16px 8px 32px;
+                position: relative;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 19px;
+                color: #FFFFFF;
+            }
+            input:checked + span:before{
+                position: absolute;
+                left: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                content: '';
+                width: 13px;
+                height: 9px;
+                background: url("/themes/default/img/check.svg") center center no-repeat;
+                background-size: contain;
+            }
+            input:checked + span{
+                border: #0a8aff 1px solid;
+            }
+            input{
+                opacity: 0;
+                visibility: hidden;
+                position: absolute;
+                transform: translateX(-2000px);
+            }
+        }
+    }
 }
 .connector{
     width: 100%;
@@ -350,4 +425,73 @@ $color6: darken($color, 4%);
     .input-row + .input-row {
         margin-top: 0;
     }
+}
+span.select2{
+    margin-bottom: 0!important;
+    span{
+        margin-bottom: 0!important;
+    }
+}
+.select2-container--default .select2-selection--single{
+    border: 1px solid #313C50;
+    border-radius: 12px;
+    background: transparent!important;
+    padding: 16px 24px!important;
+}
+.select2-container .select2-selection--single{
+    height: auto!important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    top: 50%;
+    transform: translateY(-50%);
+    right: 24px;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    font-style: normal!important;
+    font-weight: normal!important;
+    font-size: 16px!important;
+    line-height: 24px!important;
+    color: #FFFFFF!important;
+
+}
+.select2-container--open .select2-dropdown--below{
+    padding: 16px 24px;
+    background: #171729;
+    border: 1px solid #313C50;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+}
+.select2-container--default .select2-results__option[aria-selected=true]{
+    background: transparent!important;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected=true]{
+    background: transparent;
+    position: relative;
+    &:after{
+        position: absolute;
+        right: -14px;
+        top: 50%;
+        transform: translateY(-50%);
+        content: '';
+        width: 13px;
+        height: 9px;
+        background: url("/themes/default/img/check.svg") center center no-repeat;
+        background-size: contain;
+    }
+}
+.select2-container--default .select2-results__option--highlighted{
+    background-color: #2A3149!important;
+    border-radius: 8px;
+
+}
+.select2-results__options{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.select2-results__option{
+    padding: 8px;
+    display: inline-block;
 }
