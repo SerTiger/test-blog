@@ -40,7 +40,9 @@ Route::get('/invest-second', function () {
 Route::get('/inquire-first', function () {
     return view('inquire-first');
 });
-
+Route::get('/inquire-second', function () {
+    return view('inquire-second');
+});
 Route::get('/thanks', function () {
     return view('thanks');
 });

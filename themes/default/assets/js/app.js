@@ -1,6 +1,7 @@
 require('./contact')
 require('./invest_first')
 require('./inquire_first')
+require('./inquire_second')
 $(window).on("load", () => {
     setTimeout(function () {
         $('.loader').fadeOut('fast');
