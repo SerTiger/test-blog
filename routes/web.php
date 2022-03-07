@@ -52,3 +52,6 @@ Route::get('/cross-chain', function () {
 Route::get('/defi', function () {
     return view('defi');
 });
+Route::get('/metaverse', function () {
+    return view('metaverse');
+});
