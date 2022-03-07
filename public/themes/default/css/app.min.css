@@ -1167,6 +1167,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-top: 32px;
 }
 
+@media screen and (max-width: 900px) {
+  .contact {
+    padding-top: 145px;
+    padding-bottom: 50px;
+  }
+  .contact-container h1 {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .contact-container h1 br {
+    display: none;
+  }
+}
 .thanks {
   width: 100%;
 }
