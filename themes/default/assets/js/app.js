@@ -10,7 +10,12 @@ $(window).on("load", () => {
 });
 
 $(document).ready(() => {
-    AOS.init()
+    AOS.init({
+        disable: function () {
+            const maxWidth = 700;
+            return window.innerWidth <= maxWidth;
+        }
+    });
     window.addEventListener('scroll',()=>{
         window.scrollY > 130 ? $('.header').addClass('fixed') : $('.header').removeClass('fixed')
     })

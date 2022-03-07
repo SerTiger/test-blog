@@ -575,6 +575,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 36px;
   line-height: 36px;
   color: #FFFFFF;
+  margin-bottom: 8px;
 }
 .home-mission-item h4 {
   font-style: normal;
@@ -713,6 +714,61 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   .home-mission-wrapper {
     padding-top: 80px;
     padding-bottom: 0;
+  }
+  .home-mission-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .home-mission-container h2 {
+    font-size: 36px;
+    line-height: 44px;
+    margin-bottom: 40px;
+  }
+  .home-mission-container p {
+    font-size: 18px;
+    line-height: 24px;
+    padding-bottom: 149px;
+  }
+  .home-mission-item {
+    margin-right: 0;
+  }
+  .home-mission-item:last-child {
+    margin-left: 0;
+  }
+  .home-mission-item h3 {
+    font-size: 24px;
+    line-height: 36px;
+  }
+  .home-mission-item h4 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .home-mission-item + .home-mission-item {
+    margin-top: 147px;
+  }
+  .home-about-wrapper {
+    padding-top: 80px;
+    padding-bottom: 5px;
+  }
+  .home-about-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .home-about-container h2 {
+    font-size: 36px;
+    line-height: 44px;
+    margin-bottom: 32px;
+  }
+  .home-about-container p {
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 32px;
+  }
+  .home-about-container:before {
+    display: none;
+  }
+  .home-about-container:after {
+    display: none;
   }
 }
 @media screen and (max-width: 450px) {
@@ -1225,6 +1281,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-top: 24px;
 }
 
+@media screen and (max-width: 1328px) {
+  .footer-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+@media screen and (max-width: 740px) {
+  .footer-container {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .footer-container .footer-link-col + .footer-link-col {
+    margin-top: 24px;
+  }
+}
 .policy {
   width: 100%;
   min-height: 100vh;
