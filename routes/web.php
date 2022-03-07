@@ -46,3 +46,6 @@ Route::get('/inquire-second', function () {
 Route::get('/thanks', function () {
     return view('thanks');
 });
+Route::get('/cross-chain', function () {
+    return view('crosschain');
+});
