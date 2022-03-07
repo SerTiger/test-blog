@@ -251,3 +251,41 @@
         }
     }
 }
+@media screen and (max-width: 900px){
+    .portfolio{
+        padding-top: 80px;
+        padding-bottom: 50px;
+        &-card{
+            &-wrap{
+                max-width: 50%;
+                flex: 0 0 50%;
+            }
+        }
+        &-filter{
+            &-wrap{
+                overflow-x: scroll;
+            }
+            &-item{
+                span{
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 680px){
+    .portfolio{
+        &-card{
+            &-wrapper{
+                margin-left: 0;
+                width: 100%;
+            }
+            &-wrap{
+                padding-left: 0;
+                padding-right: 0;
+                max-width: 100%;
+                flex: 0 0 100%;
+            }
+        }
+    }
+}

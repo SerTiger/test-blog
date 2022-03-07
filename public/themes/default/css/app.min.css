@@ -1687,6 +1687,34 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #58667E;
 }
 
+@media screen and (max-width: 900px) {
+  .portfolio {
+    padding-top: 80px;
+    padding-bottom: 50px;
+  }
+  .portfolio-card-wrap {
+    max-width: 50%;
+    flex: 0 0 50%;
+  }
+  .portfolio-filter-wrap {
+    overflow-x: scroll;
+  }
+  .portfolio-filter-item span {
+    white-space: nowrap;
+  }
+}
+@media screen and (max-width: 680px) {
+  .portfolio-card-wrapper {
+    margin-left: 0;
+    width: 100%;
+  }
+  .portfolio-card-wrap {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+}
 .invest {
   width: 100%;
   background: #161628;
