@@ -1336,6 +1336,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #8899B8;
 }
 
+@media screen and (max-width: 900px) {
+  .policy-wrapper {
+    padding-top: 80px;
+    padding-bottom: 50px;
+  }
+  .policy-wrapper h1 {
+    font-size: 36px;
+    line-height: 44px;
+    margin-bottom: 32px;
+  }
+}
 .choose {
   background: #161628;
   width: 100%;
