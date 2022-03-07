@@ -308,3 +308,159 @@
         }
     }
 }
+@media screen and (max-width: 900px){
+    .about{
+        &-promo{
+            &-wrapper{
+                padding-top: 100px;
+                padding-bottom: 50px;
+                min-height: auto;
+            }
+            &-wrap{
+                h1{
+                    font-size: 36px;
+                    line-height: 44px;
+                    margin-bottom: 50px;
+                }
+                p{
+                    font-size: 18px;
+                    line-height: 28px;
+                    margin-bottom: 32px;
+                }
+            }
+        }
+        &-mission{
+            padding-top: 50px;
+            padding-bottom: 80px;
+            &-wrap{
+                h2{
+                    font-size: 36px;
+                    line-height: 44px;
+                    margin-bottom: 48px;
+                }
+
+                padding-left: 0;
+                padding-right: 0;
+            }
+            &-row + &-row{
+                margin-top: 48px;
+            }
+            &-row{
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-direction: column;
+                &-content{
+                    h3{
+                        font-size: 24px;
+                        line-height: 29px;
+                    }
+                    p{
+                        font-size: 18px;
+                        line-height: 28px;
+                    }
+                }
+                .img-wrap{
+                    width: 120px;
+                    height: 138px;
+                    margin-bottom: 8px;
+                }
+                .img-wrap:first-child{
+                    margin-left: 0;
+                }
+                .img-wrap:last-child{
+                    margin-right: 0;
+                    margin-left: auto;
+                }
+                &:last-child{
+                    flex-direction: column-reverse;
+                }
+            }
+        }
+        &-services{
+            padding-top: 32px;
+            padding-bottom: 32px;
+            &-wrap{
+                h2{
+                    font-size: 24px;
+                    line-height: 29px;
+                    margin-bottom: 24px;
+                }
+                h3{
+                    font-size: 18px;
+                    line-height: 28px;
+                    margin-bottom: 50px;
+                }
+            }
+            &-item{
+                &-wrap{
+                    flex-direction: column;
+                    margin-bottom: 0;
+                }
+                max-width: 100%;
+                flex: 0 0 100%;
+                padding-left: 0;
+                padding-right: 0;
+                flex-direction: row;
+                .img-wrap{
+                    width: 98px;
+                    height: 98px;
+                    margin-bottom: 0;
+                    margin-right: 24px;
+                }
+                p{
+                    font-size: 18px;
+                    line-height: 22px;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 760px){
+    .about{
+        &-analytics{
+            padding-top: 48px;
+            padding-bottom: 48px;
+            &-row + &-row{
+                margin-top: 28px;
+            }
+            &-row{
+                &-item{
+                    &:before, &:after{
+                        display: none;
+                    }
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-start;
+                    max-width: 100%;
+                    p{
+                        margin-top: 0;
+                        margin-left: 24px;
+                    }
+                    &.last{
+                        justify-content: center;
+                    }
+                }
+                &-item + &-item{
+                    margin-top: 28px;
+                }
+                flex-direction: column;
+            }
+            &-wrap{
+                h2{
+                    font-size: 24px;
+                    line-height: 29px;
+                }
+                h3{
+                    font-size: 18px;
+                    line-height: 28px;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 450px){
+    .about-promo-wrapper{
+        background-size: contain;
+    }
+}
