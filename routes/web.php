@@ -55,3 +55,6 @@ Route::get('/defi', function () {
 Route::get('/metaverse', function () {
     return view('metaverse');
 });
+Route::get('/gaming', function () {
+    return view('gaming');
+});
