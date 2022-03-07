@@ -17,7 +17,19 @@
             </a>
             <div class="header-link-container">
                 <a href="/portfolio" class="header-link">Portfolio</a>
-                <a href="/" class="header-link">Areas</a>
+                <div class="header-link">
+                    <span>Areas</span>
+                    <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L6 6L11 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div class="header-link-bar">
+                        <a href="/cross-chain">Cross Chain</a>
+                        <a href="/defi">DeFi</a>
+                        <a class="active" href="/metaverse">MetaVerse</a>
+                        <a href="/gaming">Gaming</a>
+                        <a href="/nft">NFTs</a>
+                    </div>
+                </div>
                 <a href="/about" class="header-link">About</a>
                 <a href="/contact" class="header-link">Contact</a>
                 <a href="/choose" class="header-link-btn">

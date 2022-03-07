@@ -72,6 +72,74 @@
         font-size: 16px;
         line-height: 19px;
         color: #E5E5E5;
+        position: relative;
+        transition: color 0.3s ease-in-out;
+        &:hover{
+            color: #54B3FF;
+            svg{
+                stroke: #54B3FF;
+            }
+            .header-link-bar{
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        svg{
+            margin-left: 8px;
+            margin-bottom: 2px;
+            stroke: white;
+            transition: stroke 0.3s ease-in-out;
+        }
+        &-bar{
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+            position: absolute;
+            top: calc(100% + 25px);
+            right: 0;
+            padding: 16px 42px 16px 24px;
+            background: #171729;
+            border: 1px solid #313C50;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            a{
+                white-space: nowrap;
+                display: inline-block;
+                text-decoration: none;
+                cursor: pointer;
+                padding: 8px;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 24px;
+                color: #8899B8;
+                border-radius: 8px;
+                background: transparent;
+                transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+                position: relative;
+                &.active{
+                    &:after{
+                        position: absolute;
+                        right: -16px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 13px;
+                        height: 9px;
+                        content: '';
+                        background: url("/themes/default/img/check.svg") center center no-repeat;
+                        background-size: contain;
+                    }
+                }
+                &:hover{
+                    background: #2A3149;
+                    color: #FFFFFF;
+                }
+            }
+        }
     }
     &-link + &-link{
         margin-left: 38px;
