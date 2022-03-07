@@ -58,3 +58,6 @@ Route::get('/metaverse', function () {
 Route::get('/gaming', function () {
     return view('gaming');
 });
+Route::get('/nft', function () {
+    return view('nft');
+});
