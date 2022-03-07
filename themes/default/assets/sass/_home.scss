@@ -236,3 +236,96 @@
         }
     }
 }
+@media screen and (max-width: 1200px){
+    .home{
+        &-ventures{
+            &-wrap{
+                position: relative;
+                z-index: 2;
+            }
+            &-img{
+                z-index: 1;
+            }
+            &-wrapper{
+                padding-top: 55px;
+                padding-bottom: 0;
+            }
+        }
+        &-mission{
+            background: #171628;
+        }
+    }
+}
+@media screen and (max-width: 900px){
+    .home{
+        &-promo{
+            &-btn-wrap{
+                a + a{
+                    margin-left: 15px;
+                }
+            }
+            &-wrap{
+                height: auto;
+                padding-top: 90px;
+                h1{
+                    font-size: 36px;
+                    line-height: 44px;
+                    padding-bottom: 16px;
+                }
+                p{
+                    font-size: 18px;
+                    line-height: 28px;
+                    padding-bottom: 16px;
+                }
+            }
+            &-img{
+                position: static;
+                bottom: auto;
+                right: auto;
+                margin: 0 auto;
+                width: 287px;
+                height: 258px;
+            }
+        }
+        &-ventures{
+            &-wrap{
+                h2{
+                    font-size: 36px;
+                    line-height: 44px;
+                    margin-bottom: 40px;
+                }
+                p{
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+            &-img{
+                width: 140px;
+                height: 140px;
+                bottom: auto;
+                top: 0;
+                transform: translateY(0);
+            }
+        }
+        &-mission{
+            &-wrapper{
+                padding-top: 80px;
+                padding-bottom: 0;
+            }
+            &-container{
+
+            }
+        }
+    }
+}
+@media screen and (max-width: 450px){
+    .home-ventures-btn-wrap{
+        width: 100%;
+        a{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

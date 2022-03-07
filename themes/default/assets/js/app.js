@@ -24,4 +24,12 @@ $(document).ready(() => {
     $('.select').select2({
         minimumResultsForSearch: -1
     })
+    $('.burger').on('click', function (){
+        $('.burger-menu').addClass('active')
+        $('body').addClass('fixed-body')
+    })
+    $('.close-burger').on('click', function (){
+        $('.burger-menu').removeClass('active')
+        $('body').removeClass('fixed-body')
+    })
 })

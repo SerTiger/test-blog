@@ -35,6 +35,38 @@
                 <a href="/choose" class="header-link-btn">
                     <span>Invest & Inquiry</span>
                 </a>
+                <div class="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="burger-menu">
+        <div class="burger-menu-wrap">
+            <div class="burger-menu-head">
+                <div class="close-burger">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 13.7279L13.7279 0.999981" stroke="#EAECEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M1 1L13.7279 13.7279" stroke="#EAECEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="burger-menu-link-container">
+                <a class="big" href="/portfolio">Portfolio</a>
+                <span>Areas</span>
+            </div>
+            <div class="burger-menu-link-container">
+                <a class="active" href="/cross-chain">Cross Chain</a>
+                <a href="/defi">DeFi</a>
+                <a href="/metaverse">MetaVerse</a>
+                <a href="/gaming">Gaming</a>
+                <a href="/nft">NFTs</a>
+            </div>
+            <div class="burger-menu-link-container">
+                <a class="big" href="/about">About</a>
+                <a class="big" href="/contact">Contact</a>
             </div>
         </div>
     </div>
