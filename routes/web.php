@@ -49,3 +49,6 @@ Route::get('/thanks', function () {
 Route::get('/cross-chain', function () {
     return view('crosschain');
 });
+Route::get('/defi', function () {
+    return view('defi');
+});
