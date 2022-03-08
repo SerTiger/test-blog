@@ -1576,6 +1576,51 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 }
 
+@media screen and (max-width: 1100px) {
+  .choose-wrapper {
+    background: none;
+  }
+  .choose-item-wrap {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .choose-item h2 {
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 24px;
+  }
+  .choose-item a {
+    opacity: 1;
+    visibility: visible;
+  }
+  .choose-item + .choose-item {
+    margin-top: 100px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .choose-wrapper {
+    overflow: hidden;
+  }
+  .choose-item:before {
+    display: none;
+  }
+  .choose-item:last-child:after {
+    width: 628px;
+    height: 628px;
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -60%;
+    transform: translateX(-50%);
+    transition: transform 0.5s ease-in-out;
+    border: 2px solid transparent;
+    display: block;
+    border-radius: 50%;
+    z-index: 0;
+    background: linear-gradient(97.48deg, #312e40 -17.7%, #1e192e 112.27%) content-box, linear-gradient(120deg, #008dff 0%, #4089c4 29%, #aa477c 51%, #8bffea 71%, #4089c4 100%) border-box;
+  }
+}
 .portfolio {
   min-height: 100vh;
   width: 100%;

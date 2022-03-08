@@ -75,3 +75,59 @@
         }
     }
 }
+@media screen and (max-width: 1100px){
+    .choose{
+        &-wrapper{
+            background: none;
+        }
+        &-item{
+            &-wrap{
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            h2{
+                font-size: 24px;
+                line-height: 29px;
+                margin-bottom: 24px;
+            }
+            a{
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        &-item + &-item{
+            margin-top: 100px;
+        }
+    }
+}
+@media screen and (max-width: 450px){
+    .choose{
+        &-wrapper{
+            overflow: hidden;
+        }
+        &-item{
+           &:before{
+               display: none;
+           }
+            &:last-child{
+                &:after{
+                    width: 628px;
+                    height: 628px;
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    top: -60%;
+                    transform: translateX(-50%);
+                    transition: transform 0.5s ease-in-out;
+                    border: 2px solid transparent;
+                    display: block;
+                    border-radius: 50%;
+                    z-index: 0;
+                    background: linear-gradient(97.48deg, #312e40 -17.7%, #1e192e 112.27%) content-box,
+                    linear-gradient(120deg, rgba(0, 141, 255, 1) 0%, rgba(64, 137, 196, 1) 29%, rgba(170, 71, 124, 1) 51%, rgba(139, 255, 234, 1) 71%, rgba(64, 137, 196, 1) 100%) border-box;
+                }
+            }
+        }
+    }
+}
