@@ -2114,6 +2114,67 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: none;
 }
 
+@media screen and (max-width: 1100px) {
+  .area-promo {
+    padding-top: 90px;
+    padding-bottom: 40px;
+  }
+  .area-promo-wrap {
+    flex-direction: column-reverse;
+  }
+  .area-promo-right {
+    width: 327px;
+    height: 288px;
+    margin: 0 auto;
+  }
+  .area-promo-right:before, .area-promo-right:after {
+    width: 64px;
+    height: 64px;
+  }
+  .area-promo-right:after {
+    top: 0;
+    right: 0;
+  }
+  .area-promo-right:before {
+    left: 0;
+    bottom: 80px;
+  }
+  .area-promo-left h1 {
+    font-size: 36px;
+    line-height: 44px;
+    margin-bottom: 32px;
+  }
+  .area-promo-left h2 {
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 24px;
+  }
+  .area-promo-left p + p {
+    margin-top: 10px;
+  }
+  .area-why-wrap {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .area-why-left {
+    margin: 0 auto;
+    width: 327px;
+    height: 319px;
+  }
+  .area-why-right h2 {
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 32px;
+  }
+  .area-why-right h3 {
+    margin-bottom: 24px;
+  }
+  .area-why-right p + p {
+    margin-top: 10px;
+  }
+}
 body {
   background-color: #1F1E20;
   color: #D2D1D3;
