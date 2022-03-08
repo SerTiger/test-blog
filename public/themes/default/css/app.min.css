@@ -2019,6 +2019,34 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   width: 100%;
 }
 
+@media screen and (max-width: 900px) {
+  .invest-wrap {
+    padding-top: 80px;
+    padding-bottom: 40px;
+    min-height: auto;
+  }
+
+  .invest-head {
+    overflow-x: scroll;
+  }
+  .invest-head h1 {
+    font-size: 24px;
+    line-height: 29px;
+    white-space: nowrap;
+  }
+  .invest-head a {
+    font-size: 18px;
+    line-height: 22px;
+    white-space: nowrap;
+  }
+  .invest-head span {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .invest-status-text span {
+    font-size: 14px;
+  }
+}
 .area-promo {
   width: 100%;
   background: #161628;
@@ -2801,6 +2829,29 @@ span.select2 span {
 
 @media screen and (max-width: 900px) {
   .btn-gradient span, .btn-blue span {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  .connector {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .connector .input-row {
+    width: 100%;
+  }
+  .connector .input-row + .input-row {
+    margin-top: 16px;
+  }
+
+  .radio-row-group {
+    width: 100%;
+  }
+  .radio-row-group label {
+    margin: 8px;
+  }
+
+  .btn-wrap.spaced a span {
     padding: 12px 24px;
     font-size: 16px;
   }
