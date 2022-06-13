@@ -137,6 +137,140 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   opacity: 1;
 }
 
+.header {
+  position: fixed;
+  left: 284px;
+  right: 0;
+  top: 0;
+  width: calc(100% - 284px);
+  background: #282C3C;
+}
+.header-container {
+  padding: 24px 48px 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-search {
+  width: 250px;
+  margin-right: 70px;
+}
+.header-search label {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+.header-search label input {
+  width: 100%;
+  padding: 12px 16px 12px 36px;
+  background: #202536;
+  border: 1px solid #3D4653;
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #58667E;
+}
+.header-search label span {
+  display: inline-block;
+  position: absolute;
+  left: 16px;
+  bottom: 50%;
+  transform: translateY(50%);
+}
+.header-search label span svg {
+  width: 16px;
+  height: 16px;
+}
+.header-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-counter-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+.header-counter-item span {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #A6B0C3;
+}
+.header-counter-item p {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+.header-counter-item p span {
+  margin-right: 4px;
+}
+.header-counter-item + .header-counter-item {
+  margin-left: 68px;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-wallet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background: #202536;
+  margin-right: 24px;
+}
+.header-wallet svg {
+  width: 24px;
+  height: 24px;
+}
+.header-wallet span {
+  margin-left: 10px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #008DFF;
+}
+.header-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-btns a {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.header-btns a svg {
+  width: 16px;
+  height: 16px;
+}
+.header-btns span {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 24px;
+  color: #58667E;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
 .sidebar {
   background: #282C3C;
   position: fixed;
@@ -248,7 +382,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 body {
-  background-color: #161628;
+  background-color: #282C3C;
   color: #ffffff;
   font-family: "Proxima Nova", sans-serif;
   overflow-x: hidden;
@@ -256,6 +390,16 @@ body {
 
 .fixed-body {
   overflow-y: hidden;
+}
+
+.main-view {
+  max-width: 1588px;
+  margin-left: 284px;
+  margin-top: 98px;
+  margin-right: 48px;
+  border-radius: 0 10px 0 0;
+  background: #161628;
+  min-height: calc(100vh - 98px);
 }
 
 .loader {
