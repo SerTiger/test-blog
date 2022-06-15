@@ -16,4 +16,9 @@ Theme::init('default');
 Route::get('/', function () {
     return view('hello');
 });
-
+Route::get('/create_organization', function () {
+    return view('create_organization');
+});
+Route::get('/pools', function () {
+    return view('pools');
+});

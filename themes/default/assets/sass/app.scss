@@ -4,6 +4,7 @@
 @import 'header';
 @import 'sidebar';
 @import 'auth';
+@import 'create_org';
 
 
 body {
@@ -39,10 +40,10 @@ body {
     justify-content: center;
     text-decoration: none;
     cursor: pointer;
+    border: none;
     background: $blue;
     border-radius: 40px;
     padding: 16px 64px;
-    margin-top: 56px;
     span{
         font-style: normal;
         font-weight: 700;
