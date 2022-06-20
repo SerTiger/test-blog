@@ -145,6 +145,36 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   width: calc(100% - 284px);
   background: #282C3C;
 }
+.header-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 32px;
+}
+.header-name-ico {
+  width: 48px;
+  height: 48px;
+  background: #229ED9;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-name-ico span {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+.header-name h3 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: #FFFFFF;
+  margin-left: 24px;
+}
 .header-container {
   padding: 24px 48px 24px 0;
   display: flex;

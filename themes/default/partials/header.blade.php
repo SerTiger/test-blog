@@ -1,6 +1,12 @@
 <header id="header" class="header">
     <div class="header-container">
         <div class="header-left">
+            <div class="header-name">
+                <div class="header-name-ico">
+                    <span>N</span>
+                </div>
+                <h3>Name Company</h3>
+            </div>
             <div class="header-search">
                 <label>
                     <span>

@@ -5,6 +5,36 @@
     top: 0;
     width: calc(100% - 284px);
     background: $bg-light;
+    &-name{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 32px;
+        &-ico{
+            width: 48px;
+            height: 48px;
+            background: #229ED9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            span{
+                font-style: normal;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 24px;
+                color: #FFFFFF;
+            }
+        }
+        h3{
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 24px;
+            color: #FFFFFF;
+            margin-left: 24px;
+        }
+    }
     &-container{
         padding: 24px 48px 24px 0;
         display: flex;
