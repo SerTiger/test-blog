@@ -5,7 +5,7 @@
             <h1>Pools</h1>
             <h4>Manage your pools</h4>
             <div class="pools-wrapper">
-                <a class="pools-item">
+                <a href="pool" class="pools-item">
                     <div class="pools-item-image">
                         <div class="tag">
                             <span>Life</span>
@@ -64,7 +64,7 @@
             </div>
             <h4>March (1)</h4>
             <div class="pools-wrapper">
-                <a class="pools-item ended">
+                <a href="pool" class="pools-item ended">
                     <div class="pools-item-image">
                         <div class="tag">
                             <span>Ended</span>

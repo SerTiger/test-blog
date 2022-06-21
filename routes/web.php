@@ -22,3 +22,6 @@ Route::get('/create_organization', function () {
 Route::get('/pools', function () {
     return view('pools');
 });
+Route::get('/pool', function () {
+    return view('pool');
+});
