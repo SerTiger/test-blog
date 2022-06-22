@@ -25,3 +25,6 @@ Route::get('/pools', function () {
 Route::get('/pool', function () {
     return view('pool');
 });
+Route::get('/profile', function () {
+    return view('profile');
+});
