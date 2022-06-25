@@ -9,6 +9,9 @@
         align-items: flex-start;
         justify-content: space-between;
     }
+    &-container + &-container{
+        margin-top: 32px;
+    }
     &-left{
         max-width: 1000px;
         width: 100%;
@@ -371,6 +374,66 @@
         }
         a + a{
             margin-top: 8px;
+        }
+    }
+    &-more{
+        width: 100%;
+        background: $bg-light;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        &-head{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px;
+            cursor: pointer;
+        }
+        &-body{
+            display: none;
+            width: 100%;
+            padding: 0 24px 24px 24px;
+        }
+    }
+    &-info{
+        h3{
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 32px;
+            color: $text;
+            margin-bottom: 16px;
+        }
+        p{
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            color: $text-gray;
+            padding-bottom: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #58667E;
+            border-bottom: 1px solid #58667E;
+        }
+        a{
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0;
+            background: none;
+            text-decoration: none;
+            cursor: pointer;
+            span{
+                color: $blue;
+            }
+            svg{
+                width: 16px;
+                height: 16px;
+            }
         }
     }
 }

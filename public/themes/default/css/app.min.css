@@ -995,6 +995,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   align-items: flex-start;
   justify-content: space-between;
 }
+.pool-container + .pool-container {
+  margin-top: 32px;
+}
 .pool-left {
   max-width: 1000px;
   width: 100%;
@@ -1359,6 +1362,64 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .pool-right a + a {
   margin-top: 8px;
+}
+.pool-more {
+  width: 100%;
+  background: #282C3C;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.pool-more-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  cursor: pointer;
+}
+.pool-more-body {
+  display: none;
+  width: 100%;
+  padding: 0 24px 24px 24px;
+}
+.pool-info h3 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+.pool-info p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #A6B0C3;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #58667E;
+  border-bottom: 1px solid #58667E;
+}
+.pool-info a {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  background: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+.pool-info a span {
+  color: #008DFF;
+}
+.pool-info a svg {
+  width: 16px;
+  height: 16px;
 }
 
 .profile {
