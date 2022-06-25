@@ -5,6 +5,7 @@
     top: 0;
     width: calc(100% - 284px);
     background: $bg-light;
+    z-index: 20;
     &-name{
         display: flex;
         align-items: center;
@@ -114,6 +115,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        .btn-blue{
+            padding: 12px 16px;
+        }
     }
     &-wallet{
         display: flex;
@@ -124,6 +128,7 @@
         cursor: pointer;
         background: $input-bg;
         margin-right: 24px;
+        margin-left: 24px;
         svg{
             width: 24px;
             height: 24px;

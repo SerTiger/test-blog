@@ -26,10 +26,10 @@
         </div>
     </div>
 </div>
-{{--<div>@include('partials.header')</div>--}}
+<div>@include('partials.header')</div>
 <main>
-{{--    @include('partials.sidebar')--}}
-    <div class="main-view wide">
+    @include('partials.sidebar')
+    <div class="main-view">
         @yield('content')
     </div>
 </main>

@@ -121,6 +121,24 @@
                     </div>
                 </a>
             </div>
+            <h4>Manage your pools</h4>
+            <div class="pools-wrapper">
+                <div class="none-pool">
+                    <div class="none-pool-container">
+                        <h2>No pools were found for</h2>
+                        <h3>0x3e36****d793c</h3>
+                        <p>Want to create one?</p>
+                        <a href="/" class="btn-blue">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="12" fill="white"/>
+                                <rect x="11" y="6" width="2" height="12" rx="1" fill="#0187FF"/>
+                                <rect x="18" y="11" width="2" height="12" rx="1" transform="rotate(90 18 11)" fill="#0187FF"/>
+                            </svg>
+                            <span>Create Pool</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 @stop
