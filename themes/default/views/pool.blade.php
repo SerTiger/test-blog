@@ -229,37 +229,114 @@
                             euismod. Nulla vel enim lectus.
                         </div>
                     </div>
-                    <div class="pool-contributions">
-                        <div class="pool-contributions-wrap">
-                            <div class="contributions-item-col">
-                                <span>Contributed On</span>
-                                <p>28 Apr 2022 09:17:55 AM </p>
-                                <span>Block Time</span>
-                                <p>28 Apr 2022 09:17:55 AM </p>
-                            </div>
-                            <div class="contributions-item-col">
-                                <span>Contributed Amount</span>
-                                <div class="contributions-item-status">
-                                    <p>1 MATIC</p>
-                                    <span class="status">SUCCESS</span>
+                    <div class="pool-contributions-filter">
+                        <span>Showing:</span>
+                        <a class="pool-contributions-filter-item active">Pending</a>
+                        <a class="pool-contributions-filter-item active">Success</a>
+                        <a class="pool-contributions-filter-item">From Not Filled</a>
+                        <a class="pool-contributions-filter-item">OTC</a>
+                        <a class="pool-contributions-filter-item">Conflict</a>
+                        <a class="pool-contributions-filter-item">Initiated</a>
+                        <a class="pool-contributions-filter-item">Cancelled</a>
+                        <a class="pool-contributions-filter-item">Refunded</a>
+                    </div>
+                    <div class="pool-contributions-wrapper">
+                        <div class="pool-contributions">
+                            <div class="pool-contributions-wrap">
+                                <div class="contributions-item-col">
+                                    <span>Contributed On</span>
+                                    <p>28 Apr 2022 09:17:55 AM </p>
+                                    <span>Block Time</span>
+                                    <p>28 Apr 2022 09:17:55 AM </p>
                                 </div>
-                                <span>Submitted Details</span>
-                                <a class="contact" href="mailto:mark.flarens@gmail.com">Email ID: mark.flarens@gmail.com</a>
+                                <div class="contributions-item-col">
+                                    <span>Contributed Amount</span>
+                                    <div class="contributions-item-status">
+                                        <p>1 MATIC</p>
+                                        <span class="status">SUCCESS</span>
+                                    </div>
+                                    <span>Submitted Details</span>
+                                    <a class="contact" href="mailto:mark.flarens@gmail.com">Email ID: mark.flarens@gmail.com</a>
+                                </div>
+                                <div class="contributions-item-col">
+                                    <span>From</span>
+                                    <p>0x17BBA3DBD113A18acEBBcA7 C20e3c29a3573412F</p>
+                                    <a class="link" href="/">View Transacton</a>
+                                </div>
                             </div>
-                            <div class="contributions-item-col">
-                                <span>From</span>
-                                <p>0x17BBA3DBD113A18acEBBcA7 C20e3c29a3573412F</p>
-                                <a class="link" href="/">View Transacton</a>
-                            </div>
+                            <a>
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="16" cy="16" r="16" fill="#3D4653"/>
+                                    <circle cx="9" cy="16" r="2" fill="#A6B0C3"/>
+                                    <circle cx="16" cy="16" r="2" fill="#A6B0C3"/>
+                                    <circle cx="23" cy="16" r="2" fill="#A6B0C3"/>
+                                </svg>
+                            </a>
                         </div>
-                        <a>
-                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="16" cy="16" r="16" fill="#3D4653"/>
-                                <circle cx="9" cy="16" r="2" fill="#A6B0C3"/>
-                                <circle cx="16" cy="16" r="2" fill="#A6B0C3"/>
-                                <circle cx="23" cy="16" r="2" fill="#A6B0C3"/>
-                            </svg>
-                        </a>
+                        <div class="pool-contributions">
+                            <div class="pool-contributions-wrap">
+                                <div class="contributions-item-col">
+                                    <span>Contributed On</span>
+                                    <p>28 Apr 2022 09:17:55 AM </p>
+                                    <span>Block Time</span>
+                                    <p>28 Apr 2022 09:17:55 AM </p>
+                                </div>
+                                <div class="contributions-item-col">
+                                    <span>Contributed Amount</span>
+                                    <div class="contributions-item-status">
+                                        <p>1 MATIC</p>
+                                        <span class="status">SUCCESS</span>
+                                    </div>
+                                    <span>Submitted Details</span>
+                                    <a class="contact" href="mailto:mark.flarens@gmail.com">Email ID: mark.flarens@gmail.com</a>
+                                </div>
+                                <div class="contributions-item-col">
+                                    <span>From</span>
+                                    <p>0x17BBA3DBD113A18acEBBcA7 C20e3c29a3573412F</p>
+                                    <a class="link" href="/">View Transacton</a>
+                                </div>
+                            </div>
+                            <a>
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="16" cy="16" r="16" fill="#3D4653"/>
+                                    <circle cx="9" cy="16" r="2" fill="#A6B0C3"/>
+                                    <circle cx="16" cy="16" r="2" fill="#A6B0C3"/>
+                                    <circle cx="23" cy="16" r="2" fill="#A6B0C3"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="pool-contributions">
+                            <div class="pool-contributions-wrap">
+                                <div class="contributions-item-col">
+                                    <span>Contributed On</span>
+                                    <p>28 Apr 2022 09:17:55 AM </p>
+                                    <span>Block Time</span>
+                                    <p>28 Apr 2022 09:17:55 AM </p>
+                                </div>
+                                <div class="contributions-item-col">
+                                    <span>Contributed Amount</span>
+                                    <div class="contributions-item-status">
+                                        <p>1 MATIC</p>
+                                        <span class="status">SUCCESS</span>
+                                    </div>
+                                    <span>Submitted Details</span>
+                                    <a class="contact" href="mailto:mark.flarens@gmail.com">Email ID: mark.flarens@gmail.com</a>
+                                </div>
+                                <div class="contributions-item-col">
+                                    <span>From</span>
+                                    <p>0x17BBA3DBD113A18acEBBcA7 C20e3c29a3573412F</p>
+                                    <a class="link" href="/">View Transacton</a>
+                                </div>
+                            </div>
+                            <a>
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="16" cy="16" r="16" fill="#3D4653"/>
+                                    <circle cx="9" cy="16" r="2" fill="#A6B0C3"/>
+                                    <circle cx="16" cy="16" r="2" fill="#A6B0C3"/>
+                                    <circle cx="23" cy="16" r="2" fill="#A6B0C3"/>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="pool-right">

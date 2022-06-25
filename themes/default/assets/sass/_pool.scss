@@ -437,6 +437,38 @@
         }
     }
     &-contributions{
+        &-filter{
+            margin-top: 36px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+            span{
+                color: $text-gray;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+                margin-right: 10px;
+            }
+            a{
+                margin: 4px;
+                background: $input-border;
+                border-radius: 22px;
+                padding: 4px 12px;
+                display: inline-block;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 24px;
+                color: $text;
+                cursor: pointer;
+                &.active{
+                    background: $blue;
+                }
+            }
+        }
         width: 100%;
         display: flex;
         align-items: flex-start;
@@ -444,7 +476,10 @@
         padding: 16px 24px;
         background: $bg-light;
         border-radius: 12px;
-        margin-top: 24px;
+        &-wrapper{
+            width: 100%;
+            margin-top: 24px;
+        }
         &-wrap{
             width: 95%;
             display: flex;
@@ -454,5 +489,8 @@
                 max-width: 33%;
             }
         }
+    }
+    &-contributions + &-contributions{
+        margin-top: 4px;
     }
 }

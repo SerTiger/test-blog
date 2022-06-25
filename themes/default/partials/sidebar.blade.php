@@ -34,7 +34,7 @@
                 </svg>
             </a>
             <div class="sidebar-nav">
-                <a href="/">
+                <a href="pools">
                     <div>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -53,7 +53,7 @@
                     </div>
                     <span>Pools</span>
                 </a>
-                <a href="/">
+                <a href="contributions">
                     <div>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 1V23" stroke="#A6B0C3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -62,7 +62,7 @@
                     </div>
                     <span>My Contribution</span>
                 </a>
-                <a href="/">
+                <a href="profile">
                     <div>
                         <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 21.251V19.251C20 18.1901 19.5786 17.1727 18.8284 16.4226C18.0783 15.6724 17.0609 15.251 16 15.251H8C6.93913 15.251 5.92172 15.6724 5.17157 16.4226C4.42143 17.1727 4 18.1901 4 19.251V21.251" stroke="#A6B0C3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

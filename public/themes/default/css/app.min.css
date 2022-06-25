@@ -1429,6 +1429,41 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 16px 24px;
   background: #282C3C;
   border-radius: 12px;
+}
+.pool-contributions-filter {
+  margin-top: 36px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.pool-contributions-filter span {
+  color: #A6B0C3;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  margin-right: 10px;
+}
+.pool-contributions-filter a {
+  margin: 4px;
+  background: #3D4653;
+  border-radius: 22px;
+  padding: 4px 12px;
+  display: inline-block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.pool-contributions-filter a.active {
+  background: #008DFF;
+}
+.pool-contributions-wrapper {
+  width: 100%;
   margin-top: 24px;
 }
 .pool-contributions-wrap {
@@ -1439,6 +1474,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .pool-contributions-wrap .contributions-item-col {
   max-width: 33%;
+}
+.pool-contributions + .pool-contributions {
+  margin-top: 4px;
 }
 
 .profile {
