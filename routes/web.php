@@ -28,3 +28,6 @@ Route::get('/pool', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
+Route::get('/contributions', function () {
+    return view('contributions');
+});

@@ -1,0 +1,172 @@
+.contributions{
+    width: 100%;
+    padding: 36px 48px;
+    &-wrap{
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        h1{
+            font-style: normal;
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 24px;
+            color: $text;
+            margin-bottom: 32px;
+        }
+    }
+    &-wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    &-item{
+        background: $bg-light;
+        border-radius: 12px;
+        padding: 16px 24px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &-title{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            h2{
+                font-style: normal;
+                font-weight: 700;
+                font-size: 20px;
+                color: $text;
+                margin-right: 16px;
+            }
+            .tag{
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 24px;
+                    text-transform: capitalize;
+                    color: $text;
+                    padding: 0 16px;
+                    background: linear-gradient(93.52deg, #F57878 10.23%, #FF4BD7 92.95%);
+                    border-radius: 18px;
+            }
+        }
+        &-creator{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            span{
+                font-style: normal;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 24px;
+                text-transform: capitalize;
+                color: $text-gray;
+            }
+            .img-wrap{
+                width: 32px;
+                height: 32px;
+                overflow: hidden;
+                border-radius: 50%;
+                margin-right: 8px;
+                margin-left: 8px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+        &-wrap{
+            width: 90%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        &-col{
+            max-width: 24%;
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            span{
+                font-style: normal;
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 24px;
+                color: $text-gray;
+                margin-bottom: 4px;
+            }
+            p{
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 20px;
+                color: $text;
+                margin-bottom: 16px;
+            }
+            .contact{
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+                display: inline-block;
+                text-decoration: none;
+                cursor: pointer;
+                color: $text;
+                padding: 4px 8px;
+                background: #424A68;
+                border-radius: 4px;
+            }
+            .link{
+                display: inline-block;
+                text-decoration: none;
+                cursor: pointer;
+                color: $blue;
+            }
+        }
+        &-status{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            p{
+                margin-bottom: 0;
+            }
+            .status{
+                margin-left: 8px;
+                font-style: normal;
+                font-weight: 700;
+                font-size: 12px;
+                line-height: 24px;
+                color: $text;
+                padding: 4px 12px;
+                background: #699573;
+                border-radius: 20px;
+            }
+        }
+        .show{
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            text-decoration: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            svg{
+                width: 18px;
+                height: 18px;
+            }
+        }
+    }
+    &-item + &-item{
+        margin-top: 4px;
+    }
+}
