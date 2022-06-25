@@ -63,11 +63,118 @@
                 font-size: 18px;
                 line-height: 22px;
                 color: #A6B0C3;
+                &.error{
+                    border-color: red;
+                }
+            }
+            span.error{
+                color: red;
+                position: absolute;
+                font-size: 12px;
+                bottom: -27px;
+                left: 0;
             }
         }
     }
     .input-row + .input-row{
         margin-top: 16px;
+    }
+    .file-row{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+        margin-top: 16px;
+        span.error{
+            color: red;
+            position: absolute;
+            font-size: 12px;
+            bottom: -18px;
+            left: 0;
+        }
+        .delete{
+            display: none;
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            right: 12px;
+            bottom: 53px;
+            cursor: pointer;
+            z-index: 2;
+            svg{
+                width: 16px;
+                height: 16px;
+            }
+        }
+        h4{
+            font-style: normal;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 24px;
+            color: $pools-text;
+            margin-bottom: 4px;
+        }
+        label{
+            width: 100%;
+            display: block;
+            background: #1F2435;
+            border: 1px solid #323546;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+        }
+        &-container{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border: 1px dashed #58667E;
+            border-radius: 4px;
+            position: relative;
+            &.hide{
+                border-color: transparent;
+                img{
+                    display: block;
+                }
+                .file-row-info{
+                    display: none;
+                }
+                .image{
+                    display: none;
+                }
+            }
+            img{
+                display: none;
+                width: 118px;
+                height: 70px;
+            }
+        }
+        &-info{
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+            margin-left: 10px;
+            span{
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 17px;
+                color: #808A9D;
+                span{
+                    color: $blue;
+                }
+            }
+        }
+        input{
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            left: -2000px;
+        }
     }
     .connector{
         width: 100%;

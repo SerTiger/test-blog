@@ -555,8 +555,115 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   line-height: 22px;
   color: #A6B0C3;
 }
+.organization .input-row label input.error {
+  border-color: red;
+}
+.organization .input-row label span.error {
+  color: red;
+  position: absolute;
+  font-size: 12px;
+  bottom: -27px;
+  left: 0;
+}
 .organization .input-row + .input-row {
   margin-top: 16px;
+}
+.organization .file-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  margin-top: 16px;
+}
+.organization .file-row span.error {
+  color: red;
+  position: absolute;
+  font-size: 12px;
+  bottom: -18px;
+  left: 0;
+}
+.organization .file-row .delete {
+  display: none;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 12px;
+  bottom: 53px;
+  cursor: pointer;
+  z-index: 2;
+}
+.organization .file-row .delete svg {
+  width: 16px;
+  height: 16px;
+}
+.organization .file-row h4 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  color: #58667E;
+  margin-bottom: 4px;
+}
+.organization .file-row label {
+  width: 100%;
+  display: block;
+  background: #1F2435;
+  border: 1px solid #323546;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+}
+.organization .file-row-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border: 1px dashed #58667E;
+  border-radius: 4px;
+  position: relative;
+}
+.organization .file-row-container.hide {
+  border-color: transparent;
+}
+.organization .file-row-container.hide img {
+  display: block;
+}
+.organization .file-row-container.hide .file-row-info {
+  display: none;
+}
+.organization .file-row-container.hide .image {
+  display: none;
+}
+.organization .file-row-container img {
+  display: none;
+  width: 118px;
+  height: 70px;
+}
+.organization .file-row-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.organization .file-row-info span {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #808A9D;
+}
+.organization .file-row-info span span {
+  color: #008DFF;
+}
+.organization .file-row input {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: -2000px;
 }
 .organization .connector {
   width: 100%;
