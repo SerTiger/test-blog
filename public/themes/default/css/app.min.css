@@ -2059,6 +2059,93 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   justify-content: space-between;
 }
 
+.loading {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loading-container {
+  max-width: 510px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+.loading-container:before, .loading-container:after {
+  content: "";
+  position: absolute;
+  background: url("/themes/default/img/bubble.png") center center no-repeat;
+  background-size: cover;
+}
+.loading-container:before {
+  width: 149px;
+  height: 149px;
+  top: -120px;
+  left: -50%;
+}
+.loading-container:after {
+  width: 106px;
+  height: 106px;
+  bottom: -100px;
+  right: -50%;
+}
+.loading-container h2 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 49px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+.loading-container p {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #A6B0C3;
+}
+.loading-container p + p {
+  margin-top: 16px;
+}
+.loading-container span {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #A6B0C3;
+  margin-top: 16px;
+}
+.loading-container .line {
+  max-width: 372px;
+  width: 100%;
+  background: #313C50;
+  border-radius: 5px;
+  height: 8px;
+  position: relative;
+  margin-top: 24px;
+}
+.loading-container .line:before {
+  background: linear-gradient(97.04deg, #008DFF -16.54%, #4089C4 18.49%, #AA477C 44.76%, #8BFFEA 69.16%, #4089C4 99.18%);
+  border-radius: 5px;
+  width: 80%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  content: "";
+}
+.loading-container svg {
+  margin-top: 64px;
+  width: 143px;
+  height: 60px;
+}
+
 body {
   background-color: #282C3C;
   color: #ffffff;

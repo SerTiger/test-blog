@@ -34,3 +34,6 @@ Route::get('/profile', function () {
 Route::get('/contributions', function () {
     return view('contributions');
 });
+Route::get('/loading', function () {
+    return view('loading');
+});
