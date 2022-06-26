@@ -2146,6 +2146,183 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   height: 60px;
 }
 
+.await {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.await-container {
+  max-width: 460px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+.await-container:before, .await-container:after {
+  content: "";
+  position: absolute;
+  background: url("/themes/default/img/bubble.png") center center no-repeat;
+  background-size: cover;
+}
+.await-container:before {
+  width: 149px;
+  height: 149px;
+  top: 0;
+  left: -50%;
+}
+.await-container:after {
+  width: 106px;
+  height: 106px;
+  bottom: 20px;
+  right: -50%;
+}
+.await-container h2 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+.await-container h3 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #A6B0C3;
+  margin-bottom: 24px;
+}
+.await-icon {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: #008DFF;
+  transition: background 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.await-icon.active {
+  background: #699573;
+}
+.await-top {
+  width: 100%;
+  background: #282C3C;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.await-top-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #3D4653;
+}
+.await-top-head span {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #A6B0C3;
+}
+.await-top-head p {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ffffff;
+}
+.await-top-body {
+  padding-top: 16px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+}
+.await-top-body span {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #A6B0C3;
+}
+.await-top-body-from {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.await-bot {
+  margin-top: 8px;
+  width: 100%;
+  background: #282C3C;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.await-bot .input-row {
+  width: 100%;
+}
+.await-bot .input-row label {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: relative;
+}
+.await-bot .input-row label span {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  color: #A6B0C3;
+  margin-bottom: 4px;
+}
+.await-bot .input-row label input {
+  background: #202536;
+  border: 1px solid #3D4653;
+  border-radius: 8px;
+  width: 100%;
+  padding: 16px 24px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+}
+.await-bot .input-row label input.error {
+  border-color: red;
+}
+.await-bot .input-row label span.error {
+  color: red;
+  position: absolute;
+  font-size: 12px;
+  bottom: -27px;
+  left: 0;
+}
+.await-bot button {
+  width: 100%;
+  margin-top: 16px;
+}
+
 body {
   background-color: #282C3C;
   color: #ffffff;

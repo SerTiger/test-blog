@@ -37,3 +37,6 @@ Route::get('/contributions', function () {
 Route::get('/loading', function () {
     return view('loading');
 });
+Route::get('/await', function () {
+    return view('await');
+});
