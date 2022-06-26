@@ -1910,6 +1910,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: #282C3C;
   border-radius: 12px;
 }
+.create-body-left #funds {
+  display: none;
+}
 .create-body-right {
   width: calc(100% - 1032px);
   background: #282C3C;
@@ -1998,6 +2001,62 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .create-body-tab {
   width: 100%;
+}
+.create-body-tab .input-row {
+  width: 100%;
+}
+.create-body-tab .input-row label {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: relative;
+}
+.create-body-tab .input-row label span.error {
+  color: red;
+  position: absolute;
+  font-size: 12px;
+  bottom: -27px;
+  left: 0;
+}
+.create-body-tab .input-row label span {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #58667E;
+  margin-bottom: 8px;
+}
+.create-body-tab .input-row label input {
+  width: 100%;
+  padding: 16px;
+  background: #323546;
+  border: #58667E 1px solid;
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+}
+.create-body-tab .input-row label input.error {
+  border-color: red;
+}
+.create-body-tab .input-row label #cke_description {
+  width: 100%;
+}
+.create-body-tab .input-row label .cke_chrome {
+  border: none;
+}
+.create-body-tab .input-row + .input-row {
+  margin-top: 24px;
+}
+.create-body-tab .btn-wrap {
+  width: 100%;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 body {

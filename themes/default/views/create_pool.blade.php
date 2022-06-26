@@ -65,7 +65,33 @@
             </div>
             <div class="create-body">
                 <div class="create-body-left">
-                    <div class="create-body-tab"></div>
+                    <form id="introduction" class="create-body-tab">
+                        <div class="input-row">
+                            <label>
+                                <span>Project Title</span>
+                                <input type="text" id="title" name="title">
+                            </label>
+                        </div>
+                        <div class="input-row">
+                            <label>
+                                <span>Project Description</span>
+                                <textarea name="description" id="description" class="ckeditor"></textarea>
+                            </label>
+                        </div>
+                        <div class="btn-wrap">
+                            <span></span>
+                            <button class="btn-blue">
+                                <span>Save & Continue</span>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12L19 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                    <form id="funds" class="create-body-tab">
+                        sadasd
+                    </form>
                 </div>
                 <div class="create-body-right">
                     <div class="create-body-right-info">

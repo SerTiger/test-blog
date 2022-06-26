@@ -37,5 +37,9 @@
     "/themes/default/fonts/ProximaNova-Semibold.ttf": "/themes/default/fonts/ProximaNova-Semibold.ttf",
     "/themes/default/fonts/ProximaNova-Semibold.woff": "/themes/default/fonts/ProximaNova-Semibold.woff",
     "/themes/default/fonts/ProximaNova-Semibold.woff2": "/themes/default/fonts/ProximaNova-Semibold.woff2",
+    "/ckeditor/ckeditor.js": "/ckeditor/ckeditor.js",
+    "/ckeditor/config.js": "/ckeditor/config.js",
+    "/ckeditor/contents.css": "/ckeditor/contents.css",
+    "/ckeditor/styles.js": "/ckeditor/styles.js",
     "/themes/admin/img/favicon.png": "/themes/admin/img/favicon.png"
 }
