@@ -9,5 +9,7 @@ $(window).on("load", () => {
 });
 
 $(document).ready(() => {
-
+    $('.await-notification-close').on('click', function (){
+        $(this).parents('.await-notification').removeClass('active')
+    })
 })
