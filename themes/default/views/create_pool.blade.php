@@ -90,7 +90,29 @@
                         </div>
                     </form>
                     <form id="funds" class="create-body-tab">
-                        sadasd
+                        <div class="input-row">
+                            <label>
+                                <span>Funds Receive Address</span>
+                                <input type="text">
+                            </label>
+                        </div>
+                        <div class="connector">
+                            <div class="input-row">
+                                <label>
+                                    <span>Total Pool Amount</span>
+                                    <input type="number">
+                                </label>
+                            </div>
+                            <div class="input-row">
+                                <label>
+                                    <span>Pool Currency</span>
+                                    <select class="selection" name="state">
+                                        <option value="AL">Alabama</option>
+                                        <option value="WY">Wyoming</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="create-body-right">

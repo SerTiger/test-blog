@@ -44,4 +44,6 @@ $('#introduction').validate({
     }
 });
 
-
+$(document).ready(() => {
+    $('.selection').select2()
+})
