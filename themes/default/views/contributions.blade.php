@@ -3,7 +3,51 @@
     <section class="contributions">
         <div class="contributions-wrap">
             <h1>My Contribution</h1>
-            <div class="contributions-filter"></div>
+            <form class="contributions-filter">
+                <div class="contributions-filter-item">
+                    <h3>Date</h3>
+                    <label>
+                        <input data-toggle="datepicker" name="start_date" type="text">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.5 8H13.5" stroke="#A6B0C3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 3.5L13.5 8L9 12.5" stroke="#A6B0C3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <input data-toggle="datepicker" name="end_date" type="text">
+                    </label>
+                </div>
+                <div class="contributions-filter-item">
+                    <h3>Status</h3>
+                    <label>
+                        <select class="selection" name="" id="">
+                            <option value="qwerty">
+                                All
+                            </option>
+                            <option value="qwerty">
+                                Few
+                            </option>
+                            <option value="qwerty">
+                                Some
+                            </option>
+                        </select>
+                    </label>
+                </div>
+                <div class="contributions-filter-item">
+                    <h3>Сurrency</h3>
+                    <label>
+                        <select class="selection" name="" id=""> data-toggle="datepicker" name=""
+                            <option value="qwerty">
+                                Matic
+                            </option>
+                            <option value="qwerty">
+                                USDT
+                            </option>
+                            <option value="qwerty">
+                                BTC
+                            </option>
+                        </select>
+                    </label>
+                </div>
+            </form>
             <div class="contributions-wrapper">
                 <div class="contributions-item">
                     <div class="contributions-item-wrap">
