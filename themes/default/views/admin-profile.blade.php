@@ -22,14 +22,14 @@
                         </div>
                         <div class="input-row">
                             <label>
-                                <span>Surname</span>
-                                <input name="surname" type="text">
+                                <span>Website</span>
+                                <input name="website" type="text">
                             </label>
                         </div>
-                        <div class="input-row">
+                        <div class="input-row wided">
                             <label>
-                                <span>Birth date</span>
-                                <input data-toggle="datepicker" name="date" type="text">
+                                <span>Organization  Description</span>
+                                <textarea name="description"></textarea>
                             </label>
                         </div>
                         <div class="input-row">

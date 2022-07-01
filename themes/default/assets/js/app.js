@@ -1,6 +1,7 @@
 require('./create_organization.js')
 require('./pool.js')
 require('./create_pool.js')
+require('./profile.js')
 $(window).on("load", () => {
     setTimeout(function () {
         $('.loader').fadeOut('fast');

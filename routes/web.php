@@ -40,3 +40,6 @@ Route::get('/loading', function () {
 Route::get('/await', function () {
     return view('await');
 });
+Route::get('/admin-profile', function () {
+    return view('admin-profile');
+});
