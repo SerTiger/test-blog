@@ -3,7 +3,7 @@
 <section class="profile">
     <div class="profile-wrap">
         <h1>My Account</h1>
-        <form class="profile-wrapper">
+        <form class="profile-wrapper" autocomplete="off">
             <div class="profile-left">
                 <h3>Main info</h3>
                 <div class="profile-left-form">

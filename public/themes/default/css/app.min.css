@@ -2830,3 +2830,15 @@ span.select2 span {
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.datepicker-panel > ul > li {
+  background-color: #282C3C !important;
+}
+
+.datepicker-container {
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: none;
+  background: #282C3C;
+  border: 1px solid #3D4653;
+}

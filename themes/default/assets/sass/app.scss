@@ -347,6 +347,15 @@ span.select2{
     flex-direction: row;
     flex-wrap: wrap;
 }
-
+.datepicker-panel>ul>li{
+    background-color: $bg-light!important;
+}
+.datepicker-container{
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: none;
+    background: $bg-light;
+    border: 1px solid $input-border;
+}
 
 
