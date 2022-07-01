@@ -1557,6 +1557,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding-right: 16px;
   margin-bottom: 16px;
 }
+.profile-left-form-wrap .input-row button {
+  margin-top: 25px;
+  width: 100%;
+  padding: 8px 18px;
+}
 .profile-left-form-wrap .input-row label {
   width: 100%;
   display: flex;

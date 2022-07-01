@@ -13,3 +13,4 @@ $(document).ready(() => {
         $(this).parents('.await-notification').removeClass('active')
     })
 })
+$('[data-toggle="datepicker"]').datepicker();
