@@ -1363,6 +1363,116 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .pool-right a + a {
   margin-top: 8px;
 }
+.pool-right-pay {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.pool-right-pay-head {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.pool-right-pay-head p {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+}
+.pool-right-pay-head p span {
+  color: #A6B0C3;
+}
+.pool-right-pay-head p span.blue {
+  color: #008DFF;
+}
+.pool-right-pay-head .tag {
+  background: #58667E;
+  border-radius: 16px;
+  margin-left: 14px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.pool-right-pay-head + .pool-right-pay-head {
+  margin-top: 16px;
+}
+.pool-right-pay .input-row {
+  margin-top: 16px;
+  width: 100%;
+}
+.pool-right-pay .input-row label {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.pool-right-pay .input-row label span {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  color: #A6B0C3;
+  margin-bottom: 4px;
+}
+.pool-right-pay .input-row label input {
+  width: 100%;
+  background: #323546;
+  border: 1px solid #58667E;
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  padding: 16px 24px;
+}
+.pool-right-pay-connector {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pool-right-pay-connector span {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #008DFF;
+  padding: 8px 16px;
+  background: #323546;
+  border-radius: 8px;
+}
+.pool-right-pay .check-row {
+  margin-top: 16px;
+  width: 100%;
+}
+.pool-right-pay .check-row label {
+  width: 100%;
+}
+.pool-right-pay .check-row label span {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+.pool-right-pay .check-row label span span {
+  color: #008DFF;
+}
+.pool-right-pay .btn-wrap {
+  width: 100%;
+  margin-top: 21px;
+}
+.pool-right-pay .btn-wrap button {
+  width: 100%;
+}
 .pool-more {
   width: 100%;
   background: #282C3C;

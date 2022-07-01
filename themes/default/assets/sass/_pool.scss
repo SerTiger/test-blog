@@ -375,6 +375,116 @@
         a + a{
             margin-top: 8px;
         }
+        &-pay{
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            &-head{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                p{
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: $text;
+                    span{
+                        color: #A6B0C3;
+                        &.blue{
+                            color: $blue;
+                        }
+                    }
+                }
+                .tag{
+                    background: #58667E;
+                    border-radius: 16px;
+                    margin-left: 14px;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 24px;
+                    text-align: center;
+                    text-transform: uppercase;
+                    color: $text;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                }
+            }
+            &-head + &-head{
+                margin-top: 16px;
+            }
+            .input-row{
+                margin-top: 16px;
+                width: 100%;
+                label{
+                    width: 100%;
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    flex-direction: column;
+                    span{
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 14px;
+                        line-height: 24px;
+                        color: $text-gray;
+                        margin-bottom: 4px;
+                    }
+                    input{
+                        width: 100%;
+                        background: $fog;
+                        border: 1px solid $pools-text;
+                        border-radius: 8px;
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 16px;
+                        line-height: 24px;
+                        color: $text;
+                        padding: 16px 24px;
+                    }
+                }
+            }
+            &-connector{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                span{
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: $blue;
+                    padding: 8px 16px;
+                    background: #323546;
+                    border-radius: 8px;
+                }
+            }
+            .check-row{
+                margin-top: 16px;
+                width: 100%;
+                label{
+                    width: 100%;
+                    span{
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 14px;
+                        line-height: 20px;
+                        span{
+                            color: $blue;
+                        }
+                    }
+                }
+            }
+            .btn-wrap{
+                width: 100%;
+                margin-top: 21px;
+                button{
+                    width: 100%;
+                }
+            }
+        }
     }
     &-more{
         width: 100%;

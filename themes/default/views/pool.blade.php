@@ -128,7 +128,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="pool-right">
+                <div style="display:none;" class="pool-right">
                     <a>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -197,6 +197,53 @@
                         </svg>
                         <span>Download CSV</span>
                     </a>
+                </div>
+                <div class="pool-right">
+                    <form class="pool-right-pay">
+                        <div class="pool-right-pay-head">
+                            <p>Your wallet <span>0x3e36...793c</span></p>
+                            <div class="tag">Poligon matic</div>
+                        </div>
+                        <div class="pool-right-pay-head">
+                            <p>Wallet Balance: <span class="blue">0.12 BTC</span></p>
+                        </div>
+                        <div class="input-row">
+                            <label>
+                                <span>Choose coin</span>
+                                <select name="currency" class="selection">
+                                    <option value="ads">Bitcoin</option>
+                                    <option value="asd">Luna</option>
+                                    <option value="dsa">Etherium</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="input-row">
+                            <label>
+                                <span>Contribution Amount</span>
+                                <input type="tel" name="amount">
+                                <span>Amount accepted in multiples of 1</span>
+                            </label>
+                        </div>
+                        <div class="pool-right-pay-connector">
+                            <span>Min: 0.01 Bitcoin</span>
+                            <span>Max: 0.1 Bitcoin</span>
+                        </div>
+                        <div class="check-row">
+                            <input id="agree" type="checkbox" name="agree">
+                            <label for="agree">
+                                <span>I understand that I need to <span>comeback after the transaction to fill the remaining form</span>, only then the contribution will be considered.</span>
+                            </label>
+                        </div>
+                        <div class="check-row">
+                            <input id="agreement" type="checkbox" name="agree">
+                            <label for="agreement">
+                                <span>I agree to the terms and conditions of <span>Poolo</span> and <span>Berladyn</span></span>
+                            </label>
+                        </div>
+                        <div class="btn-wrap">
+                            <button class="btn-blue"><span>Proceed Transaction</span></button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="pool-container">
