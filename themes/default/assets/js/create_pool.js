@@ -21,6 +21,10 @@ function updateAllMessageForms()
 let payload = {
     title: '',
     description: '',
+    address: '',
+    amount: null,
+    currency: null,
+    supported: null,
 }
 
 $('#introduction').validate({
@@ -43,7 +47,46 @@ $('#introduction').validate({
         $('.create-nav-item.active').removeClass('active').next().addClass('active')
     }
 });
+$('#funds').validate({
+    ignore: [],
+    errorElement: 'span',
+    rules: {
+        address: {
+            required: true,
+            minlength: 2,
+            maxlength: 50
+        },
+        amount: {
+            required: true,
+        },
+        currency: {
+            required: true,
+        },
+        supported: {
+            required: true,
+        },
+    },
+    submitHandler: function submitHandler(form, event) {
+        event.preventDefault()
 
+        payload.address = $('#address').val()
+        payload.amount = $('#amount').val()
+        payload.currency = $('#currency').val()
+        payload.supported = $('#supported').val()
+        console.log(payload);
+        $(form).fadeOut('fast')
+        // $('#funds').fadeIn('slow')
+        $('.create-nav-item.active').removeClass('active').next().addClass('active')
+
+    }
+});
+$('#to_introduction').on('click', function (){
+    $('#funds').fadeOut('fast')
+    $('#introduction').fadeIn('slow')
+    $('.create-nav-item.active').removeClass('active').prev().addClass('active')
+})
 $(document).ready(() => {
-    $('.selection').select2()
+    $('.selection').select2({
+        minimumResultsForSearch: -1
+    })
 })

@@ -81,7 +81,7 @@
                         <div class="btn-wrap">
                             <span></span>
                             <button class="btn-blue">
-                                <span>Save & Continue</span>
+                                <span>Next Steps</span>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M5 12L19 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -93,25 +93,72 @@
                         <div class="input-row">
                             <label>
                                 <span>Funds Receive Address</span>
-                                <input type="text">
+                                <input id="address" name="address" type="text">
                             </label>
                         </div>
                         <div class="connector">
                             <div class="input-row">
                                 <label>
                                     <span>Total Pool Amount</span>
-                                    <input type="number">
+                                    <input id="amount" name="amount" type="tel">
                                 </label>
                             </div>
                             <div class="input-row">
                                 <label>
                                     <span>Pool Currency</span>
-                                    <select class="selection" name="state">
-                                        <option value="AL">Alabama</option>
-                                        <option value="WY">Wyoming</option>
+                                    <select class="selection" id="currency" name="currency">
+                                        <option value="AL">Ethereum (BNB)</option>
+                                        <option value="WY">Ethereum (BNB)</option>
                                     </select>
                                 </label>
                             </div>
+                        </div>
+                        <div class="input-row">
+                            <label>
+                                <span>Supported Deposit</span>
+                                <select class="selection" id="supported" name="supported" multiple="multiple">
+                                    <optgroup label="Binance Smart Chain (BNB)">
+                                        <option value="AL">BTC Bitcoin</option>
+                                        <option value="AL">BTC Bitcoin</option>
+                                        <option value="AL">BTC Bitcoin</option>
+                                        <option value="AL">BTC Bitcoin</option>
+                                        <option value="AL">BTC Bitcoin</option>
+                                        <option value="AL">BTC Bitcoin</option>
+                                        <option value="AL">BTC Bitcoin</option>
+                                        <option value="AL">BTC Bitcoin</option>
+                                        <option value="AL">BTC Bitcoin</option>
+                                        <option value="AL">BTC Bitcoin</option>
+                                        <option value="AL">BTC Bitcoin</option>
+                                        <option value="AL">BTC Bitcoin</option>
+                                        <option value="AL">BTC Bitcoin</option>
+                                        <option value="AL">BTC Bitcoin</option>
+                                    </optgroup>
+                                    <optgroup label="Ehereum">
+                                        <option value="da">USDC</option>
+                                        <option value="da">USDC</option>
+                                    </optgroup>
+                                    <optgroup label="Polygon">
+                                        <option value="asa">BUSD</option>
+                                        <option value="asa">BUSD</option>
+                                    </optgroup>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="btn-wrap">
+                            <a id="to_introduction">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 12L5 12" stroke="#A6B0C3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 19L5 12L12 5" stroke="#A6B0C3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Back</span>
+                            </a>
+                            <button class="btn-blue">
+                                <span>Next Steps</span>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12L19 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
                         </div>
                     </form>
                 </div>

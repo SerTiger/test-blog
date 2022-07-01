@@ -221,6 +221,9 @@
                         color: $pools-text;
                         margin-bottom: 8px;
                     }
+                    select{
+                        width: 100%!important;
+                    }
                     input{
                         width: 100%;
                         padding: 16px;
@@ -253,6 +256,26 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                a{
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    padding: 16px 32px;
+                    border-radius: 40px;
+                    border: 1px solid $input-border;
+                    svg{
+                        margin-right: 8px;
+                    }
+                    span{
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 18px;
+                        line-height: 22px;
+                        color: $text-gray;
+                    }
+                }
             }
         }
     }
