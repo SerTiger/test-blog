@@ -8,7 +8,7 @@
                 <h3>Main info</h3>
                 <div class="profile-left-form">
                     <div class="img-wrap">
-                        <input id="avatar" name="avatar" type="file">
+                        <input id="avatar" accept="image/*" name="avatar" type="file">
                         <label for="avatar">
                         </label>
                         <img id="ava" src="https://picsum.photos/100/100">

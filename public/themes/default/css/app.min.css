@@ -666,9 +666,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .organization .file-row input {
   opacity: 0;
-  visibility: hidden;
   position: absolute;
-  left: -2000px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
 }
 .organization .connector {
   width: 100%;
@@ -2154,7 +2159,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: #282C3C;
   border-radius: 12px;
 }
-.create-body-left #funds {
+.create-body-left #funds, .create-body-left #introduction {
   display: none;
 }
 .create-body-right {

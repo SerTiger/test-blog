@@ -75,7 +75,7 @@ $('#funds').validate({
         payload.supported = $('#supported').val()
         console.log(payload);
         $(form).fadeOut('fast')
-        // $('#funds').fadeIn('slow')
+        $('#rules').fadeIn('slow')
         $('.create-nav-item.active').removeClass('active').next().addClass('active')
 
     }
