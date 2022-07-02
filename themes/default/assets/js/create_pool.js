@@ -85,6 +85,33 @@ $('#to_introduction').on('click', function (){
     $('#introduction').fadeIn('slow')
     $('.create-nav-item.active').removeClass('active').prev().addClass('active')
 })
+if(document.getElementById('img')){
+    let uploadField = document.getElementById("image");
+    let blah = document.getElementById("blah")
+    uploadField.onchange = function() {
+        if(this.files[0].size > 2097152){
+            alert("File is too big!");
+            $('.file-row-container').removeClass('hide')
+            $('.delete').fadeOut('fast')
+            this.value = "";
+        }
+        else{
+            $('.file-row-container').addClass('hide')
+            $('.delete').fadeIn('fast')
+            const file = this.files[0]
+            if (file) {
+                blah.src = URL.createObjectURL(file)
+            }
+        }
+    };
+    $('.delete').on('click', function (){
+        uploadField.value = ''
+        $('.file-row-container').removeClass('hide')
+        $('.delete').fadeOut('fast')
+    })
+
+}
+
 $(document).ready(() => {
     $('.selection').select2({
         minimumResultsForSearch: -1
