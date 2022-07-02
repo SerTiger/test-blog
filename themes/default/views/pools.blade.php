@@ -2,6 +2,17 @@
 @section('content')
     <section class="pools" id="pools">
         <div class="pools-wrap">
+            <div class="pools-wrapper">
+                <div class="pools-welcome">
+                    <div class="img-wrap">
+                        <img src="themes/default/img/empty-pool.png">
+                    </div>
+                    <h2>Welcome to OXO Capital</h2>
+                    <p>No contributions found from</p>
+                    <span>0x17bb*****3412f</span>
+                    <p>All pools that you have contributed, will appear here</p>
+                </div>
+            </div>
             <h1>Pools</h1>
             <h4>Manage your pools</h4>
             <div class="pools-wrapper">

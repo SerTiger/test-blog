@@ -982,6 +982,51 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .pools-item.ended .pools-item-desc .line {
   display: none;
 }
+.pools-welcome {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.pools-welcome .img-wrap {
+  width: 100%;
+  height: 277px;
+}
+.pools-welcome .img-wrap img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.pools-welcome h2 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 49px;
+  text-align: center;
+  color: #ffffff;
+  margin-top: -60px;
+  margin-bottom: 24px;
+}
+.pools-welcome p {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #A6B0C3;
+}
+.pools-welcome span {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: #ffffff;
+}
 
 .pool {
   width: 100%;
