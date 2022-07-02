@@ -180,6 +180,51 @@
                             </button>
                         </div>
                     </form>
+                    <form id="settings" class="create-body-tab">
+                        <div class="input-row">
+                            <label>
+                                <span>Choose the fields you want to collect from contributors</span>
+                                <select class="selection" id="supported" name="supported" multiple="multiple">
+                                    <optgroup label="Data">
+                                        <option value="AL">Email id</option>
+                                        <option value="AL">Birthday</option>
+                                        <option value="AL">Name</option>
+                                        <option value="AL">Surname</option>
+                                    </optgroup>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="radio-row">
+                            <input id="total" type="checkbox" name="show_total">
+                            <label for="total">
+                                <span>Show Total Fund Cap to users</span>
+                                <span>Will show total pool limit to users. Switch off if you like to hide it.</span>
+                            </label>
+                        </div>
+                        <div class="radio-row">
+                            <input id="progress" type="checkbox" name="show_progress">
+                            <label for="progress">
+                                <span>Show Contribution Progress to users</span>
+                                <span>Will show pool's contribution progress to users. Switch off if you like to hide it.</span>
+                            </label>
+                        </div>
+                        <div class="btn-wrap">
+                            <a id="to_introduction">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 12L5 12" stroke="#A6B0C3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 19L5 12L12 5" stroke="#A6B0C3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Back</span>
+                            </a>
+                            <button class="btn-blue">
+                                <span>Next Steps</span>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12L19 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
                     <form id="img" class="create-body-tab">
                         <div class="file-row">
                             <h4>Add an image for an attractive look</h4>

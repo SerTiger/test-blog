@@ -94,7 +94,7 @@
             padding: 24px;
             background: $bg-light;
             border-radius: 12px;
-            #funds, #rules, #introduction{
+            #funds, #rules, #img, #introduction{
                 display: none;
             }
         }
@@ -196,6 +196,73 @@
                 .input-row + .input-row{
                     margin-top: 0;
                     margin-left: 24px;
+                }
+            }
+            .radio-row{
+                width: 100%;
+                margin-top: 26px;
+                position: relative;
+                input{
+                    position: absolute;
+                    opacity: 0;
+                    visibility: hidden;
+                    left: -2000px;
+                }
+                label{
+                    width: 100%;
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    flex-direction: column;
+                    cursor: pointer;
+                    span {
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 14px;
+                        line-height: 17px;
+                        color: $text-gray;
+                        &:first-child{
+                            font-style: normal;
+                            font-weight: 600;
+                            font-size: 16px;
+                            line-height: 19px;
+                            color: $text;
+                            margin-bottom: 8px;
+                        }
+                    }
+
+                    margin-left: 65px;
+                    &:before{
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 48px;
+                        height: 24px;
+                        background: $pools-text;
+                        border-radius: 40px;
+                        content: '';
+                        transition: background 0.3s ease-in-out;
+                    }
+                    &:after{
+                        width: 24px;
+                        height: 24px;
+                        background: $text;
+                        border: 2px solid $text-gray;
+                        border-radius: 50%;
+                        position: absolute;
+                        left: 0;
+                        top: -2px;
+                        content: '';
+                        transition: transform 0.3s ease-in-out;
+                    }
+                }
+                input:checked + label:after{
+                    transform: translateX(24px);
+                    background: $text-gray;
+                    border: 2px solid $text;
+                }
+                input:checked + label:before{
+                    background: $blue;
                 }
             }
             .file-row{

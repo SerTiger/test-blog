@@ -2160,7 +2160,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: #282C3C;
   border-radius: 12px;
 }
-.create-body-left #funds, .create-body-left #rules, .create-body-left #introduction {
+.create-body-left #funds, .create-body-left #rules, .create-body-left #img, .create-body-left #introduction {
   display: none;
 }
 .create-body-right {
@@ -2263,6 +2263,72 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .create-body-tab .connector .input-row + .input-row {
   margin-top: 0;
   margin-left: 24px;
+}
+.create-body-tab .radio-row {
+  width: 100%;
+  margin-top: 26px;
+  position: relative;
+}
+.create-body-tab .radio-row input {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  left: -2000px;
+}
+.create-body-tab .radio-row label {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  cursor: pointer;
+  margin-left: 65px;
+}
+.create-body-tab .radio-row label span {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #A6B0C3;
+}
+.create-body-tab .radio-row label span:first-child {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+.create-body-tab .radio-row label:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 24px;
+  background: #58667E;
+  border-radius: 40px;
+  content: "";
+  transition: background 0.3s ease-in-out;
+}
+.create-body-tab .radio-row label:after {
+  width: 24px;
+  height: 24px;
+  background: #ffffff;
+  border: 2px solid #A6B0C3;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: -2px;
+  content: "";
+  transition: transform 0.3s ease-in-out;
+}
+.create-body-tab .radio-row input:checked + label:after {
+  transform: translateX(24px);
+  background: #A6B0C3;
+  border: 2px solid #ffffff;
+}
+.create-body-tab .radio-row input:checked + label:before {
+  background: #008DFF;
 }
 .create-body-tab .file-row {
   display: flex;
