@@ -129,6 +129,12 @@
         background: $input-bg;
         margin-right: 24px;
         margin-left: 24px;
+        position: relative;
+        &-wrap{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         svg{
             width: 24px;
             height: 24px;
@@ -141,11 +147,180 @@
             line-height: 24px;
             color: $blue;
         }
+        &-dropdown{
+            position: absolute;
+            background: $bg-light;
+            border-radius: 12px;
+            border: 1px solid $pools-text;
+            top: calc(100% + 10px);
+            width: 260px;
+            display: none;
+            span{
+                font-style: normal;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 24px;
+                color: $text-gray;
+                margin-left: 0;
+            }
+            p{
+                font-style: normal;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 24px;
+                color: $text;
+            }
+            span + p{
+                margin-top: 8px;
+            }
+            p + span{
+                margin-top: 8px;
+            }
+            &-head{
+                padding: 16px;
+                border-bottom: 1px solid $pools-text;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                a{
+                    text-decoration: none;
+                    cursor: pointer;
+                    color: $blue;
+                    margin-top: 8px;
+                }
+            }
+            &-body{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                padding: 16px 24px 24px 24px;
+                a{
+                    text-decoration: none;
+                    display: inline-block;
+                    border: 1px solid #FE6480;
+                    border-radius: 40px;
+                    cursor: pointer;
+                    margin-top: 16px;
+                    span{
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 18px;
+                        line-height: 22px;
+                        color: #F57878;
+                        padding: 16px 32px;
+                        display: inline-block;
+                    }
+                }
+            }
+        }
     }
     &-btns{
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
+        &-dropdown{
+            position: absolute;
+            background: $bg-light;
+            border-radius: 12px;
+            border: 1px solid $pools-text;
+            top: calc(100% + 18px);
+            right: 0;
+            width: 182px;
+            display: none;
+            &-head{
+                padding: 16px;
+                border-bottom: 1px solid $pools-text;
+                width: 100%;
+                a{
+                    width: 100%;
+                    display: flex!important;
+                    align-items: center;
+                    justify-content: space-between;
+                    cursor: pointer;
+                    text-decoration: none;
+                    span{
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 16px;
+                        line-height: 24px;
+                        color: $text-gray;
+                    }
+                    .track{
+                        width: 45px;
+                        height: 24px;
+                        background: $bg-dark;
+                        border-radius: 12px;
+                        position: relative;
+                        span{
+                            position: absolute;
+                            left: 0;
+                            bottom: 2px;
+                            background: $blue;
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-left: 0;
+                            margin-right: 0;
+                            transition: transform 0.3s ease-in-out;
+                        }
+                    }
+                    &.active{
+                        .track{
+                            span{
+                                transform: translateX(24px);
+                            }
+                        }
+                    }
+                }
+            }
+            &-body{
+                width: 100%;
+                padding: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                a{
+                    width: 100%;
+                    text-decoration: none;
+                    cursor: pointer;
+                    display: flex!important;
+                    align-items: center;
+                    justify-content: space-between;
+                    span{
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 16px;
+                        line-height: 24px;
+                        color: $text-gray;
+                    }
+                    svg{
+                        display: none;
+                    }
+                    &.active{
+                        span{
+                            color: $text;
+                        }
+                        svg{
+                            display: block;
+                        }
+                    }
+                }
+            }
+            //display: none;
+        }
+        &-wrap{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
         a{
             text-decoration: none;
             display: inline-block;

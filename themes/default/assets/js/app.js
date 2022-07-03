@@ -16,5 +16,10 @@ $(document).ready(() => {
 })
 $('[data-toggle="datepicker"]').datepicker({
     startView: 2,
-
 });
+$('.header-wallet-wrap').on('click', function (){
+    $('.header-wallet-dropdown').slideToggle()
+})
+$('.header-btns-wrap').on('click', function (){
+    $('.header-btns-dropdown').slideToggle()
+})
