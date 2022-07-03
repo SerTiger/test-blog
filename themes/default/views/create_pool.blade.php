@@ -1,5 +1,85 @@
 @extends('layouts.master')
 @section('content')
+    <div class="create-rule">
+        <div class="create-rule-wrap">
+            <form class="create-rule-container create-body-tab">
+                <div class="create-rule-container-head">
+                    <h2>Add new Rule Group</h2>
+                    <div class="create-rule-close">
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="11.3145" width="2" height="16" rx="1" transform="rotate(45 11.3145 0)" fill="#8899B8"/>
+                            <rect y="1.41406" width="2" height="16" rx="1" transform="rotate(-45 0 1.41406)" fill="#8899B8"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="input-row">
+                    <label>
+                        <span>User group/Tier</span>
+                        <select name="group" class="selection" id="group">
+                            <option value="all">all users</option>
+                            <option value="all">all users</option>
+                            <option value="all">all users</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="connector">
+                    <div class="input-row">
+                        <label>
+                            <span>Minimum Single Ticket Amount</span>
+                            <input type="tel" id="min_single" name="min_single">
+                        </label>
+                    </div>
+                    <div class="input-row">
+                        <label>
+                            <span>Maximum Single Ticket Amount</span>
+                            <input type="tel" id="max_single" name="max_single">
+                        </label>
+                    </div>
+                </div>
+                <div class="connector">
+                    <div class="input-row">
+                        <label>
+                            <span>User Amount can be in multiples of (Optional)</span>
+                            <input type="tel" id="amount_multiples" name="amount_multiples">
+                        </label>
+                    </div>
+                    <div class="input-row">
+                        <label>
+                            <span>How many times a user can contribute (Optional)</span>
+                            <input type="tel" id="contribute_counter" name="contribute_counter">
+                        </label>
+                    </div>
+                </div>
+                <div class="connector">
+                    <div class="input-row">
+                        <label>
+                            <span>VS fee % for this pool</span>
+                            <input type="tel" id="fee" name="fee">
+                        </label>
+                    </div>
+                </div>
+                <div class="connector">
+                    <div class="input-row">
+                        <label>
+                            <span>Pool start Date</span>
+                            <input data-toggle="datepicker" id="start_date" type="text" name="start_date">
+                        </label>
+                    </div>
+                    <div class="input-row">
+                        <label>
+                            <span>Pool and Date</span>
+                            <input data-toggle="datepicker" id="end_date" type="text" name="end_date">
+                        </label>
+                    </div>
+                </div>
+                <div class="btn-wrap">
+                    <button class="btn-blue">
+                        <span>Create Group Rules</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
     <section class="create">
         <div class="create-wrap">
             <h1>Create new Pool</h1>
@@ -162,9 +242,55 @@
                         </div>
                     </form>
                     <form id="rules" class="create-body-tab">
+                        <div class="create-body-tab-rules">
+                            <div class="create-body-tab-rules-item" style="display: none">
+                                <div class="create-body-tab-rules-item-head">
+                                    All users
+                                </div>
+                                <div class="create-body-tab-rules-item-body">
+                                    <ul>
+                                        <li>
+                                            <p>min Amount</p>
+                                            <span>10</span>
+                                        </li>
+                                        <li>
+                                            <p>max Amount</p>
+                                            <span>1000</span>
+                                        </li>
+                                        <li>
+                                            <p>VC Fee</p>
+                                            <span>1%</span>
+                                        </li>
+                                        <li>
+                                            <p>Start Date</p>
+                                            <span>15 May 2022</span>
+                                        </li>
+                                        <li>
+                                            <p>END Date</p>
+                                            <span>17 May 2022</span>
+                                        </li>
+                                    </ul>
+                                    <h3>• Allowed in multiples of 10</h3>
+                                    <h3>• Only 360 transactions per user</h3>
+                                </div>
+                            </div>
 
+                        </div>
+                        <span class="create-body-tab-note">
+                            Note: You can add different user group based on whitelisting/nfts/tokens in the Settings in the left bottom
+                        </span>
                         <div class="btn-wrap">
-                            <a id="to_introduction">
+                            <button type="button" class="btn-blue" id="create_rule">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="12" fill="white"/>
+                                    <rect x="11" y="6" width="2" height="12" rx="1" fill="#0187FF"/>
+                                    <rect x="18" y="11" width="2" height="12" rx="1" transform="rotate(90 18 11)" fill="#0187FF"/>
+                                </svg>
+                                <span>Add Rules</span>
+                            </button>
+                        </div>
+                        <div class="btn-wrap">
+                            <a id="to_funds">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M19 12L5 12" stroke="#A6B0C3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M12 19L5 12L12 5" stroke="#A6B0C3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -184,7 +310,7 @@
                         <div class="input-row">
                             <label>
                                 <span>Choose the fields you want to collect from contributors</span>
-                                <select class="selection" id="supported" name="supported" multiple="multiple">
+                                <select class="selection" id="collect" name="collect" multiple="multiple">
                                     <optgroup label="Data">
                                         <option value="AL">Email id</option>
                                         <option value="AL">Birthday</option>
@@ -209,7 +335,7 @@
                             </label>
                         </div>
                         <div class="btn-wrap">
-                            <a id="to_introduction">
+                            <a id="to_rules">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M19 12L5 12" stroke="#A6B0C3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M12 19L5 12L12 5" stroke="#A6B0C3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -277,7 +403,7 @@
                             </ul>
                         </div>
                     </div>
-                    <button class="btn-blue">
+                    <button class="btn-blue" id="create_pool" disabled>
                         <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12.2573 23.0711C10.8431 27.3137 5.18628 27.3137 5.18628 27.3137C5.18628 27.3137 5.18628 21.6569 9.42892 20.2427" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M24.9853 13.1715L16.5 21.6568L10.8431 15.9999L19.3284 7.51466C22.5414 4.30164 25.7545 4.33298 27.1247 4.53743C27.3357 4.56888 27.531 4.66727 27.6818 4.8181C27.8327 4.96894 27.9311 5.16423 27.9625 5.37521C28.167 6.74548 28.1983 9.9585 24.9853 13.1715Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
