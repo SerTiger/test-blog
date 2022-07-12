@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'eth_address',
         'password',
     ];
 
@@ -41,4 +42,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Role::class,'role_user');
+    }
+
+    public function pools(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Pool::class);
+    }
 }

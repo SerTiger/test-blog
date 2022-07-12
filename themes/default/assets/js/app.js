@@ -2,6 +2,9 @@ require('./contact')
 require('./invest_first')
 require('./inquire_first')
 require('./inquire_second')
+import Web3 from 'web3/dist/web3.min.js'
+window.Web3 = Web3;
+
 $(window).on("load", () => {
     setTimeout(function () {
         $('.loader').fadeOut('fast');

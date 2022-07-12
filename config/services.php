@@ -30,4 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'etherscan' => [
+        'key' => env('ETHERSCAN_API_KEY'),
+        'network' => env('ETHERSCAN_NETWORK','https://api-ropsten.etherscan.io'),
+    ],
 ];

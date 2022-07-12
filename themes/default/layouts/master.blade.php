@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>OXO Capital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content="OXO Capital"/>
-    <meta property="og:description" content="OXO Capital website"/>
+    {!! Meta::render() !!}
     {{--        <meta property="og:image" content="/themes/default/img/social.png">--}}
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1024">
@@ -15,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ mix('/themes/default/css/app.min.css') }}"/>
 </head>
-<body>
+<body id="app">
 <div class="loader">
     <div class="cubeWrap">
         <div class="cube">
@@ -34,5 +31,6 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript" src="{{ mix('/themes/default/js/app.min.js') }}"></script>
+<script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

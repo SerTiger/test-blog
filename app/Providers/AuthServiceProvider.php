@@ -25,6 +25,15 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::before(function ($user, $ability) {
+            $user->load('roles.permissions');
+            if (
+                $user->roles->filter(function ($role) use ($ability) {
+                    return $role->permissions->where('title','=',$ability)->count() > 0;
+                })->isNotEmpty()
+            ) {
+                return true;
+            }
+        });
     }
 }

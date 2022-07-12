@@ -24,8 +24,8 @@ mix.browserSync({
     ]
 })
 
-
 mix.js('resources/js/app.js', 'public/js')
+    .vue()
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
@@ -42,9 +42,9 @@ mix.js(['themes/default/assets/js/app.js'], 'public/themes/default/js/app.min.js
 //sass
 mix.sass('themes/default/assets/sass/app.scss', 'public/themes/default/css/app.min.css')
 // mix for admin theme
-mix.copyDirectory('themes/admin/assets/img', 'public/themes/admin/img');
+mix.copyDirectory('themes/adminlte/assets/img', 'public/themes/admin/img');
 // mix.copyDirectory('themes/admin/assets/fonts', 'public/themes/admin/fonts');
 // js
-mix.js(['themes/admin/assets/js/app.js'], 'public/themes/admin/js/app.min.js')
+mix.js(['themes/adminlte/assets/js/app.js'], 'public/themes/admin/js/app.min.js')
 //sass
-mix.sass('themes/admin/assets/sass/app.scss', 'public/themes/admin/css/app.min.css')
+mix.sass('themes/adminlte/assets/sass/app.scss', 'public/themes/admin/css/app.min.css')

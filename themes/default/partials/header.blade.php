@@ -15,26 +15,32 @@
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M92.0728 47.2676H90.5957V57.1149H92.0728V57.1146H96.504V56.1299H92.0728V47.2676Z" fill="white"/>
                 </svg>
             </a>
+
             <div class="header-link-container">
-                <a href="/portfolio" class="header-link">Portfolio</a>
+                <a class="header-link {{ active_class('portfolio') }}" href="/portfolio">Portfolio</a>
                 <div class="header-link">
                     <span>Areas</span>
                     <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 1L6 6L11 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     <div class="header-link-bar">
-                        <a href="/cross-chain">Cross Chain</a>
-                        <a href="/defi">DeFi</a>
-                        <a class="active" href="/metaverse">MetaVerse</a>
-                        <a href="/gaming">Gaming</a>
-                        <a href="/nft">NFTs</a>
+                        <a class="{{ active_class('cross-chain') }}" href="/cross-chain">Cross Chain</a>
+                        <a class="{{ active_class('defi') }}" href="/defi">DeFi</a>
+                        <a class="{{ active_class('metaverse') }}" href="/metaverse">MetaVerse</a>
+                        <a class="{{ active_class('gaming') }}" href="/gaming">Gaming</a>
+                        <a class="{{ active_class('nft') }}" href="/nft">NFTs</a>
                     </div>
                 </div>
-                <a href="/about" class="header-link">About</a>
-                <a href="/contact" class="header-link">Contact</a>
-                <a href="/choose" class="header-link-btn">
+                <a class="header-link {{ active_class('about') }}" href="/about" >About</a>
+                <a class="header-link {{ active_class('contact') }}" href="/contact">Contact</a>
+                <a class="header-link-btn" href="/choose">
                     <span>Invest & Inquiry</span>
                 </a>
+                @auth
+                    <a class="header-link-btn" href="/logout">
+                        <span>{{ auth()->user()->eth_address }} | logout</span>
+                    </a>
+                @endauth
                 <div class="burger">
                     <span></span>
                     <span></span>

@@ -174,6 +174,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\TablesBuilderServiceProvider::class,
+        App\Providers\MetaServiceProvider::class,
 
     ],
 
@@ -230,6 +232,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'TablesBuilder'       => App\Facades\TablesBuilder::class,
+        'FlashMessages'       => App\Facades\FlashMessages::class,
+        'Meta'                => App\Facades\Meta::class,
     ],
 
 ];

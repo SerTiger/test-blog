@@ -2,27 +2,47 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "alexusmai/laravel-file-manager": "^2",
         "astrotomic/laravel-translatable": "^11.10",
         "cartalyst/sentinel": "^5.1",
+        "ctf0/media-manager": "^3.8",
         "doctrine/dbal": "^3.3",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "intervention/image": "^2.7",
+        "jeroennoten/laravel-adminlte": "^3.8",
+        "kalnoy/nestedset": "^6.0",
+        "kornrunner/keccak": "^1.1",
         "laracasts/flash": "^3.2",
         "laracasts/utilities": "^3.2",
         "laravel/framework": "^8.75",
+        "laravel/helpers": "^1.5",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.4",
         "laravelcollective/html": "^6.3",
+        "mcamara/laravel-localization": "^1.7",
+        "orchestra/messages": "^6.1",
+        "phpoffice/phpspreadsheet": "^1.22",
         "predis/predis": "^1.1",
+        "rolandstarke/laravel-thumbnail": "^1.0",
+        "simplito/elliptic-php": "^1.0",
         "spatie/data-transfer-object": "^3.7",
+        "symfony/mailer": "^6.0",
         "yaap/theme": "^4.1",
-        "yajra/laravel-datatables-html": "^4.41"
+        "yajra/laravel-datatables-html": "^4.41",
+        "yajra/laravel-datatables-oracle": "^9.19",
+        "yoeunes/toastr": "^1.2"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.6",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
@@ -35,7 +55,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Libraries/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -48,13 +71,17 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan pcl:post-update"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "post-install-cmd": [
+            "@php artisan pcl:post-install"
         ]
     },
     "extra": {
