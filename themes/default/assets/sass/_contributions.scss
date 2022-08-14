@@ -12,7 +12,7 @@
             font-weight: 700;
             font-size: 32px;
             line-height: 24px;
-            color: $text;
+            color: var(--color-text);
             margin-bottom: 32px;
         }
     }
@@ -49,13 +49,13 @@
 
                 input{
                     padding: 16px 24px;
-                    background: $fog;
+                    background: var(--color-fog);
                     border: none;
                     font-style: normal;
                     font-weight: 400;
                     font-size: 14px;
                     line-height: 24px;
-                    color: $text;
+                    color: var(--color-text);
                 }
             }
             &:first-child{
@@ -63,7 +63,7 @@
                     padding-left: 5px;
                     padding-right: 5px;
                     border: 1px $pools-text solid;
-                    background: $fog;
+                    background: var(--color-fog);
                     border-radius: 8px;
                     input{
                         width: 120px;
@@ -83,7 +83,7 @@
         width: 100%;
     }
     &-item{
-        background: $bg-light;
+        background: var(--color-bg-light);
         border-radius: 12px;
         padding: 16px 24px;
         width: 100%;
@@ -99,7 +99,7 @@
                 font-style: normal;
                 font-weight: 700;
                 font-size: 20px;
-                color: $text;
+                color: var(--color-text);
                 margin-right: 16px;
             }
             .tag{
@@ -108,7 +108,7 @@
                     font-size: 14px;
                     line-height: 24px;
                     text-transform: capitalize;
-                    color: $text;
+                    color: var(--color-text);
                     padding: 0 16px;
                     background: linear-gradient(93.52deg, #F57878 10.23%, #FF4BD7 92.95%);
                     border-radius: 18px;
@@ -124,7 +124,7 @@
                 font-size: 16px;
                 line-height: 24px;
                 text-transform: capitalize;
-                color: $text-gray;
+                color: var(--color-text-gray);
             }
             .img-wrap{
                 width: 32px;
@@ -158,7 +158,7 @@
                 font-weight: 600;
                 font-size: 14px;
                 line-height: 24px;
-                color: $text-gray;
+                color: var(--color-text-gray);
                 margin-bottom: 4px;
             }
             p{
@@ -166,7 +166,7 @@
                 font-weight: 400;
                 font-size: 16px;
                 line-height: 20px;
-                color: $text;
+                color: var(--color-text);
                 margin-bottom: 16px;
             }
             .contact{
@@ -177,9 +177,9 @@
                 display: inline-block;
                 text-decoration: none;
                 cursor: pointer;
-                color: $text;
+                color: var(--color-text);
                 padding: 4px 8px;
-                background: #424A68;
+                background: var(--color-input-bg);
                 border-radius: 4px;
             }
             .link{
@@ -203,7 +203,7 @@
                 font-weight: 700;
                 font-size: 12px;
                 line-height: 24px;
-                color: $text;
+                color: var(--color-text);
                 padding: 4px 12px;
                 background: #699573;
                 border-radius: 20px;

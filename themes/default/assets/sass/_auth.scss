@@ -10,7 +10,7 @@
 
     &-left {
         width: 40%;
-        background: $bg-light;
+        background: var(--color-bg-light);
         min-height: 100vh;
         display: flex;
         align-items: center;
@@ -22,6 +22,9 @@
         svg {
             width: 286px;
             height: 120px;
+            path{
+                fill: var(--color-text);
+            }
         }
         &:before, &:after{
             content: '';
@@ -58,7 +61,7 @@
             font-size: 40px;
             line-height: 49px;
             text-align: center;
-            color: $text;
+            color: var(--color-text);
             margin-bottom: 16px;
         }
         p{
@@ -68,7 +71,7 @@
             line-height: 24px;
             display: flex;
             align-items: center;
-            color: $text-gray;
+            color: var(--color-text-gray);
         }
         p + p{
             margin-top: 16px;

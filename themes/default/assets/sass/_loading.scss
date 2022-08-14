@@ -36,7 +36,7 @@
             font-size: 40px;
             line-height: 49px;
             text-align: center;
-            color: $text;
+            color: var(--color-text);
             margin-bottom: 16px;
         }
         p{
@@ -44,7 +44,7 @@
             font-weight: 600;
             font-size: 20px;
             line-height: 24px;
-            color: $text-gray;
+            color: var(--color-text-gray);
         }
         p + p{
             margin-top: 16px;
@@ -54,7 +54,7 @@
             font-weight: 600;
             font-size: 16px;
             line-height: 24px;
-            color: $text-gray;
+            color: var(--color-text-gray);
             margin-top: 16px;
         }
         .line{

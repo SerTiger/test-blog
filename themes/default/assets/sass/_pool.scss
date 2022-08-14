@@ -66,7 +66,7 @@
                         font-weight: 700;
                         font-size: 32px;
                         line-height: 48px;
-                        color: $text;
+                        color: var(--color-text);
                     }
                     .tag{
                         margin-left: 16px;
@@ -75,7 +75,7 @@
                         font-size: 16px;
                         line-height: 24px;
                         text-transform: capitalize;
-                        color: $text;
+                        color: var(--color-text);
                         padding: 4px 16px;
                         background: linear-gradient(93.52deg, #F57878 10.23%, #FF4BD7 92.95%);
                         border-radius: 18px;
@@ -91,7 +91,7 @@
                         font-size: 16px;
                         line-height: 24px;
                         text-transform: capitalize;
-                        color: $text-gray;
+                        color: var(--color-text-gray);
                     }
                     .img-wrap{
                         border-radius: 8px;
@@ -122,7 +122,7 @@
                         font-weight: 500;
                         font-size: 16px;
                         line-height: 24px;
-                        color: $text;
+                        color: var(--color-text);
                     }
                 }
             }
@@ -148,7 +148,7 @@
                         font-size: 16px;
                         line-height: 24px;
                         text-transform: capitalize;
-                        color: $text-gray;
+                        color: var(--color-text-gray);
                         margin-bottom: 12px;
                     }
                     span{
@@ -156,7 +156,7 @@
                         font-weight: 700;
                         font-size: 36px;
                         line-height: 36px;
-                        color: $text;
+                        color: var(--color-text);
                     }
                 }
                 &-item + &-item{
@@ -175,7 +175,7 @@
                             font-weight: 700;
                             font-size: 18px;
                             line-height: 32px;
-                            color: $text;
+                            color: var(--color-text);
                             margin-bottom: 16px;
                         }
                     }
@@ -205,7 +205,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        background: $bg-light;
+        background: var(--color-bg-light);
         border-radius: 12px;
         &-head{
             padding: 16px 24px;
@@ -220,7 +220,7 @@
                 font-size: 18px;
                 line-height: 24px;
                 text-transform: capitalize;
-                color: $text;
+                color: var(--color-text);
             }
         }
         &-body{
@@ -237,11 +237,11 @@
                     font-size: 16px;
                     line-height: 24px;
                     text-transform: capitalize;
-                    color: $text;
+                    color: var(--color-text);
                     margin-bottom: 12px;
                 }
                 .size-item{
-                    background: #424A68;
+                    background: var(--color-input-bg);
                     border-radius: 4px;
                     margin-bottom: 8px;
                     &-wrapper{
@@ -258,7 +258,7 @@
                         font-weight: 400;
                         font-size: 14px;
                         line-height: 24px;
-                        color: #FFFFFF;
+                        color: var(--color-text);
                     }
                 }
                 .coin-item{
@@ -290,7 +290,7 @@
                         font-weight: 600;
                         font-size: 14px;
                         line-height: 24px;
-                        color: $text-gray;
+                        color: var(--color-text-gray);
                         margin-left: 8px;
                     }
                 }
@@ -299,7 +299,7 @@
                     font-weight: 600;
                     font-size: 12px;
                     line-height: 20px;
-                    color: rgba(255, 255, 255, 0.7);
+                    color: var(--color-text);
                     &.ended{
                         color: #FA4D4D;
                     }
@@ -319,7 +319,7 @@
                         font-size: 16px;
                         line-height: 24px;
                         text-transform: capitalize;
-                        color: $text;
+                        color: var(--color-text);
                         margin-left: 16px;
                         position: relative;
                         &:before{
@@ -327,7 +327,7 @@
                             height: 6px;
                             position: absolute;
                             border-radius: 50%;
-                            background: $text;
+                            background: var(--color-text);
                             left: -16px;
                             top: 8px;
                             content: '';
@@ -342,7 +342,7 @@
     }
     &-right{
         width: calc(100% - 1030px);
-        background: $bg-light;
+        background: var(--color-bg-light);
         border-radius: 12px;
         display: flex;
         align-items: center;
@@ -364,7 +364,7 @@
                 font-weight: 600;
                 font-size: 16px;
                 line-height: 24px;
-                color: $text-gray;
+                color: var(--color-text-gray);
                 margin-left: 12px;
             }
             svg{
@@ -389,7 +389,7 @@
                     font-weight: 600;
                     font-size: 16px;
                     line-height: 24px;
-                    color: $text;
+                    color: var(--color-text);
                     span{
                         color: #A6B0C3;
                         &.blue{
@@ -406,7 +406,7 @@
                     line-height: 24px;
                     text-align: center;
                     text-transform: uppercase;
-                    color: $text;
+                    color: var(--color-text);
                     padding-left: 8px;
                     padding-right: 8px;
                 }
@@ -428,19 +428,19 @@
                         font-weight: 600;
                         font-size: 14px;
                         line-height: 24px;
-                        color: $text-gray;
+                        color: var(--color-text-gray);
                         margin-bottom: 4px;
                     }
                     input{
                         width: 100%;
-                        background: $fog;
+                        background: var(--color-fog);
                         border: 1px solid $pools-text;
                         border-radius: 8px;
                         font-style: normal;
                         font-weight: 600;
                         font-size: 16px;
                         line-height: 24px;
-                        color: $text;
+                        color: var(--color-text);
                         padding: 16px 24px;
                     }
                 }
@@ -457,7 +457,7 @@
                     line-height: 24px;
                     color: $blue;
                     padding: 8px 16px;
-                    background: #323546;
+                    background: var(--color-fog);
                     border-radius: 8px;
                 }
             }
@@ -488,7 +488,7 @@
     }
     &-more{
         width: 100%;
-        background: $bg-light;
+        background: var(--color-bg-light);
         border-radius: 16px;
         display: flex;
         align-items: center;
@@ -514,7 +514,7 @@
             font-weight: 700;
             font-size: 20px;
             line-height: 32px;
-            color: $text;
+            color: var(--color-text);
             margin-bottom: 16px;
         }
         p{
@@ -522,7 +522,7 @@
             font-weight: 400;
             font-size: 16px;
             line-height: 24px;
-            color: $text-gray;
+            color: var(--color-text-gray);
             padding-bottom: 12px;
             padding-top: 12px;
             border-top: 1px solid #58667E;
@@ -555,7 +555,7 @@
             justify-content: flex-start;
             align-items: center;
             span{
-                color: $text-gray;
+                color: var(--color-text-gray);
                 font-style: normal;
                 font-weight: 400;
                 font-size: 16px;
@@ -564,7 +564,7 @@
             }
             a{
                 margin: 4px;
-                background: $input-border;
+                background: var(--color-input-border);
                 border-radius: 22px;
                 padding: 4px 12px;
                 display: inline-block;
@@ -572,7 +572,7 @@
                 font-weight: 400;
                 font-size: 14px;
                 line-height: 24px;
-                color: $text;
+                color: var(--color-text);
                 cursor: pointer;
                 &.active{
                     background: $blue;
@@ -584,7 +584,7 @@
         align-items: flex-start;
         justify-content: space-between;
         padding: 16px 24px;
-        background: $bg-light;
+        background: var(--color-bg-light);
         border-radius: 12px;
         &-wrapper{
             width: 100%;

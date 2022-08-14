@@ -97,8 +97,8 @@
                 </div>
                 <div class="header-btns-dropdown">
                     <div class="header-btns-dropdown-head">
-                        <a class="active" href="">
-                            <span>There</span>
+                        <a class="theme-toggler">
+                            <span>Theme</span>
                             <div class="track">
                                 <span>
                                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"

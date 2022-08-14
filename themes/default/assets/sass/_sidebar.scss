@@ -1,5 +1,5 @@
 .sidebar{
-    background: $bg-light;
+    background: var(--color-bg-light);
     position: fixed;
     left: 0;
     top: 0;
@@ -52,7 +52,7 @@
             width: 96px;
             height: 40px;
             path{
-                fill: $text;
+                fill: var(--color-text);
                 transition: fill 0.4s ease-in-out;
             }
         }
@@ -72,7 +72,7 @@
             div{
                 width: 36px;
                 height: 36px;
-                background: $side-btn;
+                background: var(--color-side-btn);
                 transition: background 0.4s ease-in-out;
                 border-radius: 8px;
                 display: flex;
@@ -82,7 +82,7 @@
                     width: 24px;
                     height: 24px;
                     path{
-                        stroke: $text-gray;
+                        stroke: var(--color-text-gray);
                         transition: stroke 0.4s ease-in-out;
                     }
                 }
@@ -93,7 +93,7 @@
                 font-weight: 600;
                 font-size: 14px;
                 line-height: 24px;
-                color: $text-gray;
+                color: var(--color-text-gray);
                 transition: color 0.4s ease-in-out;
 
             }
@@ -107,7 +107,7 @@
                     }
                 }
                 span{
-                    color: $text;
+                    color: var(--color-text);
                 }
             }
         }
