@@ -4,7 +4,7 @@
     right: 0;
     top: 0;
     width: calc(100% - 284px);
-    background: $bg-light;
+    background: var(--color-bg-light);
     z-index: 20;
     &-name{
         display: flex;
@@ -24,7 +24,7 @@
                 font-weight: 700;
                 font-size: 24px;
                 line-height: 24px;
-                color: #FFFFFF;
+                color: var(--color-text);
             }
         }
         h3{
@@ -32,7 +32,7 @@
             font-weight: 700;
             font-size: 18px;
             line-height: 24px;
-            color: #FFFFFF;
+            color: var(--color-text);
             margin-left: 24px;
         }
     }
@@ -57,7 +57,7 @@
             input{
                 width: 100%;
                 padding: 12px 16px 12px 36px;
-                background: $input-bg;
+                background: var(--color-input-bg);
                 border: 1px solid $input-border;
                 border-radius: 8px;
                 font-style: normal;
@@ -94,14 +94,14 @@
                 font-size: 12px;
                 line-height: 24px;
                 text-transform: uppercase;
-                color: #A6B0C3;
+                color: var(--color-text-gray);
             }
             p{
                 font-style: normal;
                 font-weight: 600;
                 font-size: 18px;
                 line-height: 24px;
-                color: #FFFFFF;
+                color: var(--color-text);
                 span{
                     margin-right: 4px;
                 }
@@ -126,7 +126,7 @@
         border-radius: 4px;
         padding: 8px 12px;
         cursor: pointer;
-        background: $input-bg;
+        background: var(--color-input-bg);
         margin-right: 24px;
         margin-left: 24px;
         position: relative;
@@ -149,7 +149,7 @@
         }
         &-dropdown{
             position: absolute;
-            background: $bg-light;
+            background: var(--color-bg-light);
             border-radius: 12px;
             border: 1px solid $pools-text;
             top: calc(100% + 10px);
@@ -160,7 +160,7 @@
                 font-weight: 600;
                 font-size: 16px;
                 line-height: 24px;
-                color: $text-gray;
+                color: var(--color-text-gray);
                 margin-left: 0;
             }
             p{
@@ -168,7 +168,7 @@
                 font-weight: 600;
                 font-size: 16px;
                 line-height: 24px;
-                color: $text;
+                color: var(--color-text);
             }
             span + p{
                 margin-top: 8px;
@@ -223,7 +223,7 @@
         position: relative;
         &-dropdown{
             position: absolute;
-            background: $bg-light;
+            background: var(--color-bg-light);
             border-radius: 12px;
             border: 1px solid $pools-text;
             top: calc(100% + 18px);
@@ -246,12 +246,12 @@
                         font-weight: 600;
                         font-size: 16px;
                         line-height: 24px;
-                        color: $text-gray;
+                        color: var(--color-text-gray);
                     }
                     .track{
                         width: 45px;
                         height: 24px;
-                        background: $bg-dark;
+                        background: var(--color-bg-dark);
                         border-radius: 12px;
                         position: relative;
                         span{
@@ -298,14 +298,14 @@
                         font-weight: 600;
                         font-size: 16px;
                         line-height: 24px;
-                        color: $text-gray;
+                        color: var(--color-text-gray);
                     }
                     svg{
                         display: none;
                     }
                     &.active{
                         span{
-                            color: $text;
+                            color: var(--color-text);
                         }
                         svg{
                             display: block;

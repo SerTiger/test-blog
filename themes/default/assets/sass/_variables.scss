@@ -9,3 +9,29 @@ $input-border: #3D4653;
 $pools-text: #58667E;
 $pink: #FE6480;
 $fog: #323546;
+:root {
+    --color-text: #{$input-bg};
+    --color-text-gray: #{$pools-text};
+    --color-bg-dark: #{#F4F5F9};
+    --color-bg-light: #{$text};
+    --color-blue: #{$blue};
+    --color-side-btn: #{#E3EBFB};
+    --color-input-bg: #{#F4F5F9};
+    --color-input-border: #{#E4E7F0};
+    --color-pools-text: #{$pools-text};
+    --color-pink: #{$pink};
+    --color-fog: #{#fff};
+    &[data-theme='dark'] {
+        --color-text: #{$text};
+        --color-text-gray: #{$text-gray};
+        --color-bg-dark: #{$bg-dark};
+        --color-bg-light: #{$bg-light};
+        --color-blue: #{$blue};
+        --color-side-btn: #{$side-btn};
+        --color-input-bg: #{$input-bg};
+        --color-input-border: #{$input-border};
+        --color-pools-text: #{$pools-text};
+        --color-pink: #{$pink};
+        --color-fog: #{$fog};
+    };
+}

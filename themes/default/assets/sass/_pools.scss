@@ -12,7 +12,7 @@
             font-weight: 700;
             font-size: 32px;
             line-height: 24px;
-            color: $text;
+            color: var(--color-text);
             margin-bottom: 12px;
         }
         h4{
@@ -33,11 +33,11 @@
         .none-pool{
             width: 100%;
             border-radius: 12px;
-            background: $bg-light;
+            background: var(--color-bg-light);
             padding: 16px;
             &-container{
                 padding: 54px;
-                background: #1F2435;
+                background: var(--color-input-bg);
                 border: 1px dashed #58667E;
                 border-radius: 4px;
                 display: flex;
@@ -49,7 +49,7 @@
                     font-weight: 600;
                     font-size: 18px;
                     line-height: 22px;
-                    color: $text;
+                    color: var(--color-text);
                     margin-bottom: 8px;
                 }
                 h3{
@@ -65,7 +65,7 @@
                     font-weight: 600;
                     font-size: 14px;
                     line-height: 17px;
-                    color: $text-gray;
+                    color: var(--color-text-gray);
                     margin-bottom: 12px;
                 }
 
@@ -104,7 +104,7 @@
                     font-size: 14px;
                     line-height: 24px;
                     text-transform: capitalize;
-                    color: $text;
+                    color: var(--color-text);
                 }
             }
         }
@@ -131,7 +131,7 @@
                         font-weight: 700;
                         font-size: 24px;
                         line-height: 32px;
-                        color: $text;
+                        color: var(--color-text);
                         margin-bottom: 12px;
                     }
                     &-creator{
@@ -145,7 +145,7 @@
                             font-size: 16px;
                             line-height: 24px;
                             text-transform: capitalize;
-                            color: $text-gray;
+                            color: var(--color-text-gray);
                         }
                         .img-wrap{
                             margin-left: 8px;
@@ -170,7 +170,7 @@
                             font-weight: 700;
                             font-size: 16px;
                             line-height: 24px;
-                            color: $text;
+                            color: var(--color-text);
                             span{
                                 margin-left: 0;
                                 margin-right: 0;
@@ -211,7 +211,7 @@
                             font-weight: 500;
                             font-size: 16px;
                             line-height: 24px;
-                            color: $text;
+                            color: var(--color-text);
                         }
                     }
                 }
@@ -247,7 +247,7 @@
                             font-weight: 600;
                             font-size: 14px;
                             line-height: 24px;
-                            color: $text-gray;
+                            color: var(--color-text-gray);
                             margin-bottom: 8px;
                         }
                         span{
@@ -255,7 +255,7 @@
                             font-weight: 700;
                             font-size: 18px;
                             line-height: 24px;
-                            color: $text;
+                            color: var(--color-text);
                         }
                     }
                     &-item + &-item{
@@ -274,7 +274,7 @@
                         line-height: 24px;
                         text-align: right;
                         text-transform: capitalize;
-                        color: $text-gray;
+                        color: var(--color-text-gray);
                         &.end{
                             color: $pink;
                         }
@@ -291,13 +291,13 @@
                 }
                 &-desc{
                     h2,p,span{
-                        color: $text-gray;
+                        color: var(--color-text-gray);
                     }
                     .timer{
-                        border: 1px solid $text-gray;
+                        border: 1px solid var(--color-text-gray);
                         svg{
                             path{
-                                stroke: $text-gray;
+                                stroke: var(--color-text-gray);
                             }
                         }
                     }
@@ -329,7 +329,7 @@
             font-size: 40px;
             line-height: 49px;
             text-align: center;
-            color: $text;
+            color: var(--color-text);
             margin-top: -60px;
             margin-bottom: 24px;
         }
@@ -339,7 +339,7 @@
             font-size: 16px;
             line-height: 19px;
             text-align: center;
-            color: $text-gray;
+            color: var(--color-text-gray);
         }
         span{
             margin-top: 24px;
@@ -349,7 +349,7 @@
             font-size: 24px;
             line-height: 29px;
             text-align: center;
-            color: $text;
+            color: var(--color-text);
         }
     }
 }

@@ -13,16 +13,40 @@ $(window).on("load", () => {
 });
 
 $(document).ready(() => {
-    $('.await-notification-close').on('click', function (){
+    $('.await-notification-close').on('click', function () {
         $(this).parents('.await-notification').removeClass('active')
+    })
+    let root = document.querySelector(':root');
+    if (localStorage.getItem('theme')) {
+        let theme = localStorage.getItem('theme')
+        if (theme !== 'light') {
+            $('.theme-toggler').addClass('active')
+            root.setAttribute('data-theme', 'dark')
+        } else {
+            $('.theme-toggler').removeClass('active')
+            root.setAttribute('data-theme', 'light')
+        }
+    } else {
+        localStorage.setItem('theme', 'light')
+        root.setAttribute('data-theme', 'light')
+    }
+    $('.theme-toggler').on('click', function () {
+        $(this).toggleClass('active')
+        if ($(this).hasClass('active')) {
+            localStorage.setItem('theme', 'dark')
+            root.setAttribute('data-theme', 'dark')
+        } else {
+            localStorage.setItem('theme', 'light')
+            root.setAttribute('data-theme', 'light')
+        }
     })
 })
 $('[data-toggle="datepicker"]').datepicker({
     startView: 2,
 });
-$('.header-wallet-wrap').on('click', function (){
+$('.header-wallet-wrap').on('click', function () {
     $('.header-wallet-dropdown').slideToggle()
 })
-$('.header-btns-wrap').on('click', function (){
+$('.header-btns-wrap').on('click', function () {
     $('.header-btns-dropdown').slideToggle()
 })
