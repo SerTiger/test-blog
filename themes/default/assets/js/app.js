@@ -27,8 +27,8 @@ $(document).ready(() => {
             root.setAttribute('data-theme', 'light')
         }
     } else {
-        localStorage.setItem('theme', 'light')
-        root.setAttribute('data-theme', 'light')
+        localStorage.setItem('theme', 'dark')
+        root.setAttribute('data-theme', 'dark')
     }
     $('.theme-toggler').on('click', function () {
         $(this).toggleClass('active')

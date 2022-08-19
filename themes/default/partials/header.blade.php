@@ -49,6 +49,7 @@
                 </svg>
                 <span>Create Pool</span>
             </a>
+            @auth
             <div class="header-wallet">
                 <div class="header-wallet-wrap">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,27 +60,28 @@
                             d="M16.875 14.625C17.4963 14.625 18 14.1213 18 13.5C18 12.8787 17.4963 12.375 16.875 12.375C16.2537 12.375 15.75 12.8787 15.75 13.5C15.75 14.1213 16.2537 14.625 16.875 14.625Z"
                             fill="#008DFF"/>
                     </svg>
-                    @auth
-                        <a class="header-link-btn" href="/logout">
+                        <a class="header-link-btn" href="/">
                             <span>{{ $CURRENT_USER->address_masked }}</span>
                         </a>
-                    @endauth
                 </div>
                 <div class="header-wallet-dropdown">
                     <div class="header-wallet-dropdown-head">
                         <span>ADDRESS</span>
-                        <p>0x3e36****d793c</p>
+                        <p>{{ $CURRENT_USER->address_masked }}</p>
                         <a href="/">View Transacton</a>
                     </div>
                     <div class="header-wallet-dropdown-body">
                         <p>ETH Mainet</p>
+
                         <span>Network</span>
-                        <a href="/">
+                        <a href="/logout">
                             <span>Disconnect wallet</span>
                         </a>
                     </div>
+
                 </div>
             </div>
+            @endauth
             <div class="header-btns">
                 <div class="header-btns-wrap">
                     <a>
