@@ -1,0 +1,118 @@
+.sidebar{
+    background: $bg-light;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    max-width: 284px;
+    width: 100%;
+    &-container{
+        height: 100%;
+        width: 100%;
+        padding: 32px 47px 44px 47px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    &-top{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+    &-bot{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        a{
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            svg{
+                width: 22px;
+                height: 22px;
+            }
+        }
+    }
+    &-logo{
+        text-decoration: none;
+        cursor: pointer;
+        display: inline-block;
+        &:hover{
+            svg{
+                path{
+                    fill: $blue;
+                }
+            }
+        }
+        svg{
+            width: 96px;
+            height: 40px;
+            path{
+                fill: $text;
+                transition: fill 0.4s ease-in-out;
+            }
+        }
+    }
+    &-nav{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        margin-top: 45px;
+        a{
+            text-decoration: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            div{
+                width: 36px;
+                height: 36px;
+                background: $side-btn;
+                transition: background 0.4s ease-in-out;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                svg{
+                    width: 24px;
+                    height: 24px;
+                    path{
+                        stroke: $text-gray;
+                        transition: stroke 0.4s ease-in-out;
+                    }
+                }
+            }
+            span{
+                margin-left: 12px;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 24px;
+                color: $text-gray;
+                transition: color 0.4s ease-in-out;
+
+            }
+            &.active, &:hover{
+                div{
+                    background: $blue;
+                    svg{
+                        path{
+                            stroke: $text;
+                        }
+                    }
+                }
+                span{
+                    color: $text;
+                }
+            }
+        }
+        a + a{
+            margin-top: 16px;
+        }
+    }
+}

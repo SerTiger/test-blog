@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\TablesBuilderServiceProvider::class,
         App\Providers\MetaServiceProvider::class,
+        App\Providers\ViewServiceProvider::class,
 
     ],
 

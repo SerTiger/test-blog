@@ -19273,11 +19273,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Sign",
-  created: function created() {},
   mounted: function mounted() {
     this.login = false;
   },
-  props: ['link'],
+  props: {
+    'link': {
+      "default": undefined
+    }
+  },
   data: function data() {
     return ['loading', 'signature', 'login', 'message', 'address'];
   },
@@ -19351,7 +19354,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     href: "#",
     "class": "btn-blue"
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])]);
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")]);
 }
 
 /***/ }),

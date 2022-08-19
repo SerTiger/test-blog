@@ -20,8 +20,13 @@ class CreateCompaniesTable extends Migration
             $table->boolean('status')->default(true);
             $table->unsignedBigInteger('owner_id');
 
-            $table->string('title')->nullable();
+            $table->string('name')->nullable();
             $table->text('description')->nullable();
+            $table->text('logo')->nullable();
+            $table->text('website')->nullable();
+            $table->string('email')->nullable();
+
+            $table->json('contacts')->nullable();
 
             $table->timestamps();
 
@@ -57,7 +62,9 @@ class CreateCompaniesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('company_translations');
         Schema::dropIfExists('companies');
+        Schema::enableForeignKeyConstraints();
     }
 }

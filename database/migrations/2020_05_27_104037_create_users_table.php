@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name')->nullable();
             $table->string('second_name')->nullable();
             $table->string('email')->nullable();
-            $table->string('eth_address')->index()->nullable();
+            $table->string('auth_address')->index()->nullable();
             $table->string('phone')->nullable();
             $table->string('country')->nullable();
             $table->string('country_code')->nullable();
@@ -32,6 +32,26 @@ class CreateUsersTable extends Migration
 
             $table->unique('email','eth_address');
         });
+
+        Schema::create('wallets', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+
+            $table->string('address')->index();
+            $table->string('chainid')->nullable();
+            $table->string('currency')->nullable();
+            $table->string('network')->nullable();
+
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->unique(['user_id', 'address']);
+            $table->foreign('user_id')->references('id')
+                ->on('users')
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
+        });
+
     }
 
     /**

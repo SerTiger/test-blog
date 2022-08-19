@@ -1,78 +1,143 @@
 <header id="header" class="header">
-    <div class="header-wrap">
-        <div class="header-container">
-            <a href="/" class="header-logo">
-                <svg width="129" height="59" viewBox="0 0 129 59" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M21.1718 40.3741C32.8647 40.3741 42.3436 31.3361 42.3436 20.1871C42.3436 9.03806 32.8647 0 21.1718 0C9.47894 0 0 9.03806 0 20.1871C0 31.3361 9.47894 40.3741 21.1718 40.3741ZM21.1711 38.4045C29.057 38.4045 35.4498 30.2482 35.4498 20.1869C35.4498 10.1256 29.057 1.96928 21.1711 1.96928C13.2852 1.96928 6.89247 10.1256 6.89247 20.1869C6.89247 30.2482 13.2852 38.4045 21.1711 38.4045Z" fill="white"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M107.828 40.3741C119.521 40.3741 129 31.3361 129 20.1871C129 9.03806 119.521 0 107.828 0C96.1352 0 86.6562 9.03806 86.6562 20.1871C86.6562 31.3361 96.1352 40.3741 107.828 40.3741ZM107.827 38.4045C115.713 38.4045 122.106 30.2482 122.106 20.1869C122.106 10.1256 115.713 1.96928 107.827 1.96928C99.9415 1.96928 93.5487 10.1256 93.5487 20.1869C93.5487 30.2482 99.9415 38.4045 107.827 38.4045Z" fill="white"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M65.4755 15.6937L78.0014 0.984131H81.7331L67.2465 17.9961L83.7025 39.3888H75.8246L63.1075 22.8566L49.0295 39.3888H45.2979L61.3365 20.5542L46.2825 0.984131H54.1604L65.4755 15.6937Z" fill="white"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M42.3437 52.793C42.3444 52.7566 42.3448 52.7202 42.3448 52.6836C42.3448 52.6471 42.3444 52.6106 42.3437 52.5742V52.793ZM41.7543 55.1452C40.8579 56.899 39.0335 58.0997 36.9287 58.0997C33.9375 58.0997 31.5127 55.6748 31.5127 52.6836C31.5127 49.6924 33.9375 47.2676 36.9287 47.2676C39.0334 47.2676 40.8576 48.468 41.7541 50.2216H40.6962C39.9896 49.0341 38.7863 48.2523 37.4207 48.2523C35.2453 48.2523 33.4818 50.2362 33.4818 52.6836C33.4818 55.1309 35.2453 57.1149 37.4207 57.1149C38.7865 57.1149 39.9899 56.3329 40.6965 55.1452H41.7543Z" fill="white"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M56.6226 47.2673H55.1455V57.1147H56.6226V53.1763H59.0842C60.7157 53.1763 62.0384 51.8537 62.0384 50.2221C62.0384 48.5906 60.7157 47.2679 59.0842 47.2679H56.6226V47.2673ZM56.6226 47.7603V52.6839H58.0994C59.1871 52.6839 60.0689 51.5817 60.0689 50.2221C60.0689 48.8625 59.1871 47.7603 58.0994 47.7603H56.6226Z" fill="white"/>
-                    <path d="M64.501 47.2673H65.9781V57.1147H64.501V47.2673Z" fill="white"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M72.3794 47.2676H68.9326V48.2523H72.3794V57.1149H73.8565V48.2523H77.1059V47.2676H73.8565H72.3794Z" fill="white"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M47.269 47.2673H48.2538L48.2537 47.2675H48.7453L52.6842 57.1149H51.2071L50.0254 54.1605H45.4965L44.3148 57.1147H43.3301L47.2685 47.2685L47.2682 47.2675H47.2689L47.269 47.2673ZM47.7609 48.4994L45.8904 53.1758H49.6315L47.7609 48.4994Z" fill="white"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M82.7182 47.2673H83.703L83.7029 47.2675H84.1948L88.1337 57.1148H86.6566L85.4749 54.1605H80.9457L79.764 57.1147H78.7793L82.7179 47.2681L82.7177 47.2675H82.7182L82.7182 47.2673ZM83.2103 48.499L81.3396 53.1758H85.081L83.2103 48.499Z" fill="white"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M92.0728 47.2676H90.5957V57.1149H92.0728V57.1146H96.504V56.1299H92.0728V47.2676Z" fill="white"/>
-                </svg>
-            </a>
-
-            <div class="header-link-container">
-                <a class="header-link {{ active_class('portfolio') }}" href="/portfolio">Portfolio</a>
-                <div class="header-link">
-                    <span>Areas</span>
-                    <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L6 6L11 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <div class="header-link-bar">
-                        <a class="{{ active_class('cross-chain') }}" href="/cross-chain">Cross Chain</a>
-                        <a class="{{ active_class('defi') }}" href="/defi">DeFi</a>
-                        <a class="{{ active_class('metaverse') }}" href="/metaverse">MetaVerse</a>
-                        <a class="{{ active_class('gaming') }}" href="/gaming">Gaming</a>
-                        <a class="{{ active_class('nft') }}" href="/nft">NFTs</a>
-                    </div>
+    <div class="header-container">
+        <div class="header-left">
+            <div class="header-name">
+                <div class="header-name-ico">
+                    @if($CURRENT_COMPANY->logo )
+                    <span>{{ ucfirst(mb_strimwidth($CURRENT_COMPANY->name,0,1)) }}</span>
+                    @else
+                        <img src="{{ $CURRENT_COMPANY->logo }}" title="{{ $CURRENT_COMPANY->name }}" alt="{{ $CURRENT_COMPANY->name }}" />
+                    @endif
                 </div>
-                <a class="header-link {{ active_class('about') }}" href="/about" >About</a>
-                <a class="header-link {{ active_class('contact') }}" href="/contact">Contact</a>
-                <a class="header-link-btn" href="/choose">
-                    <span>Invest & Inquiry</span>
-                </a>
-                @auth
-                    <a class="header-link-btn" href="/logout">
-                        <span>{{ auth()->user()->eth_address }} | logout</span>
-                    </a>
-                @endauth
-                <div class="burger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <h3>{{ $CURRENT_COMPANY->name }}</h3>
+            </div>
+            <div class="header-search">
+                <label>
+                    <span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path
+    d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z"
+    stroke="#58667E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M14.0006 13.9996L11.1006 11.0996" stroke="#58667E" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round"/>
+</svg>
+                    </span>
+                    <input type="text" placeholder="Search for Pool or Organizations">
+                </label>
+            </div>
+            <div class="header-counter">
+                <div class="header-counter-item">
+                    <span>Total invested</span>
+                    <p><span>$</span>1337</p>
+                </div>
+                <div class="header-counter-item">
+                    <span>Contributions</span>
+                    <p><span>$</span>228</p>
+                </div>
+                <div class="header-counter-item">
+                    <span>Projects</span>
+                    <p>3</p>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="burger-menu">
-        <div class="burger-menu-wrap">
-            <div class="burger-menu-head">
-                <div class="close-burger">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 13.7279L13.7279 0.999981" stroke="#EAECEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M1 1L13.7279 13.7279" stroke="#EAECEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <div class="header-right">
+            <a href="/" class="btn-blue">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="12" fill="white"/>
+                    <rect x="11" y="6" width="2" height="12" rx="1" fill="#0187FF"/>
+                    <rect x="18" y="11" width="2" height="12" rx="1" transform="rotate(90 18 11)" fill="#0187FF"/>
+                </svg>
+                <span>Create Pool</span>
+            </a>
+            <div class="header-wallet">
+                <div class="header-wallet-wrap">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M3.75 6V18C3.75 18.3978 3.90804 18.7794 4.18934 19.0607C4.47064 19.342 4.85218 19.5 5.25 19.5H20.25C20.4489 19.5 20.6397 19.421 20.7803 19.2803C20.921 19.1397 21 18.9489 21 18.75V8.25C21 8.05109 20.921 7.86032 20.7803 7.71967C20.6397 7.57902 20.4489 7.5 20.25 7.5H5.25C4.85218 7.5 4.47064 7.34196 4.18934 7.06066C3.90804 6.77936 3.75 6.39782 3.75 6ZM3.75 6C3.75 5.60218 3.90804 5.22064 4.18934 4.93934C4.47064 4.65804 4.85218 4.5 5.25 4.5H18"
+                            stroke="#008DFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path
+                            d="M16.875 14.625C17.4963 14.625 18 14.1213 18 13.5C18 12.8787 17.4963 12.375 16.875 12.375C16.2537 12.375 15.75 12.8787 15.75 13.5C15.75 14.1213 16.2537 14.625 16.875 14.625Z"
+                            fill="#008DFF"/>
                     </svg>
+                    @auth
+                        <a class="header-link-btn" href="/logout">
+                            <span>{{ $CURRENT_USER->address_masked }}</span>
+                        </a>
+                    @endauth
+                </div>
+                <div class="header-wallet-dropdown">
+                    <div class="header-wallet-dropdown-head">
+                        <span>ADDRESS</span>
+                        <p>0x3e36****d793c</p>
+                        <a href="/">View Transacton</a>
+                    </div>
+                    <div class="header-wallet-dropdown-body">
+                        <p>ETH Mainet</p>
+                        <span>Network</span>
+                        <a href="/">
+                            <span>Disconnect wallet</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="burger-menu-link-container">
-                <a class="big" href="/portfolio">Portfolio</a>
-                <span>Areas</span>
-            </div>
-            <div class="burger-menu-link-container">
-                <a class="active" href="/cross-chain">Cross Chain</a>
-                <a href="/defi">DeFi</a>
-                <a href="/metaverse">MetaVerse</a>
-                <a href="/gaming">Gaming</a>
-                <a href="/nft">NFTs</a>
-            </div>
-            <div class="burger-menu-link-container">
-                <a class="big" href="/about">About</a>
-                <a class="big" href="/contact">Contact</a>
+            <div class="header-btns">
+                <div class="header-btns-wrap">
+                    <a>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M8 14C11.3137 14 14 11.3137 14 8C14 4.68629 11.3137 2 8 2C4.68629 2 2 4.68629 2 8C2 11.3137 4.68629 14 8 14Z"
+                                stroke="#58667E" stroke-width="1.5" stroke-miterlimit="10"/>
+                            <path d="M2 8H14" stroke="#58667E" stroke-width="1.5" stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                            <path
+                                d="M8 13.839C9.38071 13.839 10.5 11.2248 10.5 8.00007C10.5 4.77531 9.38071 2.16113 8 2.16113C6.61929 2.16113 5.5 4.77531 5.5 8.00007C5.5 11.2248 6.61929 13.839 8 13.839Z"
+                                stroke="#58667E" stroke-width="1.5" stroke-miterlimit="10"/>
+                        </svg>
+                    </a>
+                    <span>/</span>
+                    <a>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M13.5414 9.55072C12.5599 9.82346 11.5236 9.83064 10.5384 9.57153C9.55318 9.31243 8.65447 8.79632 7.93415 8.076C7.21382 7.35567 6.69771 6.45697 6.4386 5.47178C6.17949 4.48659 6.18667 3.45026 6.4594 2.46875L6.45956 2.4688C5.49148 2.73811 4.61086 3.25637 3.90542 3.97197C3.19999 4.68756 2.69437 5.5755 2.43892 6.54733C2.18348 7.51917 2.18714 8.54097 2.44952 9.51095C2.71191 10.4809 3.22387 11.3652 3.93441 12.0758C4.64494 12.7863 5.52925 13.2982 6.49923 13.5606C7.46921 13.823 8.49102 13.8266 9.46285 13.5712C10.4347 13.3157 11.3226 12.8101 12.0382 12.1047C12.7538 11.3992 13.272 10.5186 13.5413 9.55052L13.5414 9.55072Z"
+                                stroke="#58667E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="header-btns-dropdown">
+                    <div class="header-btns-dropdown-head">
+                        <a class="active" href="">
+                            <span>There</span>
+                            <div class="track">
+                                <span>
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+<path
+    d="M11.8487 8.35688C10.9899 8.59553 10.0831 8.60181 9.22107 8.37509C8.35903 8.14837 7.57266 7.69678 6.94238 7.0665C6.31209 6.43621 5.8605 5.64985 5.63378 4.78781C5.40705 3.92576 5.41333 3.01897 5.65197 2.16016L5.65211 2.1602C4.80504 2.39585 4.0345 2.84933 3.41724 3.47547C2.79999 4.10161 2.35757 4.87856 2.13406 5.72892C1.91055 6.57927 1.91374 7.47335 2.14333 8.32208C2.37292 9.17081 2.82089 9.94458 3.44261 10.5663C4.06432 11.188 4.83809 11.636 5.68683 11.8655C6.53556 12.0951 7.42964 12.0983 8.27999 11.8748C9.13034 11.6513 9.90729 11.2088 10.5334 10.5916C11.1596 9.97432 11.613 9.20377 11.8487 8.3567L11.8487 8.35688Z"
+    stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="header-btns-dropdown-body">
+                        <a class="active" href="">
+                            <span>Englih</span>
+                            <svg width="15" height="11" viewBox="0 0 15 11" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 3.85714L6.08696 9L14 1" stroke="#008DFF" stroke-width="2"
+                                      stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                        <a href="">
+                            <span>Русский</span>
+                            <svg width="15" height="11" viewBox="0 0 15 11" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 3.85714L6.08696 9L14 1" stroke="#008DFF" stroke-width="2"
+                                      stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

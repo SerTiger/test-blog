@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use YAAP\Theme\Facades\Theme;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,23 +16,8 @@ use YAAP\Theme\Facades\Theme;
 Theme::init('default');
 
 Route::get('/', function () {
-    return view('hello');
+    return view('main');
 })->name('home');
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
-Route::get('/privacy-policy', function () {
-    return view('policy');
-})->name('privacy-policy');
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-Route::get('/portfolio', function () {
-    return view('portfolio');
-})->name('portfolio');
-Route::get('/choose', function () {
-    return view('choose');
-})->name('choose');
 
 Route::get('/invest-first', [\App\Http\Controllers\Front\InvestController::class, 'invest_first'])
     ->middleware('web')
@@ -43,47 +29,10 @@ Route::any('/invest-thanks', [\App\Http\Controllers\Front\InvestController::clas
     ->middleware('web')
     ->name('invest-thanks');
 
-
-Route::get('/inquire-first', function () {
-    return view('inquire-first');
-})->name('inquire-first');
-Route::get('/inquire-second', function () {
-    return view('inquire-second');
-})->name('inquire-second');
-
-
-Route::get('/thanks', function () {
-    return view('thanks');
-})->name('thanks');
-
-
-Route::get('/cross-chain', function () {
-    return view('crosschain');
-})->name('cross-chain');
-Route::get('/defi', function () {
-    return view('defi');
-})->name('defi');
-Route::get('/metaverse', function () {
-    return view('metaverse');
-})->name('metaverse');
-Route::get('/gaming', function () {
-    return view('gaming');
-})->name('gaming');
-Route::get('/nft', function () {
-    return view('nft');
-})->name('nft');
-
 Route::middleware(['web'])
     ->group(function () {
 
-    Route::get('/admin/login', [\App\Http\Controllers\Backend\AuthController::class, 'showLoginForm'])
-        ->middleware('guest:web');
-
-    Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])
-        ->name('login')
-        ->middleware('guest:web');
-
-    Route::get('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])
+    Route::get('/logout', [\App\Http\Controllers\Admin\AuthController::class, 'admin.logout'])
         ->name('logout')
         ->middleware('auth');
 });
@@ -92,19 +41,84 @@ Route::middleware(['web'])
     ->prefix('metamask')
     ->group(function () {
 
-    Route::get('/ethereum/signature', [\App\Http\Controllers\Web3AuthController::class, 'signature'])
+    Route::get('/ethereum/signature', [\App\Http\Controllers\Auth\AuthController::class, 'signature'])
         ->name('metamask.signature')
         ->middleware('guest:web');
 
-    Route::post('/ethereum/authenticate', [\App\Http\Controllers\Web3AuthController::class, 'authenticate'])
+    Route::post('/ethereum/authenticate', [\App\Http\Controllers\Auth\AuthController::class, 'login'])
         ->middleware(['guest:web'])
         ->name('metamask.authenticate');
 
-    Route::post('/transaction/create', [\App\Http\Controllers\Web3AuthController::class, 'createTransaction'])
-        ->middleware(['guest:web'])
-        ->name('metamask.transaction.create');
+    Route::middleware(['auth'])
+        ->group(function () {
 
-    Route::post('/transaction/list', [\App\Http\Controllers\Web3AuthController::class, 'listTransaction'])
-        ->middleware(['guest:web'])
-        ->name('metamask.transaction.list');
+            Route::post('/transaction/create', [\App\Http\Controllers\Auth\Web3AuthController::class, 'createTransaction'])
+                ->middleware(['guest:web'])
+                ->name('metamask.transaction.create');
+
+            Route::post('/transaction/list', [\App\Http\Controllers\Auth\Web3AuthController::class, 'listTransaction'])
+                ->middleware(['guest:web'])
+                ->name('metamask.transaction.list');
+
+        });
+});
+
+Route::middleware(['web','auth'])
+    ->prefix('organization')
+    ->group(function () {
+
+        Route::get('/create', [\App\Http\Controllers\Front\CompanyController::class, 'create'])
+            ->name('organization.create');
+
+        Route::post('/create', [\App\Http\Controllers\Front\CompanyController::class, 'store'])
+            ->name('organization.store');
+
+    });
+
+Route::middleware(['web','auth','has.company'])
+    ->group(function () {
+
+        Route::middleware(['has.company'])
+            ->group(function () {
+
+                Route::prefix('profile')
+                    ->group(function () {
+
+                        Route::post('/', [\App\Http\Controllers\Front\CompanyController::class, 'update']);
+
+                    });
+
+                Route::get('/create_pool', function () {
+                    return view('create_pool');
+                });
+
+                Route::get('/pools',  [\App\Http\Controllers\Front\PoolController::class, 'index'])
+                    ->name('company.pools');
+
+            });
+
+
+        Route::get('/pool', function () {
+            return view('pool');
+        });
+        Route::get('/profile', function () {
+            return view('profile');
+        });
+
+        Route::get('/contributions', function () {
+            return view('contributions');
+        })->name('profile.contributions');
+    });
+
+
+
+
+Route::get('/loading', function () {
+    return view('loading');
+});
+Route::get('/await', function () {
+    return view('await');
+});
+Route::get('/admin-profile', function () {
+    return view('admin-profile');
 });

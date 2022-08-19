@@ -23,8 +23,18 @@ class Company extends Model
 
     protected $fillable = [
         'owner_id',
-        'title',
-        'description',
+        "name",
+        "description",
+        "logo",
+        "website",
+        "email",
+        "contacts",
+//        "discord",
+//        "telegram",
+    ];
+
+    protected $casts = [
+        'contacts'=>'json'
     ];
 
     public function owner(): \Illuminate\Database\Eloquent\Relations\BelongsTo

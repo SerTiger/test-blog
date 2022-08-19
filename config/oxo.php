@@ -23,4 +23,19 @@ return array(
             'coin' => ['USDT','BUSD','USDC'],
         ],
     ],
+
+    'homepage' => [
+        'auth' => 'company.pools',
+        'guest' => 'home',
+    ],
+
+    'socials' => [
+        'tg' => '/',
+        'insta' => '/',
+        'fb' => '/',
+        'vk' => NULL,
+        'youtube' => '/',
+    ],
+
+
 );

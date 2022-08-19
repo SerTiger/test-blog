@@ -37,6 +37,7 @@ mix.scripts([
 // mix for default theme
 mix.copyDirectory('themes/default/assets/img', 'public/themes/default/img');
 mix.copyDirectory('themes/default/assets/fonts', 'public/themes/default/fonts');
+mix.copyDirectory('resources/ckeditor', 'public/ckeditor');
 // js
 mix.js(['themes/default/assets/js/app.js'], 'public/themes/default/js/app.min.js')
 //sass

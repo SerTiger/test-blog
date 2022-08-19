@@ -1,7 +1,7 @@
-require('./contact')
-require('./invest_first')
-require('./inquire_first')
-require('./inquire_second')
+require('./create_organization.js')
+require('./pool.js')
+require('./create_pool.js')
+require('./profile.js')
 import Web3 from 'web3/dist/web3.min.js'
 window.Web3 = Web3;
 
@@ -13,31 +13,16 @@ $(window).on("load", () => {
 });
 
 $(document).ready(() => {
-    AOS.init({
-        disable: function () {
-            const maxWidth = 700;
-            return window.innerWidth <= maxWidth;
-        }
-    });
-    window.addEventListener('scroll',()=>{
-        window.scrollY > 130 ? $('.header').addClass('fixed') : $('.header').removeClass('fixed')
+    $('.await-notification-close').on('click', function (){
+        $(this).parents('.await-notification').removeClass('active')
     })
-    window.scrollY > 130 ? $('.header').addClass('fixed') : ''
-    $('.scroll-down').on('click', function (){
-        window.scrollTo({
-            top: 700,
-            behavior: "smooth"
-        });
-    })
-    $('.select').select2({
-        minimumResultsForSearch: -1
-    })
-    $('.burger').on('click', function (){
-        $('.burger-menu').addClass('active')
-        $('body').addClass('fixed-body')
-    })
-    $('.close-burger').on('click', function (){
-        $('.burger-menu').removeClass('active')
-        $('body').removeClass('fixed-body')
-    })
+})
+$('[data-toggle="datepicker"]').datepicker({
+    startView: 2,
+});
+$('.header-wallet-wrap').on('click', function (){
+    $('.header-wallet-dropdown').slideToggle()
+})
+$('.header-btns-wrap').on('click', function (){
+    $('.header-btns-dropdown').slideToggle()
 })

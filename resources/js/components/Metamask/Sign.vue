@@ -1,18 +1,18 @@
 <template>
     <a @click="signature()" href="#" class="btn-blue">
-        <span><slot></slot></span>
+        <slot></slot>
     </a>
 </template>
 
 <script>
     export default {
         name: "Sign",
-        created: function () {
-        },
         mounted: function () {
             this.login = false;
         },
-        props: ['link'],
+        props: {
+            'link': { default: undefined }
+        },
         data(){
             return [
                 'loading',

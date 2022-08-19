@@ -20,7 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'eth_address',
+        'auth_address',
         'password',
     ];
 
@@ -50,6 +50,21 @@ class User extends Authenticatable
 
     public function pools(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Pool::class);
+        return $this->hasMany(Pool::class,'owner_id');
+    }
+
+    public function company(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Company::class,'owner_id');
+    }
+
+    public function wallets(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Wallet::class);
+    }
+
+    public function getAddressMaskedAttribute() {
+
+        return implode('...',[substr($this->auth_address,0,5),substr($this->auth_address,-4)]);
     }
 }
