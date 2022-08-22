@@ -12,7 +12,6 @@ return [
     */
     'locales'            => [
         'ua',
-        'ru',
         'en',
     ],
 

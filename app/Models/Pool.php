@@ -4,9 +4,11 @@ namespace App\Models;
 
 use App\Models\Traits\PositionSortedTrait;
 use App\Models\Traits\VisibleTrait;
+use App\Models\Traits\WithStatuses;
 use App\Models\Traits\WithTranslationsTrait;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Pool extends Model
 {
@@ -14,10 +16,21 @@ class Pool extends Model
     use VisibleTrait;
     use WithTranslationsTrait;
     use PositionSortedTrait;
+    use WithStatuses;
+
+    public $statuses = [
+        0 => 'new',
+        1 => 'active',
+        2 => 'pause',
+
+        8 => 'ended',
+        9 => 'closed'
+    ];
 
     public  $translatedAttributes = [
         'title',
         'description',
+
         'meta_title',
         'meta_keywords',
         'meta_description',
@@ -26,30 +39,49 @@ class Pool extends Model
     protected $fillable = [
         'status',
         'position',
-        'slug',
+        'uuid',
 
         'owner_id',
         'company_id',
 
         'address',
         'network',
-        'coin',
-
+        'currency',
         'amount',
-        'date_start',
-        'date_end',
+        'supported',
 
-        'setting_contact',
-        'setting_display',
+        'start_date',
+        'end_date',
+
+        'rules',
+        'collect',
+        'show_total_cap',
+        'show_progress',
+        'image',
+
+        'title',
+        'description',
     ];
 
     protected $casts = [
-        'date_start' => 'datetime',
-        'date_end' => 'datetime',
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
 
-        'setting_contact' => 'json',
-        'setting_display' => 'json',
+        'rules' => 'json',
+        'collect' => 'json',
+
+        'supported' => 'array',
     ];
+
+    protected $guarded = [];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            $model->uuid = (string) Str::uuid();
+        });
+    }
 
     public function owner()
     {

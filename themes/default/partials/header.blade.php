@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="header-right">
-            <a href="/" class="btn-blue">
+            <a href="{{ route('pool.create') }}" class="btn-blue">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="12" fill="white"/>
                     <rect x="11" y="6" width="2" height="12" rx="1" fill="#0187FF"/>
@@ -60,25 +60,21 @@
                             d="M16.875 14.625C17.4963 14.625 18 14.1213 18 13.5C18 12.8787 17.4963 12.375 16.875 12.375C16.2537 12.375 15.75 12.8787 15.75 13.5C15.75 14.1213 16.2537 14.625 16.875 14.625Z"
                             fill="#008DFF"/>
                     </svg>
-                        <a class="header-link-btn" href="/">
-                            <span>{{ $CURRENT_USER->address_masked }}</span>
-                        </a>
+                    <span>{{ $CURRENT_USER->address_masked }}</span>
                 </div>
                 <div class="header-wallet-dropdown">
                     <div class="header-wallet-dropdown-head">
-                        <span>ADDRESS</span>
+                        <span>@lang('ADDRESS')</span>
                         <p>{{ $CURRENT_USER->address_masked }}</p>
                         <a href="/">View Transacton</a>
                     </div>
                     <div class="header-wallet-dropdown-body">
-                        <p>ETH Mainet</p>
-
+                        <p>{{ $CURRENT_WALLET->network }}</p>
                         <span>Network</span>
                         <a href="/logout">
-                            <span>Disconnect wallet</span>
+                            <span>@lang('Disconnect wallet')</span>
                         </a>
                     </div>
-
                 </div>
             </div>
             @endauth
@@ -108,7 +104,7 @@
                 <div class="header-btns-dropdown">
                     <div class="header-btns-dropdown-head">
                         <a class="theme-toggler">
-                            <span>Theme</span>
+                            <span>@lang('Theme')</span>
                             <div class="track">
                                 <span>
                                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
@@ -122,22 +118,16 @@
                         </a>
                     </div>
                     <div class="header-btns-dropdown-body">
-                        <a class="active" href="">
-                            <span>Englih</span>
-                            <svg width="15" height="11" viewBox="0 0 15 11" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 3.85714L6.08696 9L14 1" stroke="#008DFF" stroke-width="2"
-                                      stroke-linecap="round"/>
-                            </svg>
-                        </a>
-                        <a href="">
-                            <span>Русский</span>
-                            <svg width="15" height="11" viewBox="0 0 15 11" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 3.85714L6.08696 9L14 1" stroke="#008DFF" stroke-width="2"
-                                      stroke-linecap="round"/>
-                            </svg>
-                        </a>
+                        @foreach(supported_locales() as $locale => $properties)
+                            <a rel="alternate" hreflang="{{ $locale }}" class="{{ $CURRENT_LOCALE == $locale ? 'active' : '' }}" href="{{ localize_url($locale) }}">
+                                <span>{{ $properties['native'] }}</span>
+                                <svg width="15" height="11" viewBox="0 0 15 11" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 3.85714L6.08696 9L14 1" stroke="#008DFF" stroke-width="2"
+                                          stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
             </div>

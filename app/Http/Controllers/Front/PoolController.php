@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pool;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,49 +19,109 @@ class PoolController extends Controller
         return $this->render('pool.pools');
     }
 
+    public function create(Request $request)
+    {
+        $this->data('pool', NULL);
+
+        return $this->render('pool.create_pool');
+    }
+
     public function store(Request $request)
     {
         $user = auth()->user();
 
-        $company = $user->company;
-
-        if($company) {
-            return redirect()->route(config('oxo.homepage.auth'));
-        }
+        $pool = $user->pools()->findOrNew($request->get('id'));
 
         $dto = $request->all();
-        $company = $user->company()->create($dto);
+        $dto['company_id'] = $user->company->id;
 
-        $logo = Storage::disk('files')->putFile(
-            $company->id,
-            $request->file('logo')
-        );
-        $user->company()->update(['logo' => $logo]);
+        $pool->fill($dto);
+        $rules = [];
+        foreach ($dto['rules'] as $rule_str)
+            $rules[] = json_decode($rule_str);
+        $pool->rules = $rules;
 
-        return redirect()->route(config('oxo.homepage.auth'));
+        $rules = collect($rules);
+        $pool->start_date = $rules
+            ->pluck('start_date')
+            ->map(function($date) {
+                return carbon($date);
+            })->min();
+        $pool->end_date = $rules
+            ->pluck('end_date')
+            ->map(function($date) {
+                return carbon($date);
+            })->max();
+
+        $pool->save();
+
+        if ($request->file('image')) {
+            $image = Storage::disk('files')->putFile(
+                'pools/' . $pool->id,
+                $request->file('image')
+            );
+            $pool->update(['image' => $image]);
+        }
+
+        return $request->ajax()
+            ? response()->json(['redirect' => route('company.pools')])
+            : redirect()->route('company.pools');
     }
 
-    public function update(Request $request)
+    public function edit($uuid, Request $request)
     {
         $user = auth()->user();
 
-        $company = $user->company;
+        $pool =  $user->pools()->where('uuid',$uuid)->first();
 
-        if($company) {
-            return redirect()->route(config('oxo.homepage.auth'));
-        }
+        if(!$pool) abort(404);
+
+        $this->data('pool',$pool);
+
+        return $this->render('pool.create_pool');
+    }
+
+    public function update($uuid, Request $request)
+    {
+        $user = auth()->user();
 
         $dto = $request->all();
-        $dto['company_id'] = $company->id;
+        $dto['company_id'] = $user->company->id;
 
-        $logo = Storage::disk('files')->putFile(
-            $company->id,
-            $request->file('logo')
-        );
-        $dto['logo'] = $logo;
+        $pool = $user->pools()->where('uuid','=',$uuid)->first();
+        if(!$pool)
+            abort(404);
 
-        $user->company()->update($dto);
+        $pool->fill($dto);
+        $rules = [];
+        foreach ($dto['rules'] as $rule_str)
+            $rules[] = json_decode($rule_str);
+        $pool->rules = $rules;
 
-        return redirect()->route(config('oxo.homepage.auth'));
+        $rules = collect($rules);
+        $pool->start_date = $rules
+            ->pluck('start_date')
+            ->map(function($date) {
+                return carbon($date);
+            })->min();
+        $pool->end_date = $rules
+            ->pluck('end_date')
+            ->map(function($date) {
+                return carbon($date);
+            })->max();
+
+        $pool->save();
+
+        if ($request->file('image')) {
+            $image = Storage::disk('files')->putFile(
+                'pools/' . $pool->id,
+                $request->file('image')
+            );
+            $pool->update(['image' => $image]);
+        }
+
+        return $request->ajax()
+            ? response()->json(['redirect' => route('company.pools')])
+            : redirect()->route('company.pools');
     }
 }

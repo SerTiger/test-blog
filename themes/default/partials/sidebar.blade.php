@@ -34,7 +34,7 @@
                 </svg>
             </a>
             <div class="sidebar-nav">
-                <a href="{{ route('company.pools') }}" class="{{active_class('company.pools')}}">
+                <a href="{{ route('company.pools') }}" class="{{active_class('company.pools|pool.*')}}">
                     <div>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -53,23 +53,23 @@
                     </div>
                     <span>@lang('Pools')</span>
                 </a>
-                <a href="{{ route('profile.contributions') }}" class="{{active_class('profile.contributions')}}">
+                <a href="{{ route('contribution.index') }}" class="{{active_class('contribution.*')}}">
                     <div>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 1V23" stroke="#A6B0C3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6313 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6313 13.6815 18 14.5717 18 15.5C18 16.4283 17.6313 17.3185 16.9749 17.9749C16.3185 18.6313 15.4283 19 14.5 19H6" stroke="#A6B0C3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <span>My Contribution</span>
+                    <span>@lang('My Contribution')</span>
                 </a>
-                <a href="profile">
+                <a href="{{ route('account.index') }}" class="{{active_class('account.*')}}">
                     <div>
                         <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 21.251V19.251C20 18.1901 19.5786 17.1727 18.8284 16.4226C18.0783 15.6724 17.0609 15.251 16 15.251H8C6.93913 15.251 5.92172 15.6724 5.17157 16.4226C4.42143 17.1727 4 18.1901 4 19.251V21.251" stroke="#A6B0C3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M12 11.251C14.2091 11.251 16 9.46012 16 7.25098C16 5.04184 14.2091 3.25098 12 3.25098C9.79086 3.25098 8 5.04184 8 7.25098C8 9.46012 9.79086 11.251 12 11.251Z" stroke="#A6B0C3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <span>My Account</span>
+                    <span>@lang('My Account')</span>
                 </a>
             </div>
         </div>

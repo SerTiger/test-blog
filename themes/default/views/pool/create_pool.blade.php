@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.auth')
 @section('content')
     <div class="create-rule">
         <div class="create-rule-wrap">
@@ -17,8 +17,6 @@
                         <span>User group/Tier</span>
                         <select name="group" class="selection" id="group">
                             <option value="all">all users</option>
-                            <option value="all">all users</option>
-                            <option value="all">all users</option>
                         </select>
                     </label>
                 </div>
@@ -26,13 +24,13 @@
                     <div class="input-row">
                         <label>
                             <span>Minimum Single Ticket Amount</span>
-                            <input type="tel" id="min_single" name="min_single">
+                            <input type="tel" id="min_single" name="min_single" value="{{$pool ? $pool->rules[0]['min_single'] : old('min_single')}}">
                         </label>
                     </div>
                     <div class="input-row">
                         <label>
                             <span>Maximum Single Ticket Amount</span>
-                            <input type="tel" id="max_single" name="max_single">
+                            <input type="tel" id="max_single" name="max_single" value="{{$pool ? $pool->rules[0]['max_single'] : old('max_single')}}">
                         </label>
                     </div>
                 </div>
@@ -40,13 +38,13 @@
                     <div class="input-row">
                         <label>
                             <span>User Amount can be in multiples of (Optional)</span>
-                            <input type="tel" id="amount_multiples" name="amount_multiples">
+                            <input type="tel" id="amount_multiples" name="amount_multiples"  value="{{$pool ? $pool->rules[0]['amount_multiples'] : old('amount_multiples')}}">
                         </label>
                     </div>
                     <div class="input-row">
                         <label>
                             <span>How many times a user can contribute (Optional)</span>
-                            <input type="tel" id="contribute_counter" name="contribute_counter">
+                            <input type="tel" id="contribute_counter" name="contribute_counter"  value="{{$pool ? $pool->rules[0]['contribute_counter'] : old('contribute_counter')}}">
                         </label>
                     </div>
                 </div>
@@ -54,7 +52,7 @@
                     <div class="input-row">
                         <label>
                             <span>VS fee % for this pool</span>
-                            <input type="tel" id="fee" name="fee">
+                            <input type="tel" id="fee" name="fee"  value="{{$pool ? $pool->rules[0]['fee'] : old('fee')}}">
                         </label>
                     </div>
                 </div>
@@ -62,13 +60,13 @@
                     <div class="input-row">
                         <label>
                             <span>Pool start Date</span>
-                            <input data-toggle="datepicker" id="start_date" type="text" name="start_date">
+                            <input data-toggle="datepicker" id="start_date" type="text" name="start_date"  value="{{$pool ? $pool->rules[0]['start_date'] : old('start_date')}}">
                         </label>
                     </div>
                     <div class="input-row">
                         <label>
                             <span>Pool and Date</span>
-                            <input data-toggle="datepicker" id="end_date" type="text" name="end_date">
+                            <input data-toggle="datepicker" id="end_date" type="text" name="end_date"  value="{{$pool ? $pool->rules[0]['end_date'] : old('end_date')}}">
                         </label>
                     </div>
                 </div>
@@ -149,18 +147,18 @@
                         <div class="input-row">
                             <label>
                                 <span>Project Title</span>
-                                <input type="text" id="title" name="title">
+                                <input type="text" id="title" name="title" value="{{$pool ? $pool->title : old('title')}}">
                             </label>
                         </div>
                         <div class="input-row">
                             <label>
                                 <span>Project Description</span>
-                                <textarea name="description" id="description" class="ckeditor"></textarea>
+                                <textarea name="description" id="description" class="ckeditor">{{$pool ? $pool->description : old('description')}}</textarea>
                             </label>
                         </div>
                         <div class="btn-wrap">
                             <span></span>
-                            <button class="btn-blue">
+                            <button class="btn-blue" type="submit">
                                 <span>Next Steps</span>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M5 12L19 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -173,22 +171,32 @@
                         <div class="input-row">
                             <label>
                                 <span>Funds Receive Address</span>
-                                <input id="address" name="address" type="text">
+                                <select class="selection" id="address" name="address">
+                                    @foreach($CURRENT_USER->wallets as $wallet)
+                                        <option value="{{ $wallet->address }}" {{ $pool && $wallet->address == $pool->address ? 'SELECTED' : '' }}>{{ $wallet->address }}</option>
+                                    @endforeach
+                                </select>
                             </label>
                         </div>
                         <div class="connector">
                             <div class="input-row">
                                 <label>
                                     <span>Total Pool Amount</span>
-                                    <input id="amount" name="amount" type="tel">
+                                    <input id="amount" name="amount" type="number" value="{{$pool ? $pool->amount : old('amount')}}">
                                 </label>
                             </div>
                             <div class="input-row">
                                 <label>
                                     <span>Pool Currency</span>
                                     <select class="selection" id="currency" name="currency">
-                                        <option value="AL">Ethereum (BNB)</option>
-                                        <option value="WY">Ethereum (BNB)</option>
+                                        @foreach(pool_networks() as $network)
+                                            <optgroup label="{{$network['name']}}">
+                                                @foreach($network['nativeCurrency'] as $coin)
+                                                    @php($currency_key = implode('::',[$network['chain'], $coin]))
+                                                    <option value="{{$currency_key}}" {{ $pool && $currency_key==$pool->currency ? 'SELECTED' : '' }}>{{$coin}}</option>
+                                                @endforeach
+                                            </optgroup>
+                                        @endforeach
                                     </select>
                                 </label>
                             </div>
@@ -197,30 +205,14 @@
                             <label>
                                 <span>Supported Deposit</span>
                                 <select class="selection" id="supported" name="supported" multiple="multiple">
-                                    <optgroup label="Binance Smart Chain (BNB)">
-                                        <option value="AL">BTC Bitcoin</option>
-                                        <option value="AL">BTC Bitcoin</option>
-                                        <option value="AL">BTC Bitcoin</option>
-                                        <option value="AL">BTC Bitcoin</option>
-                                        <option value="AL">BTC Bitcoin</option>
-                                        <option value="AL">BTC Bitcoin</option>
-                                        <option value="AL">BTC Bitcoin</option>
-                                        <option value="AL">BTC Bitcoin</option>
-                                        <option value="AL">BTC Bitcoin</option>
-                                        <option value="AL">BTC Bitcoin</option>
-                                        <option value="AL">BTC Bitcoin</option>
-                                        <option value="AL">BTC Bitcoin</option>
-                                        <option value="AL">BTC Bitcoin</option>
-                                        <option value="AL">BTC Bitcoin</option>
-                                    </optgroup>
-                                    <optgroup label="Ehereum">
-                                        <option value="da">USDC</option>
-                                        <option value="da">USDC</option>
-                                    </optgroup>
-                                    <optgroup label="Polygon">
-                                        <option value="asa">BUSD</option>
-                                        <option value="asa">BUSD</option>
-                                    </optgroup>
+                                    @foreach(pool_networks() as $network)
+                                        <optgroup label="{{$network['name']}}">
+                                            @foreach($network['deposit'] as $coin)
+                                                @php($currency_key = implode('::',[$network['chain'], $coin]))
+                                                <option value="{{$currency_key}}" {{ $pool && in_array($currency_key,(array)$pool->supported) ? 'SELECTED' : '' }}>{{$coin}}</option>
+                                            @endforeach
+                                        </optgroup>
+                                    @endforeach
                                 </select>
                             </label>
                         </div>
@@ -243,7 +235,9 @@
                     </form>
                     <form id="rules" class="create-body-tab">
                         <div class="create-body-tab-rules">
-                            <div class="create-body-tab-rules-item" style="display: none">
+                            @if($pool)
+                                @foreach($pool->rules as $i => $rule)
+                            <div class="create-body-tab-rules-item">
                                 <div class="create-body-tab-rules-item-head">
                                     All users
                                 </div>
@@ -251,34 +245,36 @@
                                     <ul>
                                         <li>
                                             <p>min Amount</p>
-                                            <span>10</span>
+                                            <span>{{ $rule["min_single"] }}</span>
                                         </li>
                                         <li>
                                             <p>max Amount</p>
-                                            <span>1000</span>
+                                            <span>{{ $rule["max_single"] }}</span>
                                         </li>
                                         <li>
                                             <p>VC Fee</p>
-                                            <span>1%</span>
+                                            <span>{{ $rule["fee"] }}%</span>
                                         </li>
                                         <li>
                                             <p>Start Date</p>
-                                            <span>15 May 2022</span>
+                                            <span>{{ carbon($rule["start_date"])->locale($CURRENT_LOCALE)->isoFormat('ll') }}</span>
                                         </li>
                                         <li>
                                             <p>END Date</p>
-                                            <span>17 May 2022</span>
+                                            <span>{{ carbon($rule["end_date"])->locale($CURRENT_LOCALE)->isoFormat('ll') }}</span>
                                         </li>
                                     </ul>
-                                    <h3>• Allowed in multiples of 10</h3>
-                                    <h3>• Only 360 transactions per user</h3>
+                                    @if($rule["amount_multiples"])<h3>• Allowed in multiples of {{ $rule["amount_multiples"] }}</h3>@endif
+                                    @if($rule["contribute_counter"])<h3>• Only {{  $rule["contribute_counter"] }} transactions per user</h3>@endif
+                                    {!! Form::hidden('rules['.$i.']', json_encode($rule)) !!}
                                 </div>
                             </div>
-
+                                @endforeach
+                            @endif
                         </div>
-                        <span class="create-body-tab-note">
+                        {{--<span class="create-body-tab-note">
                             Note: You can add different user group based on whitelisting/nfts/tokens in the Settings in the left bottom
-                        </span>
+                        </span>--}}
                         <div class="btn-wrap">
                             <button type="button" class="btn-blue" id="create_rule">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -312,23 +308,23 @@
                                 <span>Choose the fields you want to collect from contributors</span>
                                 <select class="selection" id="collect" name="collect" multiple="multiple">
                                     <optgroup label="Data">
-                                        <option value="AL">Email id</option>
-                                        <option value="AL">Birthday</option>
-                                        <option value="AL">Name</option>
-                                        <option value="AL">Surname</option>
+                                        <option value="email" {{ $pool && in_array("email",(array)$pool->collect) ? 'SELECTED' : '' }}>Email id</option>
+                                        <option value="birthday" {{ $pool && in_array("birthday",(array)$pool->collect) ? 'SELECTED' : '' }}>Birthday</option>
+                                        <option value="name" {{ $pool && in_array("name",(array)$pool->collect) ? 'SELECTED' : '' }}>Name</option>
+                                        <option value="surname" {{ $pool && in_array("surname",(array)$pool->collect) ? 'SELECTED' : '' }}>Surname</option>
                                     </optgroup>
                                 </select>
                             </label>
                         </div>
                         <div class="radio-row">
-                            <input id="total" type="checkbox" name="show_total">
+                            <input id="total" type="checkbox" name="show_total" value="1"  {{ $pool && $pool->show_total ? 'CHECKED' : '' }}>
                             <label for="total">
                                 <span>Show Total Fund Cap to users</span>
                                 <span>Will show total pool limit to users. Switch off if you like to hide it.</span>
                             </label>
                         </div>
                         <div class="radio-row">
-                            <input id="progress" type="checkbox" name="show_progress">
+                            <input id="progress" type="checkbox" name="show_progress" value="1"  {{ $pool && $pool->show_progress ? 'CHECKED' : '' }}>
                             <label for="progress">
                                 <span>Show Contribution Progress to users</span>
                                 <span>Will show pool's contribution progress to users. Switch off if you like to hide it.</span>
@@ -403,14 +399,14 @@
                             </ul>
                         </div>
                     </div>
-                    <button class="btn-blue" id="create_pool" disabled>
+                    <button class="btn-blue" id="{{ $pool ? 'update_pool' : 'create_pool' }}" disabled data-action="{{ route('pool.store') }}" data-id="{{ $pool ? $pool->id : '' }}">
                         <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12.2573 23.0711C10.8431 27.3137 5.18628 27.3137 5.18628 27.3137C5.18628 27.3137 5.18628 21.6569 9.42892 20.2427" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M24.9853 13.1715L16.5 21.6568L10.8431 15.9999L19.3284 7.51466C22.5414 4.30164 25.7545 4.33298 27.1247 4.53743C27.3357 4.56888 27.531 4.66727 27.6818 4.8181C27.8327 4.96894 27.9311 5.16423 27.9625 5.37521C28.167 6.74548 28.1983 9.9585 24.9853 13.1715Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M23.5711 14.5859V22.657C23.5711 22.7883 23.5452 22.9184 23.4949 23.0397C23.4447 23.161 23.371 23.2713 23.2782 23.3641L19.2355 27.4068C19.1075 27.5348 18.9471 27.6257 18.7716 27.6697C18.596 27.7137 18.4118 27.7093 18.2386 27.6568C18.0653 27.6044 17.9096 27.5059 17.7879 27.3719C17.6663 27.2378 17.5833 27.0733 17.5478 26.8958L16.5 21.657" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M17.9142 8.92871H9.84314C9.71181 8.92871 9.58178 8.95458 9.46045 9.00483C9.33913 9.05509 9.22889 9.12874 9.13603 9.2216L5.09331 13.2643C4.96532 13.3923 4.87447 13.5526 4.83045 13.7282C4.78642 13.9038 4.79087 14.088 4.84332 14.2612C4.89577 14.4344 4.99426 14.5902 5.12828 14.7119C5.26229 14.8335 5.42681 14.9165 5.6043 14.952L10.8431 15.9998" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <span>Create Pool</span>
+                        <span>{{ $pool ? 'Update Pool' : 'Create Pool' }}</span>
                     </button>
                 </div>
             </div>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d50f981aa5f4c27a1b23db775e15441",
+    "content-hash": "f396d5ce66cf30a2c145410e6a7cbc04",
     "packages": [
         {
             "name": "alexusmai/laravel-file-manager",
@@ -5288,16 +5288,16 @@
         },
         {
             "name": "spatie/data-transfer-object",
-            "version": "3.7.3",
+            "version": "3.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/data-transfer-object.git",
-                "reference": "341f72c77e0fce40ea2e0dcb212cb54dc27bbe72"
+                "reference": "83c04ce0bbcb2f143782d45b5b285022fc2f8721"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/data-transfer-object/zipball/341f72c77e0fce40ea2e0dcb212cb54dc27bbe72",
-                "reference": "341f72c77e0fce40ea2e0dcb212cb54dc27bbe72",
+                "url": "https://api.github.com/repos/spatie/data-transfer-object/zipball/83c04ce0bbcb2f143782d45b5b285022fc2f8721",
+                "reference": "83c04ce0bbcb2f143782d45b5b285022fc2f8721",
                 "shasum": ""
             },
             "require": {
@@ -5307,7 +5307,7 @@
                 "illuminate/collections": "^8.36",
                 "jetbrains/phpstorm-attributes": "^1.0",
                 "larapack/dd": "^1.1",
-                "phpunit/phpunit": "^9.0"
+                "phpunit/phpunit": "^9.5.5"
             },
             "type": "library",
             "autoload": {
@@ -5335,7 +5335,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/data-transfer-object/issues",
-                "source": "https://github.com/spatie/data-transfer-object/tree/3.7.3"
+                "source": "https://github.com/spatie/data-transfer-object/tree/3.8.1"
             },
             "funding": [
                 {
@@ -5347,7 +5347,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-12-30T20:31:10+00:00"
+            "time": "2022-06-02T20:28:47+00:00"
         },
         {
             "name": "statamic/stringy",

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use YAAP\Theme\Facades\Theme;
 
 /*
@@ -32,7 +33,7 @@ Route::any('/invest-thanks', [\App\Http\Controllers\Front\InvestController::clas
 Route::middleware(['web'])
     ->group(function () {
 
-    Route::get('/logout', [\App\Http\Controllers\Admin\AuthController::class, 'admin.logout'])
+    Route::get('/logout', [\App\Http\Controllers\Auth\AuthController::class, 'logout'])
         ->name('logout')
         ->middleware('auth');
 });
@@ -52,6 +53,9 @@ Route::middleware(['web'])
     Route::middleware(['auth'])
         ->group(function () {
 
+            Route::post('/ethereum/switch', [\App\Http\Controllers\Auth\AuthController::class, 'switch'])
+                ->name('metamask.switch');
+
             Route::post('/transaction/create', [\App\Http\Controllers\Auth\Web3AuthController::class, 'createTransaction'])
                 ->middleware(['guest:web'])
                 ->name('metamask.transaction.create');
@@ -63,54 +67,69 @@ Route::middleware(['web'])
         });
 });
 
-Route::middleware(['web','auth'])
-    ->prefix('organization')
-    ->group(function () {
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        //'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function() {
 
-        Route::get('/create', [\App\Http\Controllers\Front\CompanyController::class, 'create'])
-            ->name('organization.create');
+    Route::middleware(['web', 'auth'])
+        ->prefix('organization')
+        ->group(function () {
 
-        Route::post('/create', [\App\Http\Controllers\Front\CompanyController::class, 'store'])
-            ->name('organization.store');
+            Route::get('/create', [\App\Http\Controllers\Front\CompanyController::class, 'create'])
+                ->name('organization.create');
 
-    });
+            Route::post('/create', [\App\Http\Controllers\Front\CompanyController::class, 'store'])
+                ->name('organization.store');
 
-Route::middleware(['web','auth','has.company'])
-    ->group(function () {
+        });
 
-        Route::middleware(['has.company'])
-            ->group(function () {
+    Route::middleware(['web', 'auth', 'has.company'])
+        ->group(function () {
 
-                Route::prefix('profile')
-                    ->group(function () {
+            Route::middleware(['has.company'])
+                ->group(function () {
 
-                        Route::post('/', [\App\Http\Controllers\Front\CompanyController::class, 'update']);
+                    Route::prefix('profile')
+                        ->group(function () {
 
-                    });
+                            Route::post('/', [\App\Http\Controllers\Front\CompanyController::class, 'update']);
 
-                Route::get('/create_pool', function () {
-                    return view('create_pool');
+                        });
+
+                    Route::get('/pools', [\App\Http\Controllers\Front\PoolController::class, 'index'])
+                        ->name('company.pools');
+
+                    Route::prefix('pool')
+                        ->group(function () {
+
+                            Route::get('/create', [\App\Http\Controllers\Front\PoolController::class, 'create'])
+                                ->name('pool.create');
+                            Route::post('/create', [\App\Http\Controllers\Front\PoolController::class, 'store'])
+                                ->name('pool.store');;
+                            Route::get('/edit/{uuid}', [\App\Http\Controllers\Front\PoolController::class, 'edit'])
+                                ->name('pool.edit');
+                            Route::post('/edit/{uuid}', [\App\Http\Controllers\Front\PoolController::class, 'update'])
+                                ->name('pool.update');
+                        });
                 });
 
-                Route::get('/pools',  [\App\Http\Controllers\Front\PoolController::class, 'index'])
-                    ->name('company.pools');
 
+            Route::get('/pool', function () {
+                return view('pool');
             });
+            Route::get('/profile', function () {
+                return view('profile');
+            })
+                ->name('account.index');
 
-
-        Route::get('/pool', function () {
-            return view('pool');
+            Route::get('/contributions', function () {
+                return view('contributions');
+            })->name('contribution.index');
         });
-        Route::get('/profile', function () {
-            return view('profile');
-        });
 
-        Route::get('/contributions', function () {
-            return view('contributions');
-        })->name('profile.contributions');
-    });
-
-
+});
 
 
 Route::get('/loading', function () {

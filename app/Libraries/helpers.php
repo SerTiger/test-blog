@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Middleware\LocaleMiddleware;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Storage;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /**
  * Translate the given message.
@@ -529,24 +532,6 @@ if (!function_exists('studly_camel_case')) {
     }
 }
 
-if (!function_exists('make_locales_fakers')) {
-    /**
-     * @return array
-     */
-    function make_locales_fakers()
-    {
-        $fakers = [];
-
-        foreach (config('app.locales') as $locale) {
-            $fakers[$locale] = Faker\Factory::create(
-                config('laravellocalization.supportedLocales.' . $locale . '.regional')
-            );
-        }
-
-        return $fakers;
-    }
-}
-
 if (!function_exists('variable')) {
     /**
      * Get / set the specified variable value.
@@ -568,60 +553,15 @@ if (!function_exists('variable')) {
     }
 }
 
-if (!function_exists('template_menu')) {
-    /**
-     * Get / set the specified template_menu.
-     *
-     * @param string $layout_position
-     *
-     * @return mixed
-     * @throws \Illuminate\Container\EntryNotFoundException
-     */
-    function template_menu($layout_position)
-    {
-        if (is_null($layout_position)) {
-            return app('template_menu');
-        }
-
-        return app('template_menu')->get($layout_position);
-    }
-}
-
-if (!function_exists('is_front')) {
-    /**
-     * @return bool
-     */
-    function is_front()
-    {
-        if (php_sapi_name() == 'cli') {
-            return false;
-        }
-
-        return !is_admin_panel();
-    }
-}
-
-if (!function_exists('is_admin_panel')) {
-    /**
-     * @return bool
-     */
-    function is_admin_panel()
-    {
-        if (php_sapi_name() == 'cli') {
-            return false;
-        }
-
-        return request()->segment(1) == '9a654138bc7c1c48fba1d0b5ca526a28';
-    }
-}
-
 if (!function_exists('carbon')) {
     /**
      * @return \Carbon\Carbon
      */
-    function carbon()
+    function carbon($date = NULL)
     {
-        return new Carbon\Carbon();
+        return $date
+            ? Carbon::parse($date)
+            : Carbon::now();
     }
 }
 
@@ -811,32 +751,25 @@ if (!function_exists('wallet_page_class')) {
 
 if (!function_exists('localize_url')) {
     /**
-     * @param null|string $url
+     *
      * @param null|string $locale
+     * @param null|string $url
      *
      * @return string
      */
-    function localize_url($url = null, $locale = null)
+    function localize_url($locale = null,$url = null)
     {
-        $parts = explode('/', $url);
 
-        if (count($parts) > 1 && empty($parts[0]))
-            array_shift($parts);
+        $locale = $locale ?? LaravelLocalization::getCurrentLocale();
 
-        $locales = array_keys(config('app.locales'));
-
-        if (in_array($parts[0], $locales))
-            array_shift($parts);
-
-        if ($locale == null) {
-            $current_locale = App::getLocale();
+        $localize_url = NULL;
+        if(!empty($url)) {
+            $localize_url = LaravelLocalization::getLocalizedURL($locale,$url);
         } else {
-            $current_locale = $locale;
+            $localize_url = LaravelLocalization::getLocalizedURL($locale);
         }
 
-        array_unshift($parts, $current_locale);
-
-        return '/' . implode('/', $parts);
+        return $localize_url;
     }
 }
 
@@ -1007,29 +940,70 @@ if (!function_exists('words_limit')) {
 
         return $url;
     }
+}
 
-    function set_course_url($slug): ?string
+if (!function_exists('pool_networks')) {
+    /**
+     * @param bool $available_only
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    function pool_networks(bool $available_only = true)
     {
-        return $slug ? config('course.education.domain') .
-            config('course.education.path.show_course') .
-            '/' . $slug : null;
+       $networks = collect(config('oxo.networks'));
+       if($available_only) $networks = $networks->where('enabled',TRUE);
+       return $networks;
     }
+}
 
-    function set_course_price($price): ?string
+if (!function_exists('supported_locales')) {
+    /**
+     *
+     * @return array
+     */
+    function supported_locales(): array
     {
-        switch (app()->getLocale()) {
-            case 'uk':
-            case 'ua':
-                $price = $price . ' грн';
-                break;
-            case 'en':
-                $price = '$ ' . $price;
-                break;
-            case 'ru':
-                $price = $price . ' руб';
-                break;
-        }
+        return LaravelLocalization::getSupportedLocales();
+        //return collect(config('laravellocalization.supportedLocales'));
+    }
+}
 
-        return $price;
+if (!function_exists('chain_info')) {
+    /**
+     *
+     * @param $chainId
+     * @return array
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    function chain_info($chainId):array
+    {
+        $chainId = (int)str_replace('0x','',(string)$chainId);
+        $data = Storage::disk('local')->get('chainlist/chains.json');
+        $data = collect(json_decode($data,true));
+
+        return $data->where('chainId',$chainId)->first();
+    }
+}
+
+if (!function_exists('currency_info')) {
+    /**
+     *
+     * @param $chainId
+     * @return array
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    function currency_info($pack):array
+    {
+        list($chain,$currency) = explode('::',$pack);
+
+        $data = Storage::disk('local')->get('chainlist/chains.json');
+        $data = collect(json_decode($data,true));
+
+        $net = $data->where('chain',$chain)->first();
+
+        $net_currency = collect($net['nativeCurrency'])->where('symbol',$currency)->first();
+        $net['currency'] = $net_currency ?? ['symbol' => $currency];
+
+        return $net;
     }
 }

@@ -29,8 +29,16 @@ class  AuthController extends Controller
         return $auth->signature($request);
     }
 
+    public function switch(Request $request, Web3Auth $auth) {
+        $user = auth()->user();
+
+        return $auth->switch($user,$request);
+    }
+
     public function logout(){
+
         Auth::logout();
+
         return redirect()->route(config('oxo.homepage.guest'));
     }
 }

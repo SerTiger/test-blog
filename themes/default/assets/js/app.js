@@ -12,6 +12,48 @@ $(window).on("load", () => {
     }, 1000);
 });
 
+if(window.ethereum) {
+    window.ethereum.on('accountsChanged', function (accounts) {
+        let address = accounts[0];
+
+        // Sign message
+        $.ajax({
+            type: 'POST',
+            url: '/metamask/ethereum/switch',
+            cache: false,
+            data: {
+                'address': address,
+                'chainId': window.ethereum.networkVersion
+            },
+        }).done(function (response) {
+            window.location.reload(true);
+        }).fail(function (error) {
+            console.log(error)
+        });
+
+    });
+
+    window.ethereum.on('chainChanged', function (chainId) {
+        let address = window.ethereum.selectedAddress;
+
+        // Sign message
+        $.ajax({
+            type: 'POST',
+            url: '/metamask/ethereum/switch',
+            cache: false,
+            data: {
+                'address': address,
+                'chainId': chainId
+            },
+        }).done(function (response) {
+            window.location.reload(true);
+        }).fail(function (error) {
+            console.log(error)
+        });
+
+    });
+}
+
 $(document).ready(() => {
     $('.await-notification-close').on('click', function () {
         $(this).parents('.await-notification').removeClass('active')
@@ -40,13 +82,15 @@ $(document).ready(() => {
             root.setAttribute('data-theme', 'light')
         }
     })
+
+    $('[data-toggle="datepicker"]').datepicker({
+        startView: 2,
+    });
+    $('.header-wallet-wrap').on('click', function () {
+        $('.header-wallet-dropdown').slideToggle()
+    })
+    $('.header-btns-wrap').on('click', function () {
+        $('.header-btns-dropdown').slideToggle()
+    })
 })
-$('[data-toggle="datepicker"]').datepicker({
-    startView: 2,
-});
-$('.header-wallet-wrap').on('click', function () {
-    $('.header-wallet-dropdown').slideToggle()
-})
-$('.header-btns-wrap').on('click', function () {
-    $('.header-btns-dropdown').slideToggle()
-})
+

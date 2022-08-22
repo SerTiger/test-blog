@@ -17,8 +17,8 @@ class CreatePoolsTable extends Migration
     {
         Schema::create('pools', function (Blueprint $table) {
             $table->id();
-            $table->string('slug')->unique();
-            $table->boolean('status')->default(true);
+            $table->uuid('uuid')->unique()->index();
+            $table->tinyInteger('status')->default(0);
             $table->integer('position')->default(99999);
 
             $table->unsignedBigInteger('owner_id')->nullable();
@@ -26,14 +26,20 @@ class CreatePoolsTable extends Migration
 
             $table->string('address')->nullable();
             $table->string('network')->default('ETH');
-            $table->string('coin')->default('ETH');
+            $table->string('currency')->default('ETH');
+            $table->float('amount')->default(0);
 
-            $table->float('amount')->nullable();
-            $table->timestampTz('date_start')->nullable();
-            $table->timestampTz('date_end')->nullable();
+            $table->timestampTz('start_date')->nullable();
+            $table->timestampTz('end_date')->nullable();
 
-            $table->json('setting_contact')->nullable();
-            $table->json('setting_display')->nullable();
+            $table->json('supported')->nullable();
+            $table->json('rules')->nullable();
+            $table->json('collect')->nullable();
+
+            $table->boolean('show_total_cap')->default(false);
+            $table->boolean('show_progress')->default(false);
+
+            $table->text('image')->nullable();
 
             $table->timestamps();
 
@@ -52,6 +58,7 @@ class CreatePoolsTable extends Migration
 
             $table->string('title')->nullable();
             $table->text('description')->nullable();
+
             $table->string('meta_title')->nullable();
             $table->string('meta_keywords')->nullable();
             $table->text('meta_description')->nullable();
@@ -72,7 +79,9 @@ class CreatePoolsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('pool_translations');
         Schema::dropIfExists('pools');
+        Schema::enableForeignKeyConstraints();
     }
 }

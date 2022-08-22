@@ -19306,13 +19306,15 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         _this.message = responses[0].data;
-        _this.address = responses[1][0]; // Sign message
+        _this.address = responses[1][0];
+        _this.chainId = window.ethereum.networkVersion; // Sign message
 
         web3.eth.personal.sign(_this.message, _this.address).then(function (response) {
           _this.signature = response;
           axios.post('/metamask/ethereum/authenticate', {
             'address': _this.address,
-            'signature': _this.signature
+            'signature': _this.signature,
+            'chainId': _this.chainId
           }).then(function () {
             _this.login = true;
             if (_this.link) window.location.href = _this.link;

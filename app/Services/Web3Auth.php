@@ -34,14 +34,51 @@ class Web3Auth
             $user = User::query()->firstOrCreate([
                 'auth_address'=> $address
             ]);
-            $user->wallets()->firstOrCreate([
+            $auth_wallet = $user->wallets()->firstOrCreate([
                 'address'=> $address,
-
             ]);
         }
+
+        try {
+            $chain = chain_info($request->get('chainId'));
+
+            $auth_wallet->chainid = $chain['chainId'] ?? $auth_wallet->chainid;
+            $auth_wallet->currency = $chain['nativeCurrency']['symbol'] ?? $auth_wallet->currency;
+            $auth_wallet->network = $chain['name'] ?? $auth_wallet->network;
+            $auth_wallet->save();
+        } catch (\Exception $e) {
+            \Log::error($e);
+        }
+
         auth()->login($user);
 
         session()->forget('web3-nonce');
+
+        return true;
+    }
+
+    public function switch($user, Request $request): bool
+    {
+        $address = (string)$request->get('address');
+
+        $auth_wallet = $user->wallets()->firstOrCreate([
+            'address'=> $address,
+        ]);
+
+        //try {
+            $chain = chain_info($request->get('chainId'));
+
+            $auth_wallet->chainid = $chain['chainId'] ?? $auth_wallet->chainid;
+            $auth_wallet->currency = $chain['nativeCurrency']['symbol'] ?? $auth_wallet->currency;
+            $auth_wallet->network = $chain['name'] ?? $auth_wallet->network;
+            $auth_wallet->save();
+//        } catch (\Exception $e) {
+//            \Log::error($e);
+//        }
+
+        $user->update([
+            'auth_address'=> $address
+        ]);
 
         return true;
     }

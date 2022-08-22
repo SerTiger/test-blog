@@ -36,7 +36,7 @@ class CompanyController extends Controller
         $company = $user->company()->create($dto);
 
         $logo = Storage::disk('files')->putFile(
-            $company->id,
+            'company/'.$company->id,
             $request->file('logo')
         );
         $user->company()->update(['logo' => $logo]);
@@ -58,7 +58,7 @@ class CompanyController extends Controller
         $dto['company_id'] = $company->id;
 
         $logo = Storage::disk('files')->putFile(
-            $company->id,
+            'company/'.$company->id,
             $request->file('logo')
         );
         $dto['logo'] = $logo;

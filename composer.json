@@ -34,7 +34,7 @@
         "predis/predis": "^1.1",
         "rolandstarke/laravel-thumbnail": "^1.0",
         "simplito/elliptic-php": "^1.0",
-        "spatie/data-transfer-object": "^3.7",
+        "spatie/data-transfer-object": "^3.8",
         "symfony/mailer": "^6.0",
         "yaap/theme": "^4.1",
         "yajra/laravel-datatables-html": "^4.41",

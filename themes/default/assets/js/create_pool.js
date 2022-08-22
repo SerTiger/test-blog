@@ -21,6 +21,7 @@ function updateAllMessageForms() {
 }
 
 let payload = {
+    id: '',
     title: '',
     description: '',
     address: '',
@@ -34,6 +35,7 @@ let payload = {
     image: null,
 }
 
+$(document).ready(() => {
 $('#introduction').validate({
     ignore: [],
     errorElement: 'span',
@@ -62,8 +64,6 @@ $('#funds').validate({
     rules: {
         address: {
             required: true,
-            minlength: 2,
-            maxlength: 50
         },
         amount: {
             required: true,
@@ -82,7 +82,6 @@ $('#funds').validate({
         payload.amount = $('#amount').val()
         payload.currency = $('#currency').val()
         payload.supported = $('#supported').val()
-        console.log(payload);
         $(form).fadeOut('fast')
         $('#rules').fadeIn('slow')
         $('.create-nav-item.active').removeClass('active').next().addClass('active')
@@ -171,8 +170,11 @@ $('.create-rule-container').validate({
                                 </div>
                             </div>`
         $('.create-body-tab-rules').append(item)
-        payload.rules.push(data)
+        //payload.rules.push(data)
+        payload.rules = [data]
         $('.create-rule').fadeOut('fast')
+
+        $('#create_rule').attr('disabled',true);
     }
 })
 
@@ -184,6 +186,7 @@ $('#rules').validate({
             $('#settings').fadeIn('slow')
             $('.create-nav-item.active').removeClass('active').next().addClass('active')
 
+            $('#create_rule').attr('disabled',true);
         }
     }
 })
@@ -199,6 +202,7 @@ $('#settings').validate({
         $('#create_pool').prop('disabled', false)
     }
 })
+    });
 if (document.getElementById('img')) {
     let uploadField = document.getElementById("image");
     let blah = document.getElementById("blah")
@@ -232,33 +236,111 @@ $(document).ready(() => {
     $('.selection').select2({
         minimumResultsForSearch: -1
     })
+
+    /*$('#funds #address').click(function() {
+        web3 = new Web3(window.ethereum);
+        address = web3.eth.requestAccounts();
+    });*/
+
+
     $('#create_rule').on('click', function () {
-        $('.create-rule').fadeIn('fast')
+        if(payload.rules.length === 0)
+            $('.create-rule').fadeIn('fast')
     })
     $('.create-rule-close').on('click', function () {
         $('.create-rule').fadeOut('fast')
     })
     $('#create_pool').on('click', function (){
+        payload.id = $(this).data('id');
+
         let formData = new FormData();
+        formData.append('id', payload.id)
         formData.append('title', payload.title)
         formData.append('description', payload.description)
         formData.append('address', payload.address)
         formData.append('amount', payload.amount)
-        formData.append('currency', payload.currency)
-        formData.append('supported', payload.supported)
-        formData.append('rules', payload.rules)
-        formData.append('collect', payload.collect)
+        formData.append('currency',  payload.currency)
+        payload.supported.forEach(coin=> {
+            formData.append('supported[]', coin)
+        });
+        payload.rules.forEach(rule => {
+            formData.append('rules[]', JSON.stringify(rule))
+        });
+        payload.collect.forEach(field => {
+            formData.append('collect[]', field)
+        })
         formData.append('show_total_cap', payload.show_total_cap)
         formData.append('show_progress', payload.show_progress)
         formData.append('image', payload.image)
+
+        let uri = $(this).data('action');
         $.ajax({
             type: 'POST',
-            url: '/create_pool',
+            url: uri,
             cache : false,
+            contentType: false,
             processData: false,
             data: formData,
         }).done(function (response) {
-            console.log(success)
+            window.location.href = response.redirect;
+        }).fail(function (error) {
+            console.log(error)
+        });
+
+    })
+
+    if($('#update_pool').length) {
+        $('#introduction').trigger('submit');
+        $('#funds').trigger('submit');
+        $('#settings').trigger('submit');
+        let rules = $('#rules').serializeArray();
+        rules.forEach(item=>{
+            payload.rules.push(JSON.parse(item.value))
+        })
+
+        $('#update_pool').prop('disabled',false);
+
+        $('#settings').fadeOut('fast')
+        $('#funds').fadeOut('fast')
+        $('#introduction').fadeIn('fast')
+        $('#rules').fadeOut('fast')
+        $('#img').fadeOut('fast')
+        $('.create-nav-item').removeClass('active').first().addClass('active')
+    }
+
+    $('#update_pool').on('click', function (){
+        payload.id = $(this).data('id');
+
+        let formData = new FormData();
+        formData.append('id', payload.id)
+        formData.append('title', payload.title)
+        formData.append('description', payload.description)
+        formData.append('address', payload.address)
+        formData.append('amount', payload.amount)
+        formData.append('currency',  payload.currency)
+        payload.supported.forEach(coin=> {
+            formData.append('supported[]', coin)
+        });
+        payload.rules.forEach(rule => {
+            formData.append('rules[]', JSON.stringify(rule))
+        });
+        payload.collect.forEach(field => {
+            formData.append('collect[]', field)
+        })
+        formData.append('show_total_cap', payload.show_total_cap)
+        formData.append('show_progress', payload.show_progress)
+        formData.append('image', payload.image)
+
+        let uri = $(this).data('action');
+        $.ajax({
+            type: 'POST',
+            url: uri,
+            cache : false,
+            contentType: false,
+            processData: false,
+            data: formData,
+        }).done(function (response) {
+            window.location.href = response.redirect;
         }).fail(function (error) {
             console.log(error)
         });
