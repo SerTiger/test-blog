@@ -50,6 +50,7 @@
             margin-top: 16px;
         }
         span{
+            text-align: center;
             font-style: normal;
             font-weight: 600;
             font-size: 16px;
@@ -81,6 +82,22 @@
             margin-top: 64px;
             width: 143px;
             height: 60px;
+        }
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .loading-container{
+        padding: 50px 10px;
+        h2{
+            font-size: 28px;
+            line-height: 30px;
+        }
+        p{
+            text-align: center;
+        }
+        &:before, &:after{
+            display: none;
         }
     }
 }

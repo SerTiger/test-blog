@@ -604,3 +604,118 @@
         margin-top: 4px;
     }
 }
+
+@media screen and (max-width: 1670px) {
+    .pool-left{
+        max-width: 800px;
+    }
+    .pool-right{
+        width: calc(100% - 815px);
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .pool{
+        &-wrap{
+            padding: 20px 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 1180px) {
+    .pool{
+        &-container{
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        &-left{
+            max-width: none;
+            margin-bottom: 20px;
+        }
+        &-right{
+            width: 100%;
+            &-pay{
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .pool{
+        &-head{
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            &-image{
+                margin-right: 0;
+                width: 100%;
+            }
+            &-desc{
+                width: 100%;
+                margin-top: 20px;
+                &-top{
+                    flex-direction: column-reverse;
+                }
+                &-right{
+                    margin-bottom: 20px;
+                }
+                &-bot{
+                    &-progress{
+                        &-wrap{
+                            margin-top: 10px;
+                        }
+                    }
+                    &-item{
+                        &-wrap{
+                            flex-direction: column;
+                        }
+                    }
+                    &-item + &-item{
+                        margin-top: 20px;
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+        &-users{
+            &-body{
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-direction: column;
+                &-col{
+                    width: 100%;
+                }
+                &-col + &-col{
+                    margin-top: 10px;
+                }
+            }
+        }
+        &-right{
+            a span{
+                font-size: 13px;
+            }
+            .btn-wrap{
+                a,button{
+                    padding: 10px;
+                }
+            }
+            &-pay{
+                &-connector{
+                    span{
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+        &-contributions{
+            &-wrap{
+                flex-direction: column;
+            }
+        }
+    }
+    .pool-contributions-wrap .contributions-item-col{
+        max-width: none;
+    }
+}

@@ -339,6 +339,9 @@ span.select2{
     border-radius: 8px;
 
 }
+.select2-dropdown{
+    background: $input-bg;
+}
 .select2-results__options{
     display: flex;
     align-items: flex-start;
@@ -365,3 +368,15 @@ span.select2{
 }
 
 
+@media screen and (max-width: 1670px) {
+    .main-view{
+        margin-left: 235px;
+        margin-right: 20px;
+    }
+}
+
+@media screen and (max-width: 1420px) {
+    .main-view{
+        margin-left: 20px;
+    }
+}
