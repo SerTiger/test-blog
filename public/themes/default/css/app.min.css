@@ -500,6 +500,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-left: 4px;
   margin-right: 4px;
 }
+.header-mobile {
+  display: none;
+}
 
 @media screen and (max-width: 1670px) {
   .header {
@@ -532,6 +535,42 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   .header-container {
     padding-left: 20px;
   }
+  .header-left, .header-right {
+    display: none;
+  }
+  .header-mobile {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-mobile .burger {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 31;
+  }
+  .header-mobile .burger span {
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+    height: 2px;
+    width: 32px;
+    background: var(--color-text);
+  }
+  .header-mobile .burger span + span {
+    margin-top: 6px;
+  }
+  .header-mobile .burger.active span:nth-child(2) {
+    display: none;
+  }
+  .header-mobile .burger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-4px, 2px);
+  }
+  .header-mobile .burger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-4px, -2px);
+  }
 }
 .sidebar {
   background: var(--color-bg-light);
@@ -542,6 +581,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   height: 100vh;
   max-width: 284px;
   width: 100%;
+  transition: transform 0.3s ease-in-out;
 }
 .sidebar-container {
   height: 100%;
@@ -642,6 +682,69 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .sidebar-nav a + a {
   margin-top: 16px;
 }
+.sidebar-header {
+  width: 100%;
+  display: none;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 40px;
+}
+.sidebar-header .header-left {
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.sidebar-header .header-name {
+  margin-right: 0;
+  margin-bottom: 15px;
+}
+.sidebar-header .header-name-ico {
+  width: 36px;
+  height: 36px;
+}
+.sidebar-header .header-name h3 {
+  font-size: 14px;
+  line-height: 16px;
+}
+.sidebar-header .header-search {
+  width: 100%;
+  margin-right: 0;
+}
+.sidebar-header .header-counter {
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-top: 15px;
+}
+.sidebar-header .header-right {
+  margin-top: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+.sidebar-header .header-right .btn-blue {
+  padding: 10px;
+  width: 100%;
+}
+.sidebar-header .header-wallet {
+  margin: 15px 0px 15px 0px;
+  width: 100%;
+}
+.sidebar-header .header-btns-wrap {
+  margin-top: 10px;
+}
+.sidebar-header .header-btns-dropdown {
+  right: auto;
+  left: 0;
+}
+.sidebar-header .header-counter-item + .header-counter-item {
+  margin-left: 0;
+  margin-top: 10px;
+}
+.sidebar.active {
+  transform: translateX(0);
+}
 
 @media screen and (max-width: 1670px) {
   .sidebar {
@@ -654,7 +757,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 @media screen and (max-width: 1420px) {
   .sidebar {
+    z-index: 30;
     transform: translateX(-100%);
+  }
+  .sidebar-container {
+    height: 600px;
+    overflow-y: scroll;
+  }
+  .sidebar-header {
+    display: flex;
+  }
+  .sidebar-header .header-left, .sidebar-header .header-right {
+    display: flex;
+  }
+  .sidebar-header .header-btns {
+    margin-bottom: 30px;
   }
 }
 .auth {

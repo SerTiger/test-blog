@@ -47,3 +47,9 @@ $('.header-wallet-wrap').on('click', function () {
 $('.header-btns-wrap').on('click', function () {
     $('.header-btns-dropdown').slideToggle()
 })
+
+$('.burger').on('click', function (){
+    $(this).toggleClass('active')
+    $('body').toggleClass('fixed-body')
+    $('.sidebar').toggleClass('active')
+})
