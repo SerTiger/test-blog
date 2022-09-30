@@ -1,6 +1,12 @@
 <?php
 
 return array(
+    "payment" => [
+        "fee" => [
+            "account" => env('OXO_FEE_ACCOUNT',NULL),
+        ]
+    ],
+
     "networks"      => [
         [
             'chain' => 'ETH',

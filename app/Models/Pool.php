@@ -50,6 +50,9 @@ class Pool extends Model
         'amount',
         'supported',
 
+        'contributed',
+        'progress',
+
         'start_date',
         'end_date',
 
@@ -96,5 +99,19 @@ class Pool extends Model
     public function categories(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Category::class);
+    }
+
+    public function transactions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function getProgressAttribute() {
+        return round((float)min(100,$this->attributes['progress']),2);
+    }
+
+    public function running()
+    {
+        return $this->attributes['status'] == 1;
     }
 }

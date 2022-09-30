@@ -31,13 +31,14 @@
         </div>
     </main>
 @show
-
+@include('partials.loading')
 <script type="text/javascript" src="{{ mix('/themes/default/js/vendor.min.js') }}"></script>
 <script type="text/javascript" src="{{ mix('ckeditor/ckeditor.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
         integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js" integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
 <script type="text/javascript" src="{{ mix('/themes/default/js/app.min.js') }}"></script>
 <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
 @stack('js')

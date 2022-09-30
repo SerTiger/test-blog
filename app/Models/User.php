@@ -18,9 +18,19 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'avatar',
         'name',
-        'email',
+        'surname',
+        'contacts',
+        'birthday',
         'auth_address',
+
+        'phone',
+        'country',
+        'country_code',
+        'city',
+        'city_code',
+        'verified_at',
         'password',
     ];
 
@@ -41,6 +51,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'contacts' => 'json',
+        'birthday' => 'date'
     ];
 
     public function roles(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -51,6 +63,11 @@ class User extends Authenticatable
     public function pools(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Pool::class,'owner_id');
+    }
+
+    public function contributions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Transaction::class,'contributor_id');
     }
 
     public function company(): \Illuminate\Database\Eloquent\Relations\HasOne

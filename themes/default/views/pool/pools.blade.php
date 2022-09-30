@@ -2,29 +2,18 @@
 @section('content')
     <section class="pools" id="pools">
         <div class="pools-wrap">
-            {{--<div class="pools-wrapper">
-                <div class="pools-welcome">
-                    <div class="img-wrap">
-                        <img src="themes/default/img/empty-pool.png">
-                    </div>
-                    <h2>Welcome to OXO Capital</h2>
-                    <p>No contributions found from</p>
-                    <span>0x17bb*****3412f</span>
-                    <p>All pools that you have contributed, will appear here</p>
-                </div>
-            </div>--}}
             @if($pools && count($pools))
             <h1>Pools</h1>
             <h4>Manage your pools</h4>
             @foreach($pools as $pool)
             <div class="pools-wrapper">
-                <a href="{{ route('pool.edit',$pool->uuid) }}" class="pools-item">
+                <a href="{{ route('pool.show',$pool->uuid) }}" class="pools-item">
                     @php($currency_info = currency_info($pool->currency))
                     <div class="pools-item-image">
                         <div class="tag">
                             <span>New</span>
                         </div>
-                        <img src="{{ $pool->image }}" alt="{{ $pool->title }}">
+                        @if($pool->image)<img src="{{ $pool->image }}" alt="{{ $pool->title }}">@endif
                     </div>
                     <div class="pools-item-desc">
                         <div class="pools-item-desc-top">

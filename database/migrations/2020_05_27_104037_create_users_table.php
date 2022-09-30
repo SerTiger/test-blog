@@ -16,21 +16,31 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('second_name')->nullable();
-            $table->string('email')->nullable();
+            $table->string('surname')->nullable();
+            $table->text('avatar')->nullable();
+
             $table->string('auth_address')->index()->nullable();
+
             $table->string('phone')->nullable();
             $table->string('country')->nullable();
             $table->string('country_code')->nullable();
             $table->string('city')->nullable();
             $table->string('city_code')->nullable();
-            $table->datetime('email_verified_at')->nullable();
+
+            $table->datetime('verified_at')->nullable();
+
+            $table->date('birthday')->nullable();
+            $table->json('contacts')->nullable();
+
+            $table->decimal('contributed', 64, 18)->default(0);
+            $table->decimal('invested', 64, 18)->default(0);
+
             $table->string('password')->nullable();
             $table->string('remember_token')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->unique('email','eth_address');
+            $table->unique('auth_address');
         });
 
         Schema::create('wallets', function (Blueprint $table) {
@@ -61,6 +71,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('wallets');
         Schema::dropIfExists('users');
     }
 }

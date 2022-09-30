@@ -27,7 +27,10 @@ class CreatePoolsTable extends Migration
             $table->string('address')->nullable();
             $table->string('network')->default('ETH');
             $table->string('currency')->default('ETH');
-            $table->float('amount')->default(0);
+            $table->decimal('amount',64, 18)->default(0);
+
+            $table->decimal('contributed', 64, 18)->default(0);
+            $table->float('progress')->default(0);
 
             $table->timestampTz('start_date')->nullable();
             $table->timestampTz('end_date')->nullable();

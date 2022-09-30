@@ -2828,6 +2828,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   cursor: pointer;
 }
 
+.backdrop {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--color-bg-light);
+  z-index: 100;
+}
+
 .loading {
   width: 100%;
   min-height: 100vh;
@@ -3576,4 +3584,8 @@ span.select2 span {
   box-shadow: none;
   background: var(--color-bg-light);
   border: 1px solid #3D4653;
+}
+
+.hidden {
+  display: none !important;
 }

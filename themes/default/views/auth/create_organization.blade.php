@@ -46,7 +46,7 @@
                     </div>
                     <div class="file-row">
                         <h4>Organization Logo</h4>
-                        <input id="file" name="logo" accept='image/svg+xml' type="file">
+                        <input id="file" name="logo" accept='image/*' type="file">
                         <span class="delete">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="8" cy="8" r="8" fill="#58667E"/>
@@ -68,7 +68,7 @@
 </svg>
                                 <span class="file-row-info">
                                     <span>Drag the file here or <span>Upload</span></span>
-                                    <span>.svg max 2MB</span>
+                                    <span>max 2MB</span>
                                 </span>
                             </span>
                         </label>

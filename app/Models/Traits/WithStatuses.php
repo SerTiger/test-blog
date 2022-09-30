@@ -54,7 +54,7 @@ trait WithStatuses
      */
     public function getStringStatus(): string
     {
-        return $this->getStatusKeyById($this->order_status);
+        return $this->getStatusKeyById($this->status);
     }
 
     /**

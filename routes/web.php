@@ -43,12 +43,16 @@ Route::middleware(['web'])
     ->group(function () {
 
     Route::get('/ethereum/signature', [\App\Http\Controllers\Auth\AuthController::class, 'signature'])
-        ->name('metamask.signature')
-        ->middleware('guest:web');
+        ->middleware('guest:web')
+        ->name('metamask.signature');
 
     Route::post('/ethereum/authenticate', [\App\Http\Controllers\Auth\AuthController::class, 'login'])
         ->middleware(['guest:web'])
         ->name('metamask.authenticate');
+
+    Route::get('/ethereum/sign', [\App\Http\Controllers\Auth\AuthController::class, 'signature'])
+        ->middleware(['auth'])
+        ->name('metamask.sign');
 
     Route::middleware(['auth'])
         ->group(function () {
@@ -57,11 +61,9 @@ Route::middleware(['web'])
                 ->name('metamask.switch');
 
             Route::post('/transaction/create', [\App\Http\Controllers\Auth\Web3AuthController::class, 'createTransaction'])
-                ->middleware(['guest:web'])
                 ->name('metamask.transaction.create');
 
             Route::post('/transaction/list', [\App\Http\Controllers\Auth\Web3AuthController::class, 'listTransaction'])
-                ->middleware(['guest:web'])
                 ->name('metamask.transaction.list');
 
         });
@@ -72,6 +74,15 @@ Route::group(
         'prefix' => LaravelLocalization::setLocale(),
         //'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function() {
+
+    Route::middleware(['web'])
+        ->group(function () {
+
+            Route::get('/pub/{uuid}', [\App\Http\Controllers\Front\PoolController::class, 'page'])
+                ->name('pool')
+                ->whereUuid('uuid');
+
+        });
 
     Route::middleware(['web', 'auth'])
         ->prefix('organization')
@@ -85,8 +96,17 @@ Route::group(
 
         });
 
-    Route::middleware(['web', 'auth', 'has.company'])
+    Route::middleware(['web', 'auth'])
         ->group(function () {
+
+            Route::get('/transaction/{uuid}/sign', [\App\Http\Controllers\Front\PoolController::class, 'sign'])
+                ->name('pool.transaction.sign')
+                ->whereUuid('uuid');
+
+            Route::post('/transaction/{uuid}/create', [\App\Http\Controllers\Front\PoolController::class, 'transaction'])
+                ->name('pool.transaction.create')
+                ->whereUuid('uuid');
+
 
             Route::middleware(['has.company'])
                 ->group(function () {
@@ -107,37 +127,44 @@ Route::group(
                             Route::get('/create', [\App\Http\Controllers\Front\PoolController::class, 'create'])
                                 ->name('pool.create');
                             Route::post('/create', [\App\Http\Controllers\Front\PoolController::class, 'store'])
-                                ->name('pool.store');;
+                                ->name('pool.store');
+                            Route::get('/show/{uuid}', [\App\Http\Controllers\Front\PoolController::class, 'show'])
+                                ->name('pool.show');
                             Route::get('/edit/{uuid}', [\App\Http\Controllers\Front\PoolController::class, 'edit'])
                                 ->name('pool.edit');
                             Route::post('/edit/{uuid}', [\App\Http\Controllers\Front\PoolController::class, 'update'])
                                 ->name('pool.update');
+
+                            Route::post('/start/{uuid}', [\App\Http\Controllers\Front\PoolController::class, 'start'])
+                                ->name('pool.start');
+                            Route::post('/stop/{uuid}', [\App\Http\Controllers\Front\PoolController::class, 'stop'])
+                                ->name('pool.stop');
                         });
+
+                    Route::prefix('contribution')
+                        ->group(function () {
+
+                            Route::get('/', [\App\Http\Controllers\Front\ContributionController::class, 'index'])
+                                ->name('contribution.index');
+                        });
+
+                    Route::prefix('account')
+                        ->group(function () {
+
+                            Route::get('/profile', [\App\Http\Controllers\Front\ProfileController::class, 'index'])
+                                ->name('account.index');
+                            Route::post('/profile', [\App\Http\Controllers\Front\ProfileController::class, 'update'])
+                                ->name('account.update');
+                        });
+
                 });
 
-
-            Route::get('/pool', function () {
-                return view('pool');
-            });
-            Route::get('/profile', function () {
-                return view('profile');
-            })
-                ->name('account.index');
-
-            Route::get('/contributions', function () {
-                return view('contributions');
-            })->name('contribution.index');
         });
-
 });
-
 
 Route::get('/loading', function () {
     return view('loading');
 });
 Route::get('/await', function () {
     return view('await');
-});
-Route::get('/admin-profile', function () {
-    return view('admin-profile');
 });

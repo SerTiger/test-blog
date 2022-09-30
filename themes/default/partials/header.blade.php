@@ -2,6 +2,7 @@
     <div class="header-container">
         <div class="header-left">
             <div class="header-name">
+                @auth
                 <div class="header-name-ico">
                     @if($CURRENT_COMPANY->logo )
                     <span>{{ ucfirst(mb_strimwidth($CURRENT_COMPANY->name,0,1)) }}</span>
@@ -10,8 +11,9 @@
                     @endif
                 </div>
                 <h3>{{ $CURRENT_COMPANY->name }}</h3>
+                @endauth
             </div>
-            <div class="header-search">
+            {{--<div class="header-search">
                 <label>
                     <span>
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,23 +26,40 @@
                     </span>
                     <input type="text" placeholder="Search for Pool or Organizations">
                 </label>
-            </div>
+            </div>--}}
             <div class="header-counter">
+                @auth
                 <div class="header-counter-item">
                     <span>Total invested</span>
-                    <p><span>$</span>1337</p>
+                    <p><span>$</span>{{ round($CURRENT_USER->invested,2) }}</p>
                 </div>
                 <div class="header-counter-item">
                     <span>Contributions</span>
-                    <p><span>$</span>228</p>
+                    <p><span>$</span>{{ round($CURRENT_USER->contributed,2) }}</p>
                 </div>
                 <div class="header-counter-item">
                     <span>Projects</span>
-                    <p>3</p>
+                    <p>{{ $CURRENT_USER->pools->count() }}</p>
                 </div>
+                @endauth
+                @guest
+                <div class="header-counter-item">
+                    <span>Total invested</span>
+                    <p><span>$</span>0</p>
+                </div>
+                <div class="header-counter-item">
+                    <span>Contributions</span>
+                    <p><span>$</span>0</p>
+                </div>
+                <div class="header-counter-item">
+                    <span>Projects</span>
+                    <p>0</p>
+                </div>
+                @endguest
             </div>
         </div>
         <div class="header-right">
+            @auth
             <a href="{{ route('pool.create') }}" class="btn-blue">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="12" fill="white"/>
@@ -49,7 +68,6 @@
                 </svg>
                 <span>Create Pool</span>
             </a>
-            @auth
             <div class="header-wallet">
                 <div class="header-wallet-wrap">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

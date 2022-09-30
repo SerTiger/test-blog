@@ -169,8 +169,9 @@ $('.create-rule-container').validate({
                                     <h3>• Only ${data.contribute_counter} transactions per user</h3>
                                 </div>
                             </div>`
-        $('.create-body-tab-rules').append(item)
+        //$('.create-body-tab-rules').append(item)
         //payload.rules.push(data)
+        $('.create-body-tab-rules').html(item)
         payload.rules = [data]
         $('.create-rule').fadeOut('fast')
 
@@ -203,45 +204,60 @@ $('#settings').validate({
     }
 })
     });
-if (document.getElementById('img')) {
-    let uploadField = document.getElementById("image");
-    let blah = document.getElementById("blah")
-    uploadField.onchange = function () {
-        if (this.files[0].size > 2097152) {
-            alert("File is too big!");
+
+$(document).ready(() => {
+    if (document.getElementById('img')) {
+        let uploadField = document.getElementById("image");
+        let blah = document.getElementById("blah")
+        uploadField.onchange = function () {
+            if (this.files[0].size > 2097152) {
+                alert("File is too big!");
+                $('.file-row-container').removeClass('hide')
+                $('.delete').fadeOut('fast')
+                payload.image = null
+                this.value = "";
+            } else {
+                $('.file-row-container').addClass('hide')
+                $('.delete').fadeIn('fast')
+                const file = this.files[0]
+                if (file) {
+                    payload.image = file
+                    blah.src = URL.createObjectURL(file)
+                }
+            }
+        };
+        $('.delete').on('click', function () {
+            uploadField.value = ''
+            payload.image = null
             $('.file-row-container').removeClass('hide')
             $('.delete').fadeOut('fast')
-            payload.image = null
-            this.value = "";
-        } else {
-            $('.file-row-container').addClass('hide')
-            $('.delete').fadeIn('fast')
-            const file = this.files[0]
-            if (file) {
-                payload.image = file
-                blah.src = URL.createObjectURL(file)
-            }
-        }
-    };
-    $('.delete').on('click', function () {
-        uploadField.value = ''
-        payload.image = null
-        $('.file-row-container').removeClass('hide')
-        $('.delete').fadeOut('fast')
-    })
+        })
+    }
+});
 
+let formatState = function(opt) {
+    var optimage = $(opt.element).attr('data-image');
+
+    if (!optimage) {
+        return opt.text;
+    } else {
+        var $opt = $(
+            '<span class="img-wrap"><img src="' + optimage + '" width="30px" style="vertical-align:middle" /> ' + opt.text + '</span>'
+        );
+        return $opt;
+    }
 }
 
 $(document).ready(() => {
     $('.selection').select2({
-        minimumResultsForSearch: -1
+        minimumResultsForSearch: -1,
+        templateResult: formatState,
+        templateSelection: formatState
     })
 
-    /*$('#funds #address').click(function() {
-        web3 = new Web3(window.ethereum);
-        address = web3.eth.requestAccounts();
-    });*/
-
+    $(document).on('click', '.create-body-tab-rules-item',function () {
+            $('.create-rule').fadeIn('fast')
+    })
 
     $('#create_rule').on('click', function () {
         if(payload.rules.length === 0)
@@ -271,20 +287,26 @@ $(document).ready(() => {
         })
         formData.append('show_total_cap', payload.show_total_cap)
         formData.append('show_progress', payload.show_progress)
-        formData.append('image', payload.image)
+        if(payload.image) formData.append('image', payload.image)
 
         let uri = $(this).data('action');
-        $.ajax({
-            type: 'POST',
-            url: uri,
-            cache : false,
-            contentType: false,
-            processData: false,
-            data: formData,
-        }).done(function (response) {
-            window.location.href = response.redirect;
-        }).fail(function (error) {
-            console.log(error)
+
+        personal_sign(function(){
+            formData.append('address', window.ethereum.selectedAddress);
+            formData.append('signature', window.nonce);
+
+            $.ajax({
+                type: 'POST',
+                url: uri,
+                cache : false,
+                contentType: false,
+                processData: false,
+                data: formData,
+            }).done(function (response) {
+                window.location.href = response.redirect;
+            }).fail(function (error) {
+                console.log(error)
+            });
         });
 
     })

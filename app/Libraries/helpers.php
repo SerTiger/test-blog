@@ -1007,3 +1007,21 @@ if (!function_exists('currency_info')) {
         return $net;
     }
 }
+
+if (!function_exists('currency_icon')) {
+    /**
+     *
+     * @param $currency
+     * @param int $size
+     * @param string $style
+     * @return string
+     */
+    function currency_icon($currency,int $size=60,string $style='color'):string
+    {
+        return asset(
+            strtolower(
+                implode('/',['cryptoicons',$style,$currency.'.svg'])
+            )
+        );
+    }
+}

@@ -39,7 +39,7 @@ class CompanyController extends Controller
             'company/'.$company->id,
             $request->file('logo')
         );
-        $user->company()->update(['logo' => $logo]);
+        $user->company()->update(['logo' => Storage::disk('files')->url($logo)]);
 
         return redirect()->route(config('oxo.homepage.auth'));
     }
@@ -61,7 +61,7 @@ class CompanyController extends Controller
             'company/'.$company->id,
             $request->file('logo')
         );
-        $dto['logo'] = $logo;
+        $dto['logo'] = Storage::disk('files')->url($logo);
 
         $user->company()->update($dto);
 

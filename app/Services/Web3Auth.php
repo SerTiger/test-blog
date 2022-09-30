@@ -15,11 +15,7 @@ class Web3Auth
     {
         $address = (string)$request->get('address');
 
-        Web3::verifySignature(
-            $this->getSignatureMessage(session()->get('web3-nonce')),
-            $request->get('signature'),
-            $address,
-        );
+        $this->verifySignature($address, $request);
 
         $auth_wallet = Wallet::with('user')->where([
             'address'=> $address
@@ -90,6 +86,15 @@ class Web3Auth
         session()->put('web3-nonce', $code);
 
         return $this->getSignatureMessage($code);
+    }
+
+    public function verifySignature(string $address, Request $request): bool
+    {
+        return Web3::verifySignature(
+            $this->getSignatureMessage(session()->get('web3-nonce')),
+            $request->get('signature'),
+            $address,
+        );
     }
 
     private function getSignatureMessage($code)

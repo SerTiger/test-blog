@@ -193,7 +193,7 @@
                                             <optgroup label="{{$network['name']}}">
                                                 @foreach($network['nativeCurrency'] as $coin)
                                                     @php($currency_key = implode('::',[$network['chain'], $coin]))
-                                                    <option value="{{$currency_key}}" {{ $pool && $currency_key==$pool->currency ? 'SELECTED' : '' }}>{{$coin}}</option>
+                                                    <option value="{{$currency_key}}" {{ $pool && $currency_key==$pool->currency ? 'SELECTED' : '' }} data-image="{{ currency_icon($coin) }}">{{$coin}}</option>
                                                 @endforeach
                                             </optgroup>
                                         @endforeach
@@ -209,7 +209,7 @@
                                         <optgroup label="{{$network['name']}}">
                                             @foreach($network['deposit'] as $coin)
                                                 @php($currency_key = implode('::',[$network['chain'], $coin]))
-                                                <option value="{{$currency_key}}" {{ $pool && in_array($currency_key,(array)$pool->supported) ? 'SELECTED' : '' }}>{{$coin}}</option>
+                                                <option value="{{$currency_key}}" {{ $pool && in_array($currency_key,(array)$pool->supported) ? 'SELECTED' : '' }} data-image="{{ currency_icon($coin) }}">{{$coin}}</option>
                                             @endforeach
                                         </optgroup>
                                     @endforeach
@@ -276,7 +276,7 @@
                             Note: You can add different user group based on whitelisting/nfts/tokens in the Settings in the left bottom
                         </span>--}}
                         <div class="btn-wrap">
-                            <button type="button" class="btn-blue" id="create_rule">
+                            <button type="button" class="btn-blue" id="create_rule" {{ $pool ? 'disabled' : '' }}>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="12" cy="12" r="12" fill="white"/>
                                     <rect x="11" y="6" width="2" height="12" rx="1" fill="#0187FF"/>
@@ -351,15 +351,15 @@
                         <div class="file-row">
                             <h4>Add an image for an attractive look</h4>
                             <input id="image" name="image" accept='image/*' type="file">
-                            <span class="delete">
+                            <span class="delete" style="{{ $pool && $pool->image ? 'display:block' : '' }}">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="8" cy="8" r="8" fill="#58667E"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29289 10.2316C3.90237 10.6221 3.90237 11.2553 4.29289 11.6458L4.34926 11.7022C4.73978 12.0927 5.37295 12.0927 5.76347 11.7022L7.99685 9.46877L10.2318 11.7038C10.6224 12.0943 11.2555 12.0943 11.6461 11.7038L11.7024 11.6474C12.0929 11.2569 12.0929 10.6237 11.7024 10.2332L9.46743 7.99819L11.7022 5.76347C12.0927 5.37295 12.0927 4.73978 11.7022 4.34926L11.6458 4.29289C11.2553 3.90237 10.6221 3.90237 10.2316 4.29289L7.99685 6.52762L5.76373 4.2945C5.37321 3.90397 4.74004 3.90397 4.34952 4.2945L4.29316 4.35086C3.90263 4.74139 3.90263 5.37455 4.29316 5.76508L6.52627 7.99819L4.29289 10.2316Z" fill="#0C1630"/>
 </svg>
                                 </span>
                             <label for="file">
-                            <span class="file-row-container">
-                                <img id="blah" src="#" alt="your image" />
+                            <span class="file-row-container {{ $pool && $pool->image ? 'hide' : '' }}">
+                                <img id="blah" src="{{ $pool && $pool->image ? $pool->image : '#' }}" alt="your image" />
                                 <svg class="image" width="45" height="44" viewBox="0 0 45 44" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_523_9119)">
 <path d="M10.0853 15.5833C10.0853 14.0653 11.3125 12.8333 12.8247 12.8333C14.3369 12.8333 15.5641 14.0653 15.5641 15.5833C15.5641 17.1032 14.3369 18.3333 12.8247 18.3333C11.3125 18.3333 10.0853 17.1032 10.0853 15.5833ZM26.5218 16.5L21.9214 23.8333L17.3904 20.24L10.0853 31.1667H35.6532L26.5218 16.5ZM41.1321 9.16667V34.8333H4.60642V9.16667H41.1321ZM44.7846 5.5H0.953857V38.5H44.7846V5.5Z" fill="#58667E"/>
@@ -372,7 +372,7 @@
 </svg>
                                 <span class="file-row-info">
                                     <span>Drag the file here or <span>Upload</span></span>
-                                    <span>.svg max 2MB</span>
+                                    <span>max 2MB</span>
                                 </span>
                             </span>
                             </label>

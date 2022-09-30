@@ -3,7 +3,7 @@ require('./bootstrap');
 import { createApp } from 'vue';
 import VueAxios from 'vue-axios';
 import { axios } from 'axios';
-import MetamaskSign from "./components/Metamask/Sign";
+import MetamaskAuth from "./components/Metamask/Auth";
 
 const app = createApp({
     components: {
@@ -11,6 +11,6 @@ const app = createApp({
         axios
     }
 });
-app.component('metamask-sign', MetamaskSign);
+app.component('metamask-auth', MetamaskAuth);
 
 app.mount('#app');

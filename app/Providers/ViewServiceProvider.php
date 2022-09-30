@@ -35,6 +35,8 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('CURRENT_COMPANY', $current_company ?? new \stdClass());
             $view->with('CURRENT_WALLET', $current_wallet ?? new \stdClass());
             $view->with('CURRENT_LOCALE', LaravelLocalization::getCurrentLocale());
+
+            $view->with('TRANSACTION_STATUSES', app(\App\Models\Transaction::class)->getStatuses());
         });
     }
 }
