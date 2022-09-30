@@ -566,3 +566,101 @@
     }
 
 }
+
+@media screen and (max-width: 1670px) {
+    .create-body-left{
+        max-width: 800px;
+    }
+    .create-body-right{
+        width: calc(100% - 815px);
+        button.btn-blue{
+            padding: 10px;
+        }
+    }
+    .create-body{
+        &-tab{
+            &-note{
+                font-size: 13px;
+                line-height: 19px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1180px){
+    .create{
+        &-wrap{
+            padding: 20px 10px;
+        }
+        &-nav{
+            &-item{
+                span{
+                    display: none;
+                }
+            }
+        }
+        &-body{
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            &-left{
+                max-width: none;
+                margin-bottom: 20px;
+            }
+            &-right{
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 760px){
+    .create-nav-item{
+        a{
+            padding: 10px;
+        }
+    }
+    .create-body{
+        &-tab{
+            .btn-wrap{
+                a, button{
+                    padding: 10px;
+                }
+            }
+            .radio-row{
+                label{
+                    width: calc(100% - 65px);
+                }
+            }
+            .connector{
+                flex-direction: column;
+                .input-row{
+                    width: 100%;
+                }
+                .input-row + .input-row{
+                    margin-left: 0;
+                    margin-top: 24px;
+                }
+            }
+            &-rules{
+                &-item{
+                    max-width: 100%;
+                    flex: 0 0 100%;
+                    &-body{
+                        ul li{
+                            max-width: 50%;
+                            flex: 0 0 50%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .create-rule{
+        &-container{
+            height: 500px;
+            overflow-y: scroll;
+        }
+    }
+}

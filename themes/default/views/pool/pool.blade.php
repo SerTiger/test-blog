@@ -4,7 +4,7 @@
     <section class="pool">
         <div class="pool-wrap">
             <div class="pool-container">
-                <div class="pool-left" style="max-width:80%; width: calc(80% - 48px);">
+                <div class="pool-left" {{--style="max-width:80%; width: calc(80% - 48px);"--}}>
                     <div class="pool-head">
                         <div class="pool-head-image">
                             <img src="{{ $pool->image }}" alt="{{ $pool->title }}">
@@ -118,7 +118,7 @@
                     </div>
                     @endforeach
                 </div>
-                <div class="pool-right" style="width:20%">
+                <div class="pool-right" {{--style="width:20%"--}}>
                     <a href="{{route('pool.edit',$pool->uuid)}}">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -193,7 +193,7 @@
                 </div>
             </div>
             <div class="pool-container">
-                <div class="pool-left" style="max-width:80%; width: calc(80% - 48px);">
+                <div class="pool-left" {{--style="max-width:80%; width: calc(80% - 48px);"--}}>
                     <div class="pool-more">
                         <div class="pool-more-head">
                             <h3>More info about this project</h3>

@@ -81,3 +81,36 @@
         }
     }
 }
+
+@media screen and (max-width: 1440px){
+    .auth{
+        &-logo{
+            &:after{
+                bottom: -100px;
+                right: -50px;
+            }
+            &:before{
+                top: -200px;
+                left: -50px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 980px){
+    .auth{
+        &-left{
+            display: none;
+        }
+        &-right{
+            width: 100%;
+            h1{
+                font-size: 32px;
+                line-height: 36px;
+            }
+            p,h1{
+                text-align: center;
+            }
+        }
+    }
+}
+

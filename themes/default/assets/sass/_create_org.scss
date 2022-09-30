@@ -194,3 +194,25 @@
         }
     }
 }
+
+@media screen and (max-width: 760px){
+   .auth-right{
+       padding-top: 50px;
+       padding-bottom: 50px;
+       .organization{
+           h2, h3{
+               text-align: center;
+           }
+           h2{
+               font-size: 28px;
+               line-height: 30px;
+           }
+           p{
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               flex-direction: column;
+           }
+       }
+   }
+}

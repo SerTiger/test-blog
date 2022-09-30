@@ -221,3 +221,20 @@
     }
 
 }
+
+@media screen and (max-width: 1000px){
+    .await-container{
+        padding: 50px 10px;
+        &:before, &:after{
+            display: none;
+        }
+    }
+    .await-notification{
+        width: 250px;
+        right: 10px;
+        bottom: 10px;
+        span{
+            font-size: 14px;
+        }
+    }
+}

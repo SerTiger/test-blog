@@ -7,6 +7,7 @@
     height: 100vh;
     max-width: 284px;
     width: 100%;
+    transition: transform 0.3s ease-in-out;
     &-container{
         height: 100%;
         width: 100%;
@@ -114,5 +115,102 @@
         a + a{
             margin-top: 16px;
         }
+    }
+    &-header{
+        width: 100%;
+        display: none;
+        align-items: flex-start;
+        flex-direction: column;
+        margin-top: 40px;
+        .header{
+            &-left{
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-direction: column;
+            }
+            &-name{
+                margin-right: 0;
+                margin-bottom: 15px;
+                &-ico{
+                    width: 36px;
+                    height: 36px;
+                }
+                h3{
+                    font-size: 14px;
+                    line-height: 16px;
+                }
+            }
+            &-search{
+                width: 100%;
+                margin-right: 0;
+            }
+            &-counter{
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-direction: column;
+                margin-top: 15px;
+            }
+            &-right{
+                margin-top: 20px;
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-direction: column;
+                width: 100%;
+                .btn-blue{
+                    padding: 10px;
+                    width: 100%;
+                }
+            }
+            &-wallet{
+                margin: 15px 0px 15px 0px;
+                width: 100%;
+            }
+            &-btns-wrap{
+                margin-top: 10px;
+            }
+            &-btns{
+                &-dropdown{
+                    right: auto;
+                    left: 0;
+                }
+            }
+        }
+        .header-counter-item + .header-counter-item{
+            margin-left: 0;
+            margin-top: 10px;
+        }
+    }
+    &.active{
+        transform: translateX(0);
+    }
+}
+
+@media screen and (max-width: 1670px) {
+    .sidebar{
+        max-width: 235px;
+        &-container{
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 1420px) {
+    .sidebar{
+        z-index: 30;
+        &-container{
+            height: 600px;
+            overflow-y: scroll;
+        }
+        &-header{
+            display: flex;
+            .header-left, .header-right{
+                display: flex;
+            }
+            .header-btns{
+                margin-bottom: 30px;
+            }
+        }
+        transform: translateX(-100%);
     }
 }

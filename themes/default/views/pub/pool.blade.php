@@ -4,7 +4,7 @@
     <section class="pool">
         <div class="pool-wrap">
             <div class="pool-container">
-                <div class="pool-left" style="max-width:70%; width: calc(70% - 48px);">
+                <div class="pool-left" {{--style="max-width:70%; width: calc(70% - 48px);"--}}>
                     <div class="pool-head">
                         <div class="pool-head-image">
                             @if($pool->image)<img src="{{ $pool->image }}" alt="{{ $pool->title }}">@endif
@@ -118,7 +118,7 @@
                     </div>
                     @endforeach
                 </div>
-                <div class="pool-right" style="width:30%">
+                <div class="pool-right" {{--style="width:30%"--}}>
                     @php($rule=$pool->rules[0])
                     {!! Form::open(['route'=>['pool.transaction.create',$pool->uuid],'class'=>'pool-right-pay pool-contribute']) !!}
                         @auth
@@ -182,10 +182,10 @@
                 </div>
             </div>
             <div class="pool-container">
-                <div class="pool-left" style="max-width:70%; width: calc(70% - 48px);">
+                <div class="pool-left" {{--style="max-width:70%; width: calc(70% - 48px);"--}}>
                 </div>
-                <div class="pool-right" style="width:30%">
-                    <div class="pool-info" style="width:100%">
+                <div class="pool-right" {{--style="width:30%"--}}>
+                    <div class="pool-info" {{--style="width:100%"--}}>
                         <h3>Organization  info</h3>
                         <p>{!! $pool->company->description !!}</p>
                         <a href="{{ $pool->company->website }}" target="_blank">
