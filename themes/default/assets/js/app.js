@@ -1,3 +1,4 @@
+require('./alerts.js')
 require('./create_organization.js')
 require('./pool.js')
 require('./create_pool.js')

@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Transaction;
+use App\Services\TransactionService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
@@ -23,7 +24,7 @@ class MetamaskValidatorCommand extends Command
      */
     protected $description = 'Metamask Transactions Validator Command';
 
-    protected $transactions;
+    protected $transaction_service;
     /**
      * Create a new command instance.
      *
@@ -32,17 +33,19 @@ class MetamaskValidatorCommand extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->transactions = new Transaction();
+        $this->transaction_service = app(TransactionService::class);
     }
 
     /**
      * Execute the console command.
      *
-     * @return int
+     * @return void
      */
     public function handle()
     {
-        return $this->validateTransactions();
+        $this->validateTransactions();
+
+        return;
     }
     /**
      * Validate Metamask Transaction
@@ -51,7 +54,7 @@ class MetamaskValidatorCommand extends Command
      */
     public function validateTransactions()
     {
-        $transactions = $this->transactions->pendingTransactions(); //get Pending Transactions From Database [which are older than 20min]
+        $transactions = Transaction::pendingTransactions()->get(); //get Pending Transactions From Database [which are older than 1min]
         //Run foreach to check transactions one by one.
         foreach ($transactions as $transaction) {
             //get transaction information from etherscan
@@ -62,19 +65,14 @@ class MetamaskValidatorCommand extends Command
                 //validate transaction destination with our account [destination must be our master account].
                 if (strtolower($tr_data['to']) == strtolower($transaction->account)) { // Metamask account address here
                     // Update Transaction As Success
-                    $transaction->status = 2;
-                    $transaction->update();
+                    $this->transaction_service->runTransaction($transaction);
                 } else {
                     // Update Transaction As Canceled
-                    $transaction->status = 3;
-                    $transaction->update();
+                    $this->transaction_service->cancelTransaction($transaction);
                 }
-            } else {
-                // Update Transaction As Canceled
-                $transaction->status = 3;
-                $transaction->update();
             }
         }
+        return;
     }
     /**
      * Check Transaction With Ether Scan

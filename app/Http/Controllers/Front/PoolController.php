@@ -182,11 +182,12 @@ class PoolController extends Controller
         return response()->json([
             'transactions'=> collect($result)->map(function ($item, $key) {
                 return [
-                    'amount' => $item->amount,
+                    'amount' => $item->chainid ? $item->amount_native : $item->amount,
                     'from' => $item->contributor_account,
                     'to' => $item->destination_account,
                     'type' => $item->destination,
-                    'scope' => $item->scope
+                    'scope' => $item->scope,
+                    'chainId' => dechex($item->chainid ?? 1), // eth
                 ];
             }),
             'link'=>route('pool.transaction.sign',$uuid)

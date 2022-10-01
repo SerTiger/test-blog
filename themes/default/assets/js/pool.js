@@ -41,10 +41,14 @@ $(function() {
             data: $form.serialize(), // serializes the form's elements.
             success: function(data)
             {
-                window.transaction_sign(
-                    data.transactions,
-                    data.link
-                );
+                if(data.error) {
+                    alert(data.error);
+                } else {
+                    window.transaction_sign(
+                        data.transactions,
+                        data.link
+                    );
+                }
             }
         });
         return false;

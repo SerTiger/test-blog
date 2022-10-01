@@ -33,7 +33,9 @@ class CreateUsersTable extends Migration
             $table->json('contacts')->nullable();
 
             $table->decimal('contributed', 64, 18)->default(0);
+            $table->decimal('contributed_usd', 16, 2)->default(0);
             $table->decimal('invested', 64, 18)->default(0);
+            $table->decimal('invested_usd', 16, 2)->default(0);
 
             $table->string('password')->nullable();
             $table->string('remember_token')->nullable();

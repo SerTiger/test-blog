@@ -2,9 +2,6 @@ import Web3 from 'web3/dist/web3.min.js'
 window.Web3 = Web3;
 
 window.nonce = undefined;
-window.personal_sign = function(callback) {
-    ;
-}
 
 var toggle_sign_backdrop = function(status) {
     if(status === true) $('#sign_backdrop').show()
@@ -23,12 +20,13 @@ if(window.ethereum) {
             cache: false,
             data: {
                 'address': address,
+                'currency': window.ethereum.networkVersion,
                 'chainId': window.ethereum.networkVersion
             },
         }).done(function (response) {
             window.location.reload(true);
         }).fail(function (error) {
-            console.log(error)
+            alert2(error)
         });
 
     });
@@ -48,7 +46,7 @@ if(window.ethereum) {
         }).done(function (response) {
             window.location.reload(true);
         }).fail(function (error) {
-            console.log(error)
+            alert2(error)
         });
 
     });
@@ -89,53 +87,77 @@ if(window.ethereum) {
     window.transaction_sign = function(transactions, store_uri) {
         toggle_sign_backdrop(true);
 
-        var batch = [];
-        var amount = 0;
+        let amount = 0;
 
-        ['main','fee'].forEach(type=>{
+        try {
+            window.ethereum
+                .request({
+                    method: 'wallet_switchEthereumChain',
+                    params: [{ chainId: '0x'+transactions['main'].chainId }],
+                });
+        } catch (switchError) {
+            console.log(switchError);
+            alert("Something went wrong. Please try again");
+            return;
+        }
+
+        let need_confirm = transactions.length;
+        let link = undefined;
+
+        ['fee','main'].forEach(type=>{
             let transaction = transactions[type];
 
-            batch.push({
-                from: transaction.from,
-                to: transaction.to,
-                value: '0x' + ((amount * 1000000000000000000).toString(16)),
-            });
-            amount += transaction.amount;
+            window.ethereum
+                .request({
+                    method: 'eth_sendTransaction',
+                    params: [{
+                        from: transaction.from,
+                        to: transaction.to,
+                        value: '0x' + ((amount * 1000000000000000000).toString(16)),
+                    }],
+                })
+                .then((txHash) => {
+                    if (txHash) {
+                        $.ajax({
+                            url: store_uri,
+                            type: 'POST',
+                            data: {
+                                txHash: txHash,
+                                amount: transaction.amount,
+                                scope: transaction.scope,
+                                type: type,
+                                address: transaction.to
+                            },
+                            success: function (response) {
+
+                                if(response.link) {
+                                    link = response.link
+                                }
+                                need_confirm --;
+
+                                if(need_confirm === 0) { // reload page after success
+                                    if(link) {
+                                        window.location.href = link;
+                                    } else {
+                                        window.location.reload();
+                                    }
+                                }
+                            }
+                        });
+                    } else {
+                        alert2("Something went wrong. Please try again");
+                    }
+                    need_confirm --;
+                    if(need_confirm === 0) toggle_sign_backdrop(false);
+                })
+                .catch((error) => {
+                    need_confirm --;
+                    if(need_confirm === 0) toggle_sign_backdrop(false);
+                });
+
         });
 
-        window.ethereum
-            .request({
-                method: 'eth_sendTransaction',
-                params: batch,
-            })
-            .then((txHash) => {
-                if (txHash) {
-                    $.ajax({
-                        url: store_uri,
-                        type: 'POST',
-                        data: {
-                            txHash: txHash,
-                            amount: amount,
-                            scope: transactions['main'].scope,
-                            address: transactions['main'].to
-                        },
-                        success: function (response) {
-                            // reload page after success
-                            if(response.link) {
-                                window.location.href = response.link;
-                            } else {
-                                window.location.reload();
-                            }
-                        }
-                    });
-                } else {
-                    console.log("Something went wrong. Please try again");
-                }
-                toggle_sign_backdrop(false);
-            })
-            .catch((error) => {
-                toggle_sign_backdrop(false);
-            });
+
 
     }
 }

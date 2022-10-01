@@ -15,6 +15,7 @@ class Transaction extends Model
     use WithStatuses;
 
     public $statuses = [
+        '0' => 'draft',
         '1' => 'pending',
         '2' => 'completed',
         '3' => 'canceled',
@@ -31,15 +32,18 @@ class Transaction extends Model
         'contributor_account',
 
         'txHash',
-        'amount', //transaction amount
+        'amount', //transaction amount in eth
+        'amount_usd',
+        'amount_native', //transaction amount
         'commission',
         'fee',
-        'invested', //actual amount
+        'invested', //actual amount in usd
         'status',
 
         'pool_id',
         'confirmation',
         'contributed',
+        'contributed_usd',
         'collect',
 
         'errors',
@@ -84,6 +88,16 @@ class Transaction extends Model
      */
     public function scopePending(Builder $q)
     {
-        return $q->where('status', 1)->where('created_at', '<', Carbon::NOW()->subMinutes(3))->get();
+        return $q->where('status','=', 1)->where('created_at', '<', Carbon::NOW()->subMinutes(1))->get();
+    }
+
+    /**
+     * Get ALl Pending Transactions
+     *
+     * @return mixed
+     */
+    public function scopeDraft(Builder $q)
+    {
+        return $q->where('status', '=',0)->where('created_at', '<', Carbon::NOW()->subMinutes(2*60))->get();
     }
 }

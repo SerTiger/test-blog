@@ -17,42 +17,75 @@ use Illuminate\Support\Str;
  */
 class TransactionService
 {
+    /**
+     * @var PaymentService
+     */
+    private $payment;
+
+    public function __construct(PaymentService $paymentService)
+    {
+        $this->payment = $paymentService;
+    }
+
     public function create(
         Pool $pool,
         User $contributor,
         float $amount = 0,
-        string $currency = 'ETH',
+        string $currency_pack = 'eth::ETH',
         string $chainID = NULL
     )
     {
         $res = [];
 
         $scope = Str::uuid();
-        list($total,$commission,$fee) = $this->calculate_commission($amount, $pool);
-
         $attributes = [];
+
+        try {
+            $currency = currency_info($currency_pack);
+        } catch(\Exception $e) {
+            $attributes['status'] = app(Transaction::class)->getStatusIdByKey('canceled');
+            $attributes['errors'] = $e->getMessage();
+            $res['error'] = Transaction::create($attributes);
+
+            return $res;
+        }
+
+        list($total,$commission,$fee) = $this->calculate_commission(
+            $amount,
+            $pool
+        );
+
+        $attributes['currency'] = $currency_pack;
+        $attributes['chainid'] = $currency['chainId'] ?? NULL;
         $attributes['contributor_id'] = $contributor->id;
         $attributes['contributor_account'] = $contributor->auth_address;
 
         $attributes['pool_id'] = $pool->id;
-        $attributes['status'] = app(Transaction::class)->getStatusIdByKey('pending');
+        $attributes['status'] = app(Transaction::class)->getStatusIdByKey('draft');
 
         $attributes['commission'] = $commission;
         $attributes['fee'] = $fee;
         $attributes['scope'] = $scope;
-        $attributes['currency'] = $currency;
+
         $attributes['contributed'] = $pool->contributed;
+        $attributes['contributed_usd'] = $pool->contributed_usd;
 
         DB::beginTransaction();
         try {
-            $attributes['amount'] = $commission;
-            $attributes['destination'] = 'fee';
-            $attributes['invested'] = 0;
             $attributes['destination_account'] = config('oxo.payment.fee.account');
-            if($fee > 0) $res['fee'] =  Transaction::create($attributes);
+            if($fee > 0 && !empty($attributes['destination_account'])) {
+                $attributes['amount'] = $this->payment->convertToETH($currency['currency']['symbol'], $commission);
+                $attributes['amount_native'] = $commission;
+                $attributes['amount_usd'] = $this->payment->convertToUSD($currency['currency']['symbol'], $commission);
+                $attributes['destination'] = 'fee';
+                $attributes['invested'] = 0;
+                $res['fee'] = Transaction::create($attributes);
+            }
 
-            $attributes['amount'] = $total;
-            $attributes['invested'] = $total;
+            $attributes['amount'] = $this->payment->convertToETH($currency['currency']['symbol'],$total);
+            $attributes['amount_native'] = $total;
+            $attributes['amount_usd'] = $this->payment->convertToUSD($currency['currency']['symbol'],$total);
+            $attributes['invested'] = $attributes['amount_usd'];
             $attributes['destination'] = 'pool';
             $attributes['destination_account'] = $pool->address;
             $attributes['collect'] = $this->collect_data($contributor, $pool);
@@ -110,7 +143,7 @@ class TransactionService
     public function runTransaction(Transaction $transaction)
     {
         Log::debug('runTransaction',[$transaction]);
-        $result = false;
+
 
         if($transaction->destination != 'pool') {
             return false;
@@ -118,6 +151,7 @@ class TransactionService
 
         DB::beginTransaction();
         try {
+            if($transaction->status != $transaction->getStatusIdByKey('pending')) return false;
 
             $pool = $transaction->pool;
             Transaction::where('scope','=',$transaction->scope)->update([
@@ -125,8 +159,22 @@ class TransactionService
             ]);
 
             $pool->contributed += $transaction->amount;
-            $pool->progress = $pool->amount!=0 ? $pool->contributed/$pool->amount * 100 : 0;
+            $pool->contributed_usd += $transaction->invested;
+            $pool->progress = $pool->amount_usd!=0 ? $pool->contributed_usd/$pool->amount_usd * 100 : 0;
+            if($pool->contributed_usd == 0 && $pool->contributed > 0) { // can't convert currency to usd, calculating in native
+                $pool->progress = $pool->amount_usd!=0 ? $pool->contributed/$pool->amount * 100 : 0;
+            }
             $pool->save();
+
+            $owner = $pool->owner;
+            $owner->invested += $transaction->amount; //ETH
+            $owner->invested_usd += $transaction->invested;
+            $owner->save();
+
+            $contributor = $transaction->contributor;
+            $contributor->contributed += $transaction->amount; //ETH
+            $contributor->contributed_usd += $transaction->invested;
+            $contributor->save();
 
             DB::commit();
 
@@ -135,6 +183,7 @@ class TransactionService
             DB::rollBack();
 
 			Log::error($e);
+            $result = false;
 
 			throw $e;
         }
@@ -149,15 +198,31 @@ class TransactionService
 
         DB::beginTransaction();
         try {
+            if($transaction->status != $transaction->getStatusIdByKey('completed')) return false;
 
             $pool = $transaction->pool;
-            Transaction::where('scope','=',$transaction->scope)->update([
+            Transaction::where('scope','=',$transaction->scope)
+            ->update([
                 'status' => $transaction->getStatusIdByKey('returned')
             ]);
 
             $pool->contributed -= $transaction->amount;
+            $pool->contributed_usd -= $transaction->invested;
             $pool->progress = $pool->amount!=0 ? $pool->contributed/$pool->amount * 100 : 0;
+            if($pool->contributed_usd == 0 && $pool->contributed > 0) { // can't convert currency to usd, calculating in native
+                $pool->progress = $pool->amount_usd!=0 ? $pool->contributed/$pool->amount * 100 : 0;
+            }
             $pool->save();
+
+            $owner = $pool->owner;
+            $owner->invested -= $transaction->amount;
+            $owner->invested_usd -= $transaction->invested;
+            $owner->save();
+
+            $contributor = $transaction->contributor;
+            $contributor->contributed -= $transaction->amount;
+            $contributor->contributed_usd -= $transaction->invested;
+            $contributor->save();
 
             DB::commit();
 

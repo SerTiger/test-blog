@@ -31,11 +31,11 @@
                 @auth
                 <div class="header-counter-item">
                     <span>Total invested</span>
-                    <p><span>$</span>{{ round($CURRENT_USER->invested,2) }}</p>
+                    <p><span>$</span>{{ $CURRENT_USER->invested_usd }}</p>
                 </div>
                 <div class="header-counter-item">
                     <span>Contributions</span>
-                    <p><span>$</span>{{ round($CURRENT_USER->contributed,2) }}</p>
+                    <p><span>$</span>{{ $CURRENT_USER->contributed_usd }}</p>
                 </div>
                 <div class="header-counter-item">
                     <span>Projects</span>

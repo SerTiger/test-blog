@@ -32,6 +32,11 @@ class User extends Authenticatable
         'city_code',
         'verified_at',
         'password',
+
+        'contributed',
+        'contributed_usd',
+        'invested',
+        'invested_usd',
     ];
 
     /**

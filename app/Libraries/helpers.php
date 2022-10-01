@@ -999,12 +999,29 @@ if (!function_exists('currency_info')) {
         $data = Storage::disk('local')->get('chainlist/chains.json');
         $data = collect(json_decode($data,true));
 
-        $net = $data->where('chain',$chain)->first();
+        $net = $data->where('shortName',$chain)->first();
 
-        $net_currency = collect($net['nativeCurrency'])->where('symbol',$currency)->first();
+        $net_currency = !empty($net['nativeCurrency'])
+            ? collect($net['nativeCurrency'])->where('symbol',$currency)->first()
+            : NULL;
+
         $net['currency'] = $net_currency ?? ['symbol' => $currency];
+        $net['icon'] = $net['icon'] ??  strtolower($currency);
 
         return $net;
+    }
+}
+
+if (!function_exists('currency_full_info')) {
+    /**
+     *
+     * @param string $currency
+     * @return array
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    function currency_full_info($currency):array
+    {
+        return app(\App\Services\PaymentService::class)->getInfo($currency);
     }
 }
 

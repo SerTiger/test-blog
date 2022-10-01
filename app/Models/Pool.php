@@ -51,6 +51,7 @@ class Pool extends Model
         'supported',
 
         'contributed',
+        'contributed_usd',
         'progress',
 
         'start_date',

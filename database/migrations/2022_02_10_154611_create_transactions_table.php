@@ -26,6 +26,9 @@ class CreateTransactionsTable extends Migration
 
             $table->string('contributor_account')->nullable();
             $table->decimal('amount', 64, 18)->default(0);
+            $table->decimal('amount_native', 64, 18)->default(0);
+            $table->decimal('amount_usd', 16, 2)->default(0);
+
             $table->decimal('commission', 64, 18)->default(0);
             $table->float('fee')->default(0);
             $table->decimal('invested',64, 18)->default(0);
@@ -33,6 +36,7 @@ class CreateTransactionsTable extends Migration
             $table->json('confirmation')->nullable();
             $table->json('collect')->nullable();
             $table->decimal('contributed',64, 18)->default(0);
+            $table->decimal('contributed_usd', 16, 2)->default(0);
 
             $table->text('errors')->nullable();
 

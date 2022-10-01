@@ -62,7 +62,7 @@ class Web3Auth
         ]);
 
         //try {
-            $chain = chain_info($request->get('chainId'));
+            $chain = chain_info(hexdec($request->get('chainId')));
 
             $auth_wallet->chainid = $chain['chainId'] ?? $auth_wallet->chainid;
             $auth_wallet->currency = $chain['nativeCurrency']['symbol'] ?? $auth_wallet->currency;

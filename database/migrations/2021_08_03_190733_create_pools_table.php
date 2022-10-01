@@ -30,6 +30,7 @@ class CreatePoolsTable extends Migration
             $table->decimal('amount',64, 18)->default(0);
 
             $table->decimal('contributed', 64, 18)->default(0);
+            $table->decimal('contributed_usd', 16, 2)->default(0);
             $table->float('progress')->default(0);
 
             $table->timestampTz('start_date')->nullable();
