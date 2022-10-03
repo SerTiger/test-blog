@@ -56,7 +56,7 @@
                                 this.login = true;
                                 if(this.link) window.location.href = this.link;
                             }).catch((e)=>{
-                                alert(e.message);
+                                alert2(e.message);
                                 this.loading = false;
                             })
                         })

@@ -14,7 +14,7 @@
                                 <div class="pool-head-desc-left">
                                     <div class="pool-head-desc-left-title">
                                         <h1>{{ $pool->title }}</h1>
-                                        <div class="tag">New</div>
+                                        <div class="tag">{{ $pool->getStringStatus() }}</div>
                                     </div>
                                     <div class="pool-head-desc-left-creator">
                                         <p>By</p>
@@ -227,7 +227,7 @@
                                 <div class="contributions-item-col">
                                     <span>Contributed Amount</span>
                                     <div class="contributions-item-status">
-                                        <p>{{ $transaction->amount }} {{ $transaction->currency }}</p>
+                                        <p>{{ round($transaction->amount_native,8) }} {{ $transaction->symbol }}</p>
                                         <span class="status">{{ $transaction->getStringStatus() }}</span>
                                     </div>
                                     <span>Submitted Details</span>

@@ -12,7 +12,18 @@ $(window).on("load", () => {
     }, 1000);
 });
 
+window.autosubmit = undefined;
 $(document).ready(() => {
+
+    $('.autosubmit').on('change',function(){
+        let $form = $(this).closest('form');
+        if(window.autosubmit) window.clearTimeout(window.autosubmit);
+        window.autosubmit = window.setTimeout(function(){
+            $form.submit();
+        }, 1750);
+
+    })
+
     $('.await-notification-close').on('click', function () {
         $(this).parents('.await-notification').removeClass('active')
     })

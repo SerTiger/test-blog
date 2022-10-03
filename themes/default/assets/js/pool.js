@@ -42,7 +42,7 @@ $(function() {
             success: function(data)
             {
                 if(data.error) {
-                    alert(data.error);
+                    alert2(data.error);
                 } else {
                     window.transaction_sign(
                         data.transactions,

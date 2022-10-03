@@ -41,11 +41,12 @@ class CreateTransactionsTable extends Migration
             $table->text('errors')->nullable();
 
             $table->string('chainid')->nullable();
-            $table->string('currency')->default('ETH');
+            $table->string('currency')->default('eth::ETH');
+            $table->string('symbol',10)->nullable();
             $table->enum('destination',['pool','fee'])->default('pool')->index();
             $table->uuid('scope')->index();
 
-            $table->integer('status')->default(1)->index();
+            $table->integer('status')->default(0)->index();
             $table->timestamps();
 
             $table->foreign('pool_id')->references('id')

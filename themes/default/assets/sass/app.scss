@@ -371,6 +371,19 @@ span.select2{
     display: none !important;
 }
 
+.link {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    color: #008DFF;
+    border: none;
+    background: none transparent;
+}
+
+a{
+    text-decoration: none;
+}
+
 @media screen and (max-width: 1670px) {
     .main-view{
         margin-left: 235px;

@@ -33,6 +33,7 @@ let payload = {
     show_total_cap: false,
     show_progress: false,
     image: null,
+    image_cleared: null
 }
 
 $(document).ready(() => {
@@ -211,7 +212,7 @@ $(document).ready(() => {
         let blah = document.getElementById("blah")
         uploadField.onchange = function () {
             if (this.files[0].size > 2097152) {
-                alert("File is too big!");
+                alert2("File is too big!");
                 $('.file-row-container').removeClass('hide')
                 $('.delete').fadeOut('fast')
                 payload.image = null
@@ -229,6 +230,7 @@ $(document).ready(() => {
         $('.delete').on('click', function () {
             uploadField.value = ''
             payload.image = null
+            payload.image_cleared = true
             $('.file-row-container').removeClass('hide')
             $('.delete').fadeOut('fast')
         })
@@ -287,6 +289,7 @@ $(document).ready(() => {
         })
         formData.append('show_total_cap', payload.show_total_cap)
         formData.append('show_progress', payload.show_progress)
+        formData.append('image_cleared', payload.image_cleared)
         if(payload.image) formData.append('image', payload.image)
 
         let uri = $(this).data('action');

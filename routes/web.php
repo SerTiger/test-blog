@@ -107,6 +107,17 @@ Route::group(
                 ->name('pool.transaction.create')
                 ->whereUuid('uuid');
 
+            Route::post('/transaction/{uuid}/confirm', [\App\Http\Controllers\Front\PoolController::class, 'transaction_confirm'])
+                ->name('pool.transaction.confirm')
+                ->whereUuid('uuid');
+
+            Route::get('/transaction/{scope}/await', [\App\Http\Controllers\Front\PoolController::class, 'transaction_await'])
+                ->name('pool.transaction.await')
+                ->whereUuid('scope');
+
+            Route::post('/transaction/{scope}/notify', [\App\Http\Controllers\Front\PoolController::class, 'transaction_notify'])
+                ->name('pool.transaction.notify')
+                ->whereUuid('scope');
 
             Route::middleware(['has.company'])
                 ->group(function () {

@@ -84,7 +84,7 @@
                     <div class="header-wallet-dropdown-head">
                         <span>@lang('ADDRESS')</span>
                         <p>{{ $CURRENT_USER->address_masked }}</p>
-                        <a href="/">View Transacton</a>
+                        <a href="{{ route('contribution.index') }}">View Transacton</a>
                     </div>
                     <div class="header-wallet-dropdown-body">
                         <p>{{ $CURRENT_WALLET->network }}</p>

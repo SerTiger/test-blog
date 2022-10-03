@@ -19319,7 +19319,7 @@ __webpack_require__.r(__webpack_exports__);
             _this.login = true;
             if (_this.link) window.location.href = _this.link;
           })["catch"](function (e) {
-            alert(e.message);
+            alert2(e.message);
             _this.loading = false;
           });
         })["catch"](function (errors) {

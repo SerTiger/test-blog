@@ -2,7 +2,7 @@
 @section('content')
     <section class="await">
         <div class="await-container">
-            <div class="await-icon active">
+            <div class="await-icon {{ $transaction->confirmation ? 'active' : '' }}">
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M33.3334 10L15.0001 28.3333L6.66675 20" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -12,29 +12,30 @@
             <div class="await-top">
                 <div class="await-top-head">
                     <span>Contributed Amount</span>
-                    <p>0.02 BTC</p>
+                    <p>{{ $amount }} {{ $transaction->symbol }}</p>
                 </div>
                 <div class="await-top-body">
                     <div class="await-top-body-from">
                         <span>From:</span>
-                        <span>0x3e36...793c</span>
+                        <span>{{  $transaction->contributor_address_masked }}</span>
                     </div>
-                    <span>15 Feb 2022  01:48 PM</span>
+                    <span>{{ $transaction->created_at ? $transaction->created_at->locale($CURRENT_LOCALE)->isoFormat('llll') : '-' }}</span>
                 </div>
             </div>
-            <form class="await-bot">
-                <h3>Update From for Name Pool</h3>
+            {!! Form::open(['route'=>['pool.transaction.notify',$transaction->scope],"class"=>"await-bot"]) !!}
+                <h3>Update From for <a class="link" href="{{ route('pool',$transaction->pool->uuid) }}">{{ $transaction->pool->title }}</a></h3>
                 <div class="input-row">
                     <label>
                         <span>Email ID*</span>
-                        <input type="email">
+                        <input type="email" name="email" value="{{ $transaction->confirmation ? $transaction->confirmation['email'] : NULL }}">
                     </label>
                 </div>
-                <button class="btn-blue">
+                <button class="btn-blue" type="submit">
                     <span>Save details</span>
                 </button>
-            </form>
+            {!! Form::close() !!}
         </div>
+        @if($transaction->confirmation)
         <div class="await-notification active">
             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="35" cy="35" r="35" fill="#3F5B45"/>
@@ -49,5 +50,6 @@
                 </svg>
             </div>
         </div>
+        @endif
     </section>
 @stop

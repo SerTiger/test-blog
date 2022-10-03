@@ -1,16 +1,17 @@
-function notification2(message, type, options) {
-    if (!Swal) return false;
+window.notification2 = function(message, type, options) {
+    if (Swal === undefined) return false;
 
     let modal = type || 'alert';
     let default_options = options || {};
     let config = {};
     switch (modal) {
         case 'alert':
+        case 'error':
             config = {
                 icon: 'error',
                 title: message,
-                showConfirmButton: false,
-                timer: 1500
+                showConfirmButton: true,
+                timer: 7500
             };
             break;
         case 'prompt':
@@ -37,9 +38,9 @@ function notification2(message, type, options) {
     }
     config = Object.assign(default_options,config);
     return Swal.fire(config);
-};
+}
 
-function alert2(message, type, options){
+window.alert2 = function(message, type, options){
     if(!notification2(message,'error')) {
         alert(message);
     }

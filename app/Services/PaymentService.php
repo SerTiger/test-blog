@@ -50,4 +50,13 @@ class PaymentService
 
         return $net;
     }
+
+    public function getSymbol($currency): string
+    {
+        $info = ExchangeRate::query()->where([
+            'currency' => $currency
+        ])->first();
+
+        return  $info ? ($info->symbol ?? $info->currency): $currency;
+    }
 }

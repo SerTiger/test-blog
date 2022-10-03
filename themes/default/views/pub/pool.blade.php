@@ -14,7 +14,7 @@
                                 <div class="pool-head-desc-left">
                                     <div class="pool-head-desc-left-title">
                                         <h1>{{ $pool->title }}</h1>
-                                        <div class="tag">New</div>
+                                        <div class="tag">{{ $pool->getStringStatus() }}</div>
                                     </div>
                                     <div class="pool-head-desc-left-creator">
                                         <p>By</p>

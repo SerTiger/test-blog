@@ -56,6 +56,7 @@ class TransactionService
         );
 
         $attributes['currency'] = $currency_pack;
+        $attributes['symbol'] = $this->payment->getSymbol($currency['currency']['symbol']);
         $attributes['chainid'] = $currency['chainId'] ?? NULL;
         $attributes['contributor_id'] = $contributor->id;
         $attributes['contributor_account'] = $contributor->auth_address;
@@ -237,5 +238,36 @@ class TransactionService
         }
 
         return $result;
+    }
+
+    public function confirm(Pool $pool, $txDTO) {
+        $destination = NULL;
+        switch($txDTO['type']) {
+            case 'main':
+            case 'pool':
+                $destination = 'pool';
+                break;
+            case 'fee':
+                $destination = 'fee';
+                break;
+            default:
+                return false;
+        }
+
+        $tx = Transaction::query()
+            ->withDraft()->withFee()
+            ->where('pool_id','=',$pool->id)
+            ->where('destination','=',$destination)
+            ->where('scope','=',$txDTO['scope'])
+            ->first();
+
+        if(!$tx) return false;
+
+        $tx->update([
+            'txHash' => $txDTO['txHash'],
+            'status' => $tx->getStatusIdByKey('pending')
+        ]);
+
+        return true;
     }
 }

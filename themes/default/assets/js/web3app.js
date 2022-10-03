@@ -2,15 +2,20 @@ import Web3 from 'web3/dist/web3.min.js'
 window.Web3 = Web3;
 
 window.nonce = undefined;
+window.switching = false;
 
 var toggle_sign_backdrop = function(status) {
     if(status === true) $('#sign_backdrop').show()
     else if(status === false) $('#sign_backdrop').hide()
     else $('#sign_backdrop').toggle();
+
+    window.switching=false;
 }
 
 if(window.ethereum) {
     window.ethereum.on('accountsChanged', function (accounts) {
+        if(window.switching) return;
+
         let address = accounts[0];
 
         // Sign message
@@ -26,14 +31,15 @@ if(window.ethereum) {
         }).done(function (response) {
             window.location.reload(true);
         }).fail(function (error) {
-            alert2(error)
+            alert2(JSON.stringify(error));
         });
 
     });
 
     window.ethereum.on('chainChanged', function (chainId) {
-        let address = window.ethereum.selectedAddress;
+        if(window.switching) return;
 
+        let address = window.ethereum.selectedAddress;
         // Sign message
         $.ajax({
             type: 'POST',
@@ -46,7 +52,7 @@ if(window.ethereum) {
         }).done(function (response) {
             window.location.reload(true);
         }).fail(function (error) {
-            alert2(error)
+            alert2(JSON.stringify(error));
         });
 
     });
@@ -79,28 +85,12 @@ if(window.ethereum) {
             });
 
         }).fail(function (error) {
-            console.log(error)
+            alert2(error)
             toggle_sign_backdrop(false);
         });
     }
 
-    window.transaction_sign = function(transactions, store_uri) {
-        toggle_sign_backdrop(true);
-
-        let amount = 0;
-
-        try {
-            window.ethereum
-                .request({
-                    method: 'wallet_switchEthereumChain',
-                    params: [{ chainId: '0x'+transactions['main'].chainId }],
-                });
-        } catch (switchError) {
-            console.log(switchError);
-            alert("Something went wrong. Please try again");
-            return;
-        }
-
+    function txSign(transactions, store_uri){
         let need_confirm = transactions.length;
         let link = undefined;
 
@@ -113,7 +103,7 @@ if(window.ethereum) {
                     params: [{
                         from: transaction.from,
                         to: transaction.to,
-                        value: '0x' + ((amount * 1000000000000000000).toString(16)),
+                        value: '0x' + ((transaction.amount * 1000000000000000000).toString(16)),
                     }],
                 })
                 .then((txHash) => {
@@ -130,34 +120,58 @@ if(window.ethereum) {
                             },
                             success: function (response) {
 
-                                if(response.link) {
+                                if (response.link) {
                                     link = response.link
                                 }
-                                need_confirm --;
+                                need_confirm--;
 
-                                if(need_confirm === 0) { // reload page after success
-                                    if(link) {
+                                if (need_confirm === 0) { // reload page after success
+                                    if (link) {
                                         window.location.href = link;
                                     } else {
                                         window.location.reload();
                                     }
                                 }
                             }
+                        }).fail(function (error) {
+                            toggle_sign_backdrop(false);
                         });
                     } else {
                         alert2("Something went wrong. Please try again");
                     }
-                    need_confirm --;
-                    if(need_confirm === 0) toggle_sign_backdrop(false);
+                    need_confirm--;
+                    if (need_confirm === 0) toggle_sign_backdrop(false);
                 })
                 .catch((error) => {
-                    need_confirm --;
-                    if(need_confirm === 0) toggle_sign_backdrop(false);
+                    need_confirm--;
+                    if (need_confirm === 0) toggle_sign_backdrop(false);
                 });
 
         });
+    }
 
+    window.transaction_sign = function(transactions, store_uri) {
+        toggle_sign_backdrop(true);
 
+        try {
+            let txChainId = '0x'+transactions['main'].chainId;
+            if(window.ethereum.networkVersion !== txChainId ) {
+                window.switching = true;
+                window.ethereum
+                    .request({
+                        method: 'wallet_switchEthereumChain',
+                        params: [{chainId: '0x' + transactions['main'].chainId}],
+                    }).then(() => {
+                        window.switching = false;
+                        txSign(transactions, store_uri);
+                    });
+            } else {
+                txSign(transactions, store_uri);
+            }
+        } catch (switchError) {
+            alert2("Something went wrong. Please try again");
+        }
 
+        return;
     }
 }

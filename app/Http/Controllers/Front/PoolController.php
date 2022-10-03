@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pool;
+use App\Services\PaymentService;
 use App\Services\TransactionService;
 use App\Services\Web3Auth;
 use Illuminate\Http\Request;
@@ -37,6 +38,8 @@ class PoolController extends Controller
         $dto = $request->all();
         $dto['company_id'] = $user->company->id;
 
+        $old_image = $pool->image;
+
         $pool->fill($dto);
         $rules = [];
         foreach ($dto['rules'] as $rule_str)
@@ -64,7 +67,11 @@ class PoolController extends Controller
             );
             $pool->update(['image' => Storage::disk('files')->url($image)]);
         } else {
-            $pool->update(['image' => NULL]);
+            if($request->get('image_cleared', false)) {
+                $pool->update(['image' => NULL]);
+            } else {
+                $pool->update(['image' => $old_image]);
+            }
         }
 
         return $request->ajax()
@@ -145,6 +152,10 @@ class PoolController extends Controller
 
         if(!$pool) abort(404);
 
+        if( $pool->getStringStatus() !== 'active') {
+            return $this->render('pub.ended');
+        }
+
         $this->data('pool',$pool);
 
         return $this->render('pub.pool');
@@ -154,7 +165,7 @@ class PoolController extends Controller
         return $auth->signature($request);
     }
 
-    public function transaction($uuid, Request $request, TransactionService $transactionService, Web3Auth $auth)
+    public function transaction($uuid, Request $request, PaymentService $paymentService, TransactionService $transactionService)
     {
         $user = auth()->user();
 
@@ -163,6 +174,31 @@ class PoolController extends Controller
         $pool = Pool::where('uuid',$uuid)->first();
 
         if(!$pool) abort(404);
+
+        list($pool_network,$pool_currency) = explode('::',$pool->currency);
+        list($tx_network,$tx_currency) = explode('::',$request->get('currency'));
+        $error = '';
+        $tx_amount_usd = $paymentService->convertToUSD($tx_currency,(float)$request->get('amount',0));
+        $pool_min_amount_usd = $paymentService->convertToUSD($pool_currency, (float)$pool->rules[0]['min_single']);
+        if($pool_min_amount_usd > $tx_amount_usd) $error = "Too small amount";
+        $pool_max_amount_usd = $paymentService->convertToUSD($pool_currency, (float)$pool->rules[0]['max_single']);
+        if($pool_max_amount_usd < $tx_amount_usd) $error = "Too big amount";
+
+        $pool_multiples = $pool->rules[0]['amount_multiples'] ?? 0;
+        if($pool_multiples > 0 && $request->get('amount') % $pool_multiples != 0 ) $error = "Not allowed amount";
+
+        $max_tx = $pool->rules[0]['contribute_counter'] ?? 0;
+        $user_tx = $pool->transactions()->where('contributor_id','=',$user->id)->count();
+        if($max_tx > 0 && $user_tx >= $max_tx) $error = "Pool transaction limit reached";
+
+        if( !empty($error) )
+            return response()->json([
+                'transactions'=>NULL,
+                'error'=>$error,
+                'link'=>NUll
+            ]);
+
+        if( $request->get('amount',0) )
 
         $result = $transactionService->create(
             $pool,
@@ -175,6 +211,7 @@ class PoolController extends Controller
         if(!empty($result['error'])) {
             return response()->json([
                 'transactions'=>NULL,
+                'error'=>'Error occurred!',
                 'link'=>NUll
             ]);
         }
@@ -190,9 +227,67 @@ class PoolController extends Controller
                     'chainId' => dechex($item->chainid ?? 1), // eth
                 ];
             }),
-            'link'=>route('pool.transaction.sign',$uuid)
+            'link'=>route('pool.transaction.confirm',$uuid)
         ]);
-        //return redirect()->route('contribution.index');
+    }
+
+    public function transaction_confirm($uuid, Request $request, TransactionService $transactionService)
+    {
+        $user = auth()->user();
+
+        $pool = Pool::where('uuid',$uuid)->first();
+
+        if(!$pool) abort(404);
+
+        $txDTO = $request->only('txHash','amount','scope','type','address');
+
+        if( ! $transactionService->confirm($pool, $txDTO) ){
+            abort(423);
+        }
+
+        return response()->json([
+            'link'=>route('pool.transaction.await',[$txDTO['scope']])
+        ]);
+    }
+
+    public function transaction_await($scope, Request $request)
+    {
+        $user = auth()->user();
+
+        $transactions = $user->contributions()
+            ->pending()->withFee()
+            ->where('scope','=',$scope)
+            ->get();
+
+        if(!$transactions) abort(404);
+
+        $this->data('amount', $transactions->sum('amount_native'));
+        $this->data('transaction',$transactions->where('destination','=','pool')->first());
+
+        return $this->render('pub.await');
+    }
+
+    public function transaction_notify($scope, Request $request)
+    {
+        $user = auth()->user();
+
+        $transactions = $user->contributions()
+            ->pending()->withFee()
+            ->where('scope','=',$scope)
+            ->get();
+
+        if(!$transactions) abort(404);
+
+        $user->contributions()
+            ->pending()->withFee()
+            ->where('scope','=',$scope)
+            ->update([
+                'confirmation' => json_encode(['email'=>$request->get('email')])
+            ]);
+
+        // MailSend
+
+        return redirect()->route('pool.transaction.await',$scope);
     }
 
     public function update($uuid, Request $request)

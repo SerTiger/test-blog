@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Scopes\DestinationFeeScope;
+use App\Models\Scopes\DraftScope;
 use App\Models\Traits\WithStatuses;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -50,6 +51,7 @@ class Transaction extends Model
 
         'chainid',
         'currency',
+        'symbol',
         'destination', // pool, fee
         'destination_account',
         'scope'
@@ -62,6 +64,7 @@ class Transaction extends Model
 
     protected static function booted(){
         static::addGlobalScope(new DestinationFeeScope());
+        static::addGlobalScope(new DraftScope());
     }
 
     public function contributor() {
@@ -78,7 +81,7 @@ class Transaction extends Model
 
     public function getAmountAttribute()
     {
-        return round($this->attributes['amount'],4);
+        return round($this->attributes['amount'],8);
     }
 
     /**
@@ -86,9 +89,12 @@ class Transaction extends Model
      *
      * @return mixed
      */
-    public function scopePending(Builder $q)
+    public function scopePending(Builder $q, $withoutDelay = false)
     {
-        return $q->where('status','=', 1)->where('created_at', '<', Carbon::NOW()->subMinutes(1))->get();
+        return $q->where('transactions.status','=', 1)
+            ->when(!$withoutDelay, function($q) {
+                return $q->where('transactions.created_at', '<', Carbon::NOW()->subMinutes(1));
+            });
     }
 
     /**
@@ -98,6 +104,17 @@ class Transaction extends Model
      */
     public function scopeDraft(Builder $q)
     {
-        return $q->where('status', '=',0)->where('created_at', '<', Carbon::NOW()->subMinutes(2*60))->get();
+        return $q->where('transactions.status', '=',0)
+            ->where('transactions.created_at', '<', Carbon::NOW()->subMinutes(2*60));
+    }
+
+    public function getContributorAddressMaskedAttribute() {
+
+        return implode('...',[substr($this->contributor_account,0,5),substr($this->contributor_account,-4)]);
+    }
+
+    public function getDestinationAddressMaskedAttribute() {
+
+        return implode('...',[substr($this->destination_account,0,5),substr($this->destination_account,-4)]);
     }
 }

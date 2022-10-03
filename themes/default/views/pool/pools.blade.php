@@ -11,7 +11,7 @@
                     @php($currency_info = currency_info($pool->currency))
                     <div class="pools-item-image">
                         <div class="tag">
-                            <span>New</span>
+                            <span>{{ $pool->getStringStatus() }}</span>
                         </div>
                         @if($pool->image)<img src="{{ $pool->image }}" alt="{{ $pool->title }}">@endif
                     </div>
