@@ -244,14 +244,18 @@
                                     <a class="link" href="/">View Transacton</a>
                                 </div>
                             </div>
-                            <a>
-                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="16" cy="16" r="16" fill="#3D4653"/>
-                                    <circle cx="9" cy="16" r="2" fill="#A6B0C3"/>
-                                    <circle cx="16" cy="16" r="2" fill="#A6B0C3"/>
-                                    <circle cx="23" cy="16" r="2" fill="#A6B0C3"/>
+                            @if($transaction->status == $transaction->getStatusIdByKey('completed'))
+                            <a href="{{ route('pool.transaction.rollback',$transaction->scope) }}" class="pool-rollback">
+                                <svg width="26" height="26" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 80 80" xml:space="preserve">
+                                    <circle cx="40" cy="40" r="40" fill="#3D4653"/>
+                                    <g xmlns="http://www.w3.org/2000/svg">
+                                        <g transform="translate(-1010 -2870)">
+                                            <path fill="#A6B0C3" class="st0" d="M1053.6,2887.6H1035v-7.6l-15,13.5l15,14v-7.5h18.6c7.5-0.2,13.7,5.8,13.9,13.3c0,0.1,0,0.2,0,0.2 c0,7.7-6.2,13.9-13.9,13.9H1035v12.5h18.6c14.6,0,26.4-11.8,26.4-26.4c0,0,0,0,0,0c0-14.4-11.7-26.1-26.1-26    C1053.8,2887.5,1053.7,2887.6,1053.6,2887.6z"/>
+                                        </g>
+                                    </g>
                                 </svg>
                             </a>
+                            @endif
                         </div>
                         @endforeach
                     </div>

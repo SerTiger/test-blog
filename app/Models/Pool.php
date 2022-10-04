@@ -89,7 +89,7 @@ class Pool extends Model
 
     public function owner()
     {
-        return $this->belongTo(User::class,'owner_id');
+        return $this->belongsTo(User::class,'owner_id');
     }
 
     public function company(): \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -86,7 +86,7 @@ class DraftScope implements Scope
         $builder->macro('onlyDraft', function (Builder $builder) {
             $model = $builder->getModel();
 
-            $builder->withoutGlobalScope($this)->whereNotNull(
+            $builder->withoutGlobalScope($this)->where(
                 'status', '=',0
             );
 

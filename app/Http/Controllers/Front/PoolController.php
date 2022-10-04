@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pool;
+use App\Models\Transaction;
 use App\Services\PaymentService;
 use App\Services\TransactionService;
 use App\Services\Web3Auth;
@@ -138,8 +139,17 @@ class PoolController extends Controller
 
         if(!$pool) abort(404);
 
+        $filter = ['transaction_status'=>$request->get('of',NULL)];
+
+        $pool->load(['transactions'=>function($q) use ($filter) {
+            return $q
+                ->when($filter['transaction_status'],function($q)  use ($filter) {
+                    return $q->whereIn('status', explode(',',$filter['transaction_status']));
+                });
+        }]);
+
         $this->data('pool',$pool);
-        $this->data('filter',['transaction_status'=>$request->get('of',NULL)]);
+        $this->data('filter',$filter);
 
         return $this->render('pool.pool');
     }
@@ -231,6 +241,44 @@ class PoolController extends Controller
         ]);
     }
 
+    public function rollback($scope, Request $request)
+    {
+        $user = auth()->user();
+
+        //$auth->verifySignature($user->auth_address, $request);
+
+        $item = Transaction::query()
+            ->where('destination','=','pool')
+            ->where('scope','=',$scope)
+            ->first();
+
+        $pool = Pool::where('id','=',$item->pool_id)->where('owner_id','=',$user->id)->first();
+
+        if(!$pool) abort(404);
+
+        if(!empty($item->revert_txHash)) {
+            return response()->json([
+                'transactions'=>NULL,
+                'error'=>'Rollback not allowed',
+                'link'=>NUll
+            ]);
+        }
+
+        return response()->json([
+            'transactions'=> [
+                'main'=>[
+                    'amount' => $item->amount_native,
+                    'to' => $item->contributor_account,
+                    'from' => $item->destination_account,
+                    'type' => $item->destination,
+                    'scope' => $item->scope,
+                    'chainId' => dechex($item->chainid), // eth
+                ],
+            ],
+            'link'=>route('pool.transaction.revert',$item->scope)
+        ]);
+    }
+
     public function transaction_confirm($uuid, Request $request, TransactionService $transactionService)
     {
         $user = auth()->user();
@@ -241,13 +289,37 @@ class PoolController extends Controller
 
         $txDTO = $request->only('txHash','amount','scope','type','address');
 
-        if( ! $transactionService->confirm($pool, $txDTO) ){
+        if( ! $transactionService->confirm($user, $pool, $txDTO) ){
             abort(423);
         }
 
         return response()->json([
             'link'=>route('pool.transaction.await',[$txDTO['scope']])
         ]);
+    }
+
+    public function transaction_revert($scope, Request $request, TransactionService $transactionService)
+    {
+        $user = auth()->user();
+
+        //$auth->verifySignature($user->auth_address, $request);
+
+        $item = Transaction::query()
+            ->where('destination','=','pool')
+            ->where('scope','=',$scope)
+            ->first();
+
+        $pool = Pool::where('id','=',$item->pool_id)->where('owner_id','=',$user->id)->first();
+
+        if(!$pool) abort(404);
+
+        $txDTO = $request->only('txHash','amount','scope','type','address');
+
+        if( ! $transactionService->revert($pool, $txDTO) ){
+            abort(423);
+        }
+
+        return response()->json([]);
     }
 
     public function transaction_await($scope, Request $request)

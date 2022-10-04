@@ -86,7 +86,7 @@ class DestinationFeeScope implements Scope
         $builder->macro('onlyFee', function (Builder $builder) {
             $model = $builder->getModel();
 
-            $builder->withoutGlobalScope($this)->whereNotNull(
+            $builder->withoutGlobalScope($this)->where(
                 'destination', '=','fee'
             );
 

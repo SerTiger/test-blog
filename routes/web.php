@@ -107,9 +107,17 @@ Route::group(
                 ->name('pool.transaction.create')
                 ->whereUuid('uuid');
 
+            Route::post('/transaction/{scope}/rollback', [\App\Http\Controllers\Front\PoolController::class, 'rollback'])
+                ->name('pool.transaction.rollback')
+                ->whereUuid('scope');
+
             Route::post('/transaction/{uuid}/confirm', [\App\Http\Controllers\Front\PoolController::class, 'transaction_confirm'])
                 ->name('pool.transaction.confirm')
                 ->whereUuid('uuid');
+
+            Route::post('/transaction/{scope}/revert', [\App\Http\Controllers\Front\PoolController::class, 'transaction_revert'])
+                ->name('pool.transaction.revert')
+                ->whereUuid('scope');
 
             Route::get('/transaction/{scope}/await', [\App\Http\Controllers\Front\PoolController::class, 'transaction_await'])
                 ->name('pool.transaction.await')
@@ -171,11 +179,4 @@ Route::group(
                 });
 
         });
-});
-
-Route::get('/loading', function () {
-    return view('loading');
-});
-Route::get('/await', function () {
-    return view('await');
 });

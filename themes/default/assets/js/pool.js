@@ -53,4 +53,27 @@ $(function() {
         });
         return false;
     })
+
+    $('.pool-rollback').on('click', function(e) {
+        e.preventDefault();
+        var actionUrl = $(this).attr('href');
+
+        $.ajax({
+            type: "POST",
+            url: actionUrl,
+            data: [],
+            success: function(data)
+            {
+                if(data.error) {
+                    alert2(data.error);
+                } else {
+                    window.transaction_sign(
+                        data.transactions,
+                        data.link
+                    );
+                }
+            }
+        });
+        return false;
+    })
 });

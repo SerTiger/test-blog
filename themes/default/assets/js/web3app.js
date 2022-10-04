@@ -91,11 +91,12 @@ if(window.ethereum) {
     }
 
     function txSign(transactions, store_uri){
-        let need_confirm = transactions.length;
+        let need_confirm = Object.keys(transactions).length;
         let link = undefined;
 
         ['fee','main'].forEach(type=>{
             let transaction = transactions[type];
+            if(!transaction) return;
 
             window.ethereum
                 .request({
@@ -124,12 +125,12 @@ if(window.ethereum) {
                                     link = response.link
                                 }
                                 need_confirm--;
-
-                                if (need_confirm === 0) { // reload page after success
+                                if (need_confirm <= 0) { // reload page after success
                                     if (link) {
                                         window.location.href = link;
                                     } else {
-                                        window.location.reload();
+                                        location.reload(true);
+                                        toggle_sign_backdrop(false);
                                     }
                                 }
                             }

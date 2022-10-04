@@ -143,19 +143,14 @@ class TransactionService
 
     public function runTransaction(Transaction $transaction)
     {
-        Log::debug('runTransaction',[$transaction]);
-
-
-        if($transaction->destination != 'pool') {
-            return false;
-        }
+        Log::debug('runTransaction',[$transaction->id]);
 
         DB::beginTransaction();
         try {
             if($transaction->status != $transaction->getStatusIdByKey('pending')) return false;
 
             $pool = $transaction->pool;
-            Transaction::where('scope','=',$transaction->scope)->update([
+            $transaction->update([
                 'status' => $transaction->getStatusIdByKey('completed')
             ]);
 
@@ -178,7 +173,6 @@ class TransactionService
             $contributor->save();
 
             DB::commit();
-
             $result = true;
         } catch (Exception $e) {
             DB::rollBack();
@@ -194,18 +188,14 @@ class TransactionService
 
     public function rollbackTransaction(Transaction $transaction): bool
     {
-		Log::debug('rollbackTransaction',[$transaction]);
+		Log::debug('rollbackTransaction',[$transaction->id]);
         $result = false;
 
         DB::beginTransaction();
         try {
-            if($transaction->status != $transaction->getStatusIdByKey('completed')) return false;
+            if($transaction->status != $transaction->getStatusIdByKey('pending') || empty($transaction->revert_txHash)) return false;
 
             $pool = $transaction->pool;
-            Transaction::where('scope','=',$transaction->scope)
-            ->update([
-                'status' => $transaction->getStatusIdByKey('returned')
-            ]);
 
             $pool->contributed -= $transaction->amount;
             $pool->contributed_usd -= $transaction->invested;
@@ -229,12 +219,41 @@ class TransactionService
 
             $result = true;
         } catch (\Exception | \Error $e) {
-			Log::error('rollbackTransaction',[$e]);
             DB::rollBack();
+            Log::error($e);
 
 			$transaction->update([
 				'errors' => $e->getMessage()
 			]);
+        }
+
+        return $result;
+    }
+
+    public function cancelTransaction(Transaction $transaction): bool
+    {
+        Log::debug('cancelTransaction',[$transaction->id]);
+        $result = false;
+
+        DB::beginTransaction();
+        try {
+            if($transaction->status != $transaction->getStatusIdByKey('draft')) return false;
+
+            $transaction
+                ->update([
+                    'status' => $transaction->getStatusIdByKey('canceled')
+                ]);
+
+            DB::commit();
+
+            $result = true;
+        } catch (\Exception | \Error $e) {
+            DB::rollBack();
+            Log::error($e);
+
+            $transaction->update([
+                'errors' => $e->getMessage()
+            ]);
         }
 
         return $result;
@@ -265,6 +284,27 @@ class TransactionService
 
         $tx->update([
             'txHash' => $txDTO['txHash'],
+            'status' => $tx->getStatusIdByKey('pending')
+        ]);
+
+        return true;
+    }
+
+    public function revert(Pool $pool, $txDTO) {
+        $destination = 'pool';
+
+        $tx = Transaction::query()
+            ->withDraft()->withFee()
+            ->where('pool_id','=',$pool->id)
+            ->where('destination','=',$destination)
+            ->where('scope','=',$txDTO['scope'])
+            ->first();
+
+        if(!$tx) return false;
+
+        $tx->update([
+            'revert_txHash' => $txDTO['txHash'],
+            'revert_amount' => $txDTO['amount'],
             'status' => $tx->getStatusIdByKey('pending')
         ]);
 

@@ -47,6 +47,10 @@ class CreateTransactionsTable extends Migration
             $table->uuid('scope')->index();
 
             $table->integer('status')->default(0)->index();
+
+            $table->string('revert_txHash')->nullable();
+            $table->decimal('revert_amount', 64, 18)->default(0);
+
             $table->timestamps();
 
             $table->foreign('pool_id')->references('id')

@@ -54,7 +54,10 @@ class Transaction extends Model
         'symbol',
         'destination', // pool, fee
         'destination_account',
-        'scope'
+        'scope',
+
+        'revert_txHash',
+        'revert_amount',
     ];
 
     protected $casts = [
