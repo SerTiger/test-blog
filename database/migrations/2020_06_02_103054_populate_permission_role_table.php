@@ -18,7 +18,7 @@ class PopulatePermissionRoleTable extends Migration
     public function up()
     {
         $role_admin = Role::where('title','Admin')->first();
-        $user_admin = User::where('email','admin@admin.com')->first();
+        $user_admin = User::where('name','admin')->first();
 
         $permissions = Permission::all();
 
