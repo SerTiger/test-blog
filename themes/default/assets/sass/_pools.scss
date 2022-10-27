@@ -425,6 +425,18 @@
                         margin-top: 10px;
                         align-items: flex-start;
                     }
+                    &-left{
+                        flex-direction: column;
+                        &-item + &-item{
+                            margin-left: 0;
+                            margin-top: 15px;
+                        }
+                        &-item{
+                            &:after{
+                                display: none;
+                            }
+                        }
+                    }
                 }
             }
         }
