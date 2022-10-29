@@ -30,6 +30,13 @@ $(function() {
         new ClipboardJS('.copy-js');
     }
 
+    $('.copy-js').on('click', function (){
+        $('.await-notification').addClass('active')
+        setTimeout(function (){
+            $('.await-notification').removeClass('active')
+        },1500)
+    })
+
     $('.pool-contribute').on('submit', function(e) {
         e.preventDefault();
         var $form = $(this);

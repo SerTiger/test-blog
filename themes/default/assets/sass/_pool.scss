@@ -154,8 +154,8 @@
                     span{
                         font-style: normal;
                         font-weight: 700;
-                        font-size: 36px;
-                        line-height: 36px;
+                        font-size: 17px;
+                        line-height: 20px;
                         color: var(--color-text);
                     }
                 }
@@ -494,6 +494,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        overflow: hidden;
         &-head{
             width: 100%;
             display: flex;
@@ -605,12 +606,15 @@
     }
 }
 
-@media screen and (max-width: 1670px) {
+@media screen and (max-width: 1700px) {
     .pool-left{
         max-width: 800px;
     }
     .pool-right{
         width: calc(100% - 815px);
+    }
+    .pool-head-desc-bot-progress-wrap{
+        margin-top: 0;
     }
 }
 
