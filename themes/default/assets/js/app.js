@@ -33,22 +33,27 @@ $(document).ready(() => {
         if (theme !== 'light') {
             $('.theme-toggler').addClass('active')
             root.setAttribute('data-theme', 'dark')
+            CKEDITOR.addCss('.cke_editable { color: white }');
         } else {
             $('.theme-toggler').removeClass('active')
             root.setAttribute('data-theme', 'light')
+            CKEDITOR.addCss('.cke_editable { color: #202536 }');
         }
     } else {
         localStorage.setItem('theme', 'dark')
         root.setAttribute('data-theme', 'dark')
+        CKEDITOR.addCss('.cke_editable { color: white }');
     }
     $('.theme-toggler').on('click', function () {
         $(this).toggleClass('active')
         if ($(this).hasClass('active')) {
             localStorage.setItem('theme', 'dark')
+            CKEDITOR.addCss('.cke_editable { color: white }');
             root.setAttribute('data-theme', 'dark')
         } else {
             localStorage.setItem('theme', 'light')
             root.setAttribute('data-theme', 'light')
+            CKEDITOR.addCss('.cke_editable { color: #202536 }');
         }
     })
 

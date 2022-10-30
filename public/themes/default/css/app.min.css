@@ -2022,10 +2022,39 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 24px;
   cursor: pointer;
 }
+.pool-more-head svg path {
+  fill: var(--color-text);
+}
 .pool-more-body {
   display: none;
   width: 100%;
   padding: 0 24px 24px 24px;
+}
+.pool-more-body ul li, .pool-more-body ol li {
+  position: relative;
+  margin-left: 10px;
+}
+.pool-more-body ul li:before, .pool-more-body ol li:before {
+  left: -10px;
+  top: 4px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-text);
+  content: "";
+  position: absolute;
+}
+.pool-more-body a {
+  color: var(--color-text);
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  cursor: pointer;
+}
+.pool-more-body em {
+  font-style: italic;
+}
+.pool-more-body b {
+  font-weight: 700;
 }
 .pool-info h3 {
   font-style: normal;
@@ -4115,6 +4144,10 @@ span.select2 span {
   background-size: contain;
 }
 
+.select2-container--default .select2-search--inline .select2-search__field {
+  caret-color: transparent;
+}
+
 .select2-container--default .select2-results__option--highlighted {
   background-color: #282C3C !important;
   color: #ffffff !important;
@@ -4180,5 +4213,23 @@ a {
 @media screen and (max-width: 1420px) {
   .main-view {
     margin-left: 20px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--multiple {
+    padding: 10px !important;
+  }
+
+  .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+  }
+  .select2-container--default .select2-selection--multiple .select2-selection__choice span {
+    margin-left: 10px;
+    font-size: 18px;
+    line-height: 18px;
   }
 }
