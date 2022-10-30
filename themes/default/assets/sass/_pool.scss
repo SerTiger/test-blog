@@ -502,11 +502,41 @@
             justify-content: space-between;
             padding: 24px;
             cursor: pointer;
+            svg{
+                path{
+                    fill: var(--color-text);
+                }
+            }
         }
         &-body{
             display: none;
             width: 100%;
             padding: 0 24px 24px 24px;
+            ul li, ol li{
+                position: relative;
+                margin-left: 10px;
+                &:before{
+                    left: -10px;
+                    top: 4px;
+                    width: 5px;
+                    height: 5px;
+                    border-radius: 50%;
+                    background: var(--color-text);
+                    content: '';
+                    position: absolute;
+                }
+            }
+            a{
+                color: var(--color-text);
+                text-decoration-line: underline;
+                cursor: pointer;
+            }
+            em{
+                font-style: italic;
+            }
+            b{
+                font-weight: 700;
+            }
         }
     }
     &-info{
